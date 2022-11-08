@@ -1,0 +1,102 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: components/utilities
+ * -----------------------------------------------------------------------------
+ */
+
+ .xs\:hide {
+  @include bp-xs() {
+    display: none !important;
+  }
+}
+
+%sm\:hide,
+.sm\:hide {
+  @include bp-sm() {
+    display: none !important;
+  }
+}
+
+%sm\:block,
+.sm\:block {
+  @include bp-sm() {
+    display: block;
+  }
+}
+
+%\!sm\:block,
+.\!sm\:block {
+  @include bp-sm() {
+    display: block !important;
+  }
+}
+
+%inline-block,
+.inline-block {
+  display: inline-block;
+}
+
+%\!inline-block,
+.\!inline-block {
+  display: inline-block !important;
+}
+
+%\!md\:inline-block,
+.\!md\:inline-block {
+  @include bp-md() {
+    display: inline-block !important;
+  }
+}
+
+%\!hide,
+.\!hide {
+  display: none !important;
+}
+
+%block,
+.block {
+  display: block;
+}
+
+%\!block,
+.\!block {
+  display: block !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.max-w-25,
+.sm\:max-w-25,
+.md\:max-w-25 {
+  max-width: 25%;
+}
+
+.max-w-50,
+.sm\:max-w-50,
+.md\:max-w-50 {
+  max-width: 50%;
+}
+
+
+%sm\:sticky-t-20,
+.sm\:sticky-t-20 {
+  @include bp-sm() {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+
+.is-hidden {
+  opacity: .4;
+}

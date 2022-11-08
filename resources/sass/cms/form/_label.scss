@@ -1,0 +1,16 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: form/label
+ * -----------------------------------------------------------------------------
+ */
+ 
+label {
+
+}
+
+input[type="radio"]:checked + .form-control,
+input[type="checkbox"]:checked + .form-control {
+  background-color: $color-primary;
+  border: 2px solid $color-primary;
+  color: $color-white;
+}

@@ -1,0 +1,91 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: helper/mixins
+ * -----------------------------------------------------------------------------
+ */
+
+/**
+ * Scrollbars
+ * -----------------------------------------------------------------------------
+ */
+
+@mixin scrollbar($width: 6px, $color: #000000) {
+	::-webkit-scrollbar {
+		height: $width;
+	  width: $width;
+	}
+	::-webkit-scrollbar-track {
+		background-color: #f9f9f9;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: $color;
+		border-radius: 7px;
+		opacity: .5;
+
+	}
+	::-webkit-scrollbar-thumb:window-inactive {
+		background-color: $color;
+	}	
+}
+
+
+/**
+ * Background defaults
+ * -----------------------------------------------------------------------------
+ *
+ */
+ 
+@mixin background-default($repeat: no-repeat, $size: 100%, $position: top left) {
+	background-repeat: $repeat;
+	background-size: $size;
+	background-position: $position;
+}
+
+/**
+ * Background cover
+ * -----------------------------------------------------------------------------
+ *
+ */
+ 
+@mixin background-cover() {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+
+%word-break,
+.word-break {
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
+
+/**
+ * Visually hide an element
+ * -----------------------------------------------------------------------------
+ * This placeholder selector will visually hide an element while
+ * still make it accessible for screenreaders.
+ * 
+ * Usage:
+ *
+ *      p {
+ *          @extend %visually-hidden;
+ *      }
+ *
+ */
+
+%visually-hidden,
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
