@@ -10,5 +10,5 @@
 <script src="{{ mix('assets/js/member.js') }}" type="text/javascript"></script>
 @endif
 </body>
-<!-- made with ❤ by bivgrafik.ch & marceli.to -->
+<!-- made with ❤ by Hans Grüninger & marceli.to -->
 </html>
