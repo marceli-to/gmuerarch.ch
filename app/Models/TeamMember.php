@@ -78,6 +78,7 @@ class TeamMember extends Base
   protected $appends = [
     'fullname',
     'publish',
+    'postum',
   ];
 
   /*
@@ -123,6 +124,17 @@ class TeamMember extends Base
 
   public function getPublishAttribute()
   {
-    return $this->hasFlag('isPublished') ? 1 : 0;    
+    return $this->hasFlag('isPublish') ? 1 : 0;    
+  }
+
+
+  /**
+   * Get the postum attribute
+   * 
+   */
+
+  public function getPostumAttribute()
+  {
+    return $this->hasFlag('isPostum') ? 1 : 0;    
   }
 }

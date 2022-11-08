@@ -28,7 +28,9 @@
         <list-actions 
           :id="d.id" 
           :record="d"
-          :routes="{edit: 'team-member-edit'}">
+          :routes="{edit: 'team-member-edit'}"
+          @toggle="toggle($event)"
+          @destroy="destroy($event)">
         </list-actions>
       </div>
     </draggable>

@@ -80,6 +80,14 @@
             :name="'publish'">
           </radio-button>
         </div>
+        <div class="form-row">
+          <radio-button 
+            :label="'Postum?'"
+            v-bind:postum.sync="data.postum"
+            :model="data.postum"
+            :name="'postum'">
+          </radio-button>
+        </div>
       </div>
     </div>
 
@@ -146,6 +154,7 @@ export default {
           en: null
         },
         publish: 1,
+        postum: 0,
         images: [],
       },
 

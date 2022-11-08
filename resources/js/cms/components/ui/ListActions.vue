@@ -23,7 +23,7 @@
     <div v-if="hasToggle">
       <a
         href="javascript:;"
-        @click.prevent="toggle(id,$event)"
+        @click.prevent="$emit('toggle', id)"
       >
         <span v-if="record.publish" class="feather-icon">
           <eye-icon size="18"></eye-icon>
@@ -38,7 +38,7 @@
       <a
         href="javascript:;"
         class="feather-icon"
-        @click.prevent="copy(id,$event)"
+        @click.prevent="$emit('copy', id)"
       >
         <copy-icon size="18"></copy-icon>
       </a>
@@ -48,7 +48,7 @@
       <a
         href="javascript:;"
         class="feather-icon"
-        @click.prevent="destroy(id,$event)"
+        @click.prevent="$emit('destroy', id)"
       >
         <trash2-icon size="18"></trash2-icon>
       </a>
@@ -146,28 +146,6 @@ export default {
   },
 
   methods: {
-
-    toggle(id,$event) {
-      if (this.hasDraggable || this.isCollapsible) {
-        this.$parent.$parent.toggle(id,$event,this.model);
-      }
-      else {
-        this.$parent.toggle(id,$event,this.model);
-      }
-    },
-
-    destroy(id,$event) {
-      if (this.hasDraggable || this.isCollapsible) {
-        this.$parent.$parent.destroy(id,$event,this.model);
-      }
-      else {
-        this.$parent.destroy(id,$event,this.model);
-      }
-    },
-
-    copy(id,$event) {
-      this.$parent.copy(id,$event,this.model);
-    },
 
   },
 }

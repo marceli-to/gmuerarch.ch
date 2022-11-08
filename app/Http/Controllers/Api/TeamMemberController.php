@@ -41,7 +41,8 @@ class TeamMemberController extends Controller
   public function store(TeamMemberStoreRequest $request)
   { 
     $teamMember = TeamMember::create($request->all());
-    $this->handleState($teamMember, $request->input('publish'));
+    $this->handleFlag($teamMember, 'isPublish', $request->input('publish'));
+    $this->handleFlag($teamMember, 'isPostum', $request->input('postum'));
     $this->handleImages($teamMember, $request->input('images'));
     return response()->json(['teamMemberId' => $teamMember->id]);
   }
@@ -58,7 +59,8 @@ class TeamMemberController extends Controller
     $teamMember = TeamMember::findOrFail($teamMember->id);
     $teamMember->update($request->all());
     $this->handleI18n($teamMember, $request);
-    $this->handleState($teamMember, $request->input('publish'));
+    $this->handleFlag($teamMember, 'isPublish', $request->input('publish'));
+    $this->handleFlag($teamMember, 'isPostum', $request->input('postum'));
     $this->handleImages($teamMember, $request->input('images'));
     return response()->json('successfully updated');
   }
@@ -71,15 +73,15 @@ class TeamMemberController extends Controller
    */
   public function toggle(TeamMember $teamMember)
   {
-    if ($teamMember->hasFlag('isPublished'))
+    if ($teamMember->hasFlag('isPublish'))
     {
-      $teamMember->unflag('isPublished');
+      $teamMember->unflag('isPublish');
     }
     else
     {
-      $teamMember->flag('isPublished');
+      $teamMember->flag('isPublish');
     } 
-    return response()->json($teamMember->hasFlag('isPublished'));
+    return response()->json($teamMember->hasFlag('isPublish'));
   }
 
   /**
@@ -133,23 +135,24 @@ class TeamMemberController extends Controller
   }
 
   /**
-   * Handle state of a team member
+   * Handle flags of a team member
    *
    * @param TeamMember $teamMember
-   * @param Integer $state
+   * @param String $flag
+   * @param Integer $value
    * @return Boolean
    */  
-  protected function handleState(TeamMember $teamMember, $state)
+  protected function handleFlag(TeamMember $teamMember, $flag, $value)
   {
-    if ($state == 1)
+    if ($value == 1)
     {
-      $teamMember->flag('isPublished');
+      $teamMember->flag($flag);
     }
     else
     {
-      $teamMember->unflag('isPublished');
+      $teamMember->unflag($flag);
     }
-    return $teamMember->hasFlag('isPublished');
+    return $teamMember->hasFlag($flag);
   }
 
   /**
