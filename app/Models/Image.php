@@ -33,6 +33,21 @@ class Image extends Base
     'imageable_type'
   ];
 
+  /**
+   * The accessors to append to the model's array form.
+   *
+   * @var array
+   */
+
+  protected $appends = [
+    'coords',
+  ];
+
+  /**
+   * Relationships
+   * 
+   */
+
   public function imageable()
   {
     return $this->morphTo();

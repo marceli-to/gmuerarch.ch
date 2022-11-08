@@ -14,14 +14,9 @@ export default {
   style_formats: [{
     title: 'Text',
     items: [
-      { title: 'Titel (bold, versal)', inline: 'span', classes : 'text-bold text-uc text-xs' },
-      { title: 'Lauftext medium', inline: 'span', classes : 'text-md' },
       { title: 'Liste', block: 'ul', classes : 'list' },
-      { title: 'Link (extern)', block: 'p', classes : 'anchor-external' },
-      { title: 'Ohne Texteinzug', block: 'p', classes : 'prevent-text-indent' },
       { title: 'Überschrift 1', block : 'h1'},
       { title: 'Überschrift 2', block : 'h2'},
-      { title: 'Überschrift 3', block : 'h3'},
     ],
   }],
 

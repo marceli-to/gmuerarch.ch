@@ -6,7 +6,7 @@
 
 h1 {
   color: $color-dark;
-  @include font-bold();
+  @include font-medium();
   @include font-size($fs-lg);
   @include responsive-prop('margin-bottom', $space-sm);
 

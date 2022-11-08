@@ -6,5 +6,5 @@
 
 h2 {
   color: $color-dark;
-  @include font-bold();
+  @include font-medium();
 }

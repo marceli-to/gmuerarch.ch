@@ -34,7 +34,7 @@
   border: 1px dashed $color-dark;
   color: $color-dark;
   display: flex;
-  @include font-size($fs-sm);
+  @include font-size($fs-xs);
   justify-content: center;
   margin-right: 10px;
   text-decoration: none;

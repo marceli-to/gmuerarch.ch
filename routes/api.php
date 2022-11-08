@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\FileController;
+use App\Http\Controllers\Api\TeamMemberController;
 
 
 /*
@@ -45,6 +46,15 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::put('file/{file}', [FileController::class, 'update']);
   Route::get('file/state/{file}', [FileController::class, 'toggle']);
   Route::delete('file/{file}', [FileController::class, 'destroy']);
+
+  // Team member
+  Route::get('team-members', [TeamMemberController::class, 'get']);
+  Route::get('team-member/{teamMember}', [TeamMemberController::class, 'find']);
+  Route::post('team-member', [TeamMemberController::class, 'store']);
+  Route::put('team-member/{teamMember}', [TeamMemberController::class, 'update']);
+  Route::post('team-members/order', [TeamMemberController::class, 'order']);
+  Route::get('team-member/state/{teamMember}', [TeamMemberController::class, 'toggle']);
+  Route::delete('team-member/{teamMember}', [TeamMemberController::class, 'destroy']);
 
 });
 

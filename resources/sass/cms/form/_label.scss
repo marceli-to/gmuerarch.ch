@@ -5,7 +5,26 @@
  */
  
 label {
+  @include responsive-prop('margin-bottom', $space-xs);
+  display: block;
 
+  &.form-control {
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid $color-light-grey;
+    border-radius: 2px;
+    color: $color-grey;
+    cursor: pointer;
+    display: flex !important;
+    margin-bottom: 0;
+    margin-right: 16px;
+    justify-content: center;
+    padding: 10px 0;
+    text-align: center;
+    text-transform: none;
+    width: 54px;
+    @include transition(background-color .1s ease-out);
+  }
 }
 
 input[type="radio"]:checked + .form-control,

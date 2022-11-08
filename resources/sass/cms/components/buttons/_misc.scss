@@ -9,16 +9,16 @@
 .btn-edit,
 .btn-delete {
   @extend %btn-primary;
-  @include font-size($fs-xs);
-  padding: 8px 10px;
+  @include font-size($fs-sm);
+  padding: 10px 15px;
   line-height: 1 !important;
 }
 
 .btn-add {
-  background-color: $color-blue;
+  background-color: $color-dark;
 }
 
 .btn-edit,
 .btn-delete {
-  background-color: $color-grey;
+  background-color: $color-dark-grey;
 }
