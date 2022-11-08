@@ -14,7 +14,7 @@
       <span>
         <strong>{{user}}</strong><br>
         <a href="/logout" class="feather-icon feather-icon--prepend">
-          <log-out-icon size="12"></log-out-icon>
+          <log-out-icon size="14"></log-out-icon>
           <span>Logout</span>
         </a>
       </span>

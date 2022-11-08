@@ -10,9 +10,15 @@
           <p>Verwaltung der Teammitglieder</p>
         </router-link>
       </div>
+      <div class="card">
+        <router-link :to="{name: 'jobs'}">
+          <h2>Offene Stellen</h2>
+          <p>Verwaltung der offenen Stellen</p>
+        </router-link>
+      </div>
     </div>
     <page-footer>
-      <button-back :route="'office'">Zurück</button-back>
+      <button-back :route="'dashboard'">Zurück</button-back>
     </page-footer>
   </div>
 </template>

@@ -41,6 +41,7 @@ class TeamMemberController extends Controller
   public function store(TeamMemberStoreRequest $request)
   { 
     $teamMember = TeamMember::create($request->all());
+    $this->handleI18n($teamMember, $request);
     $this->handleFlag($teamMember, 'isPublish', $request->input('publish'));
     $this->handleFlag($teamMember, 'isPostum', $request->input('postum'));
     $this->handleImages($teamMember, $request->input('images'));
