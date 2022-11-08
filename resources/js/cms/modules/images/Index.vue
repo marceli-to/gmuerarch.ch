@@ -17,6 +17,7 @@
         :ratioW="this.$props.imageRatioW"
         :ratioH="this.$props.imageRatioH"
         :allowRatioSwitch="this.$props.allowRatioSwitch"
+        :ratioFormats="this.$props.ratioFormats"
       ></image-edit>
     </div>
   </div>
@@ -52,13 +53,19 @@ export default {
       default: false,
     },
 
+    ratioFormats: {
+      type: Array,
+      default: () => (
+        [
+          {label: 'Hoch', w: 3, h: 4},
+          {label: 'Quer', w: 16, h: 10}
+        ]
+      )
+    },
+
     typeId: null,
-
     type: null,
-    
     images: null,
-
-
   },
 
   data() {

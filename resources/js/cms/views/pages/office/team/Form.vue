@@ -62,8 +62,10 @@
 
     <div v-show="tabs.images.active">
       <images 
+        :allowRatioSwitch="true"
         :imageRatioW="3" 
-        :imageRatioH="2"
+        :imageRatioH="4"
+        :ratioFormats="[{label: 'Hoch', w: 3, h: 4}]"
         :images="data.images">
       </images>
     </div>
