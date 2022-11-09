@@ -18,8 +18,10 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "nesbot/carbon": "^2.36",
+        "opcodesio/log-viewer": "^1.6",
         "openai-php/client": "^0.2.0",
         "spatie/laravel-model-flags": "^1.0",
+        "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-translatable": "^5.2.0"
     },
     "require-dev": {

@@ -3,8 +3,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\TestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,9 @@ Route::get('/img/{template}/{filename}/{maxSize?}/{coords?}/{ratio?}', [ImageCon
 
 // Output testing
 Route::get('/test/team', [TestController::class, 'team']);
+Route::get('/test/jobs', [TestController::class, 'jobs']);
 
+Route::get('/test/discourse/topic/{topic}', [TestController::class, 'topic']);
 
 
 /*

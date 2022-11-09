@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\TeamMemberController;
 use App\Http\Controllers\Api\JobController;
+use App\Http\Controllers\Api\TopicController;
 
 
 /*
@@ -65,6 +66,13 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('jobs/order', [JobController::class, 'order']);
   Route::get('job/state/{job}', [JobController::class, 'toggle']);
   Route::delete('job/{job}', [JobController::class, 'destroy']);
+
+  // Topics (Discourse)
+  Route::get('topics', [TopicController::class, 'get']);
+  Route::get('topic/{topic}', [TopicController::class, 'find']);
+  Route::post('topic', [TopicController::class, 'store']);
+  Route::put('topic/{topic}', [TopicController::class, 'update']);
+  Route::delete('topic/{topic}', [TopicController::class, 'destroy']);
 
 });
 

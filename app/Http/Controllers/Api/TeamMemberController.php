@@ -157,7 +157,7 @@ class TeamMemberController extends Controller
   }
 
   /**
-   * Handle state of a team member
+   * Handle i18n of a team member
    *
    * @param TeamMember $teamMember
    * @param Request $request

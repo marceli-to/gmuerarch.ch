@@ -11,7 +11,7 @@ class JobController extends Controller
 {
   
   /**
-   * Get a list of Jobs
+   * Get a list of jobs
    * 
    * @return \Illuminate\Http\Response
    */
@@ -21,7 +21,7 @@ class JobController extends Controller
   }
 
   /**
-   * Get a single Job
+   * Get a single job
    * 
    * @param Job $job
    * @return \Illuminate\Http\Response
@@ -33,7 +33,7 @@ class JobController extends Controller
   }
 
   /**
-   * Store a newly created Job
+   * Store a newly created job
    *
    * @param  \Illuminate\Http\JobStoreRequest $request
    * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class JobController extends Controller
   }
 
   /**
-   * Update a Job for a given Job
+   * Update a job for a given job
    *
    * @param Job $job
    * @param  \Illuminate\Http\JobStoreRequest $request
@@ -65,7 +65,7 @@ class JobController extends Controller
   }
 
   /**
-   * Toggle the status a given Job
+   * Toggle the status a given job
    *
    * @param  Job $job
    * @return \Illuminate\Http\Response
@@ -84,7 +84,7 @@ class JobController extends Controller
   }
 
   /**
-   * Update the order the team jobs
+   * Update the order the jobs
    *
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
@@ -103,7 +103,7 @@ class JobController extends Controller
   }
 
   /**
-   * Remove a Job
+   * Remove a job
    *
    * @param  Job $job
    * @return \Illuminate\Http\Response
@@ -134,7 +134,7 @@ class JobController extends Controller
   }
 
   /**
-   * Handle flags of a team job
+   * Handle flags of a job
    *
    * @param Job $job
    * @param String $flag
@@ -155,7 +155,7 @@ class JobController extends Controller
   }
 
   /**
-   * Handle state of a team job
+   * Handle i18n of a job
    *
    * @param Job $job
    * @param Request $request

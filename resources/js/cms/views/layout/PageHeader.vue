@@ -23,12 +23,21 @@
       </a>
     </header>
     <ul>
+      <!--
       <li>
-        <!-- <router-link :to="{name: 'home-dashboard'}">
+        <router-link :to="{name: 'home-dashboard'}">
           <span>Startseite</span>
-        </router-link> -->
+        </router-link>
+      </li>
+      -->
+      <li>
         <router-link :to="{name: 'office'}">
           <span>Büro</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{name: 'discourse'}">
+          <span>Diskurs</span>
         </router-link>
       </li>
     </ul>

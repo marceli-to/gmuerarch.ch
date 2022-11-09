@@ -19,6 +19,13 @@
         </router-link>
       </div>
 
+      <div class="card">
+        <router-link :to="{name: 'discourse'}">
+          <h2>Diskurs</h2>
+          <p>Verwaltung von Diskurs</p>
+        </router-link>
+      </div>
+
     </div>
   </div>
 </template>
