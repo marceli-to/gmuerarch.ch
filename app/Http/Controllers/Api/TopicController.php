@@ -16,7 +16,7 @@ class TopicController extends Controller
    */
   public function get()
   {
-    return new DataCollection(Topic::get());
+    return new DataCollection(Topic::orderBy('title->de', 'ASC')->get());
   }
 
   /**
@@ -85,6 +85,7 @@ class TopicController extends Controller
   {
     $topic->setTranslation('title', 'de', $request->input('title.de'));
     $topic->setTranslation('title', 'en', $request->input('title.en'));
+    $topic->save();
     return $topic;
   }
 }

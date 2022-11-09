@@ -31,7 +31,7 @@ class DiscourseController extends Controller
   public function find(Discourse $discourse)
   {
     $discourse = Discourse::with('files', 'images', 'topics')->find($discourse->id);
-    $topics = Topic::get();
+    $topics = Topic::orderBy('title->de', 'ASC')->get();
     return response()->json(['article' => $discourse, 'topics' => $topics]);
   }
 
