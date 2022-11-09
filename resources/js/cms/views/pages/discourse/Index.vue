@@ -5,17 +5,17 @@
     </page-header>
     <div class="content content--wide cards">
       <div class="card">
+        <router-link :to="{name: 'articles'}">
+          <h2>Artikel</h2>
+          <p>Verwaltung der Diskurs-Artikel</p>
+        </router-link>
+      </div>
+      <div class="card">
         <router-link :to="{name: 'topics'}">
           <h2>Themen</h2>
           <p>Verwaltung der Diskurs-Themen</p>
         </router-link>
       </div>
-      <!-- <div class="card">
-        <router-link :to="{name: 'articles'}">
-          <h2>Artikel</h2>
-          <p>Verwaltung der Diskurs-Artikel</p>
-        </router-link>
-      </div> -->
     </div>
     <page-footer>
       <button-back :route="'dashboard'">Zurück</button-back>

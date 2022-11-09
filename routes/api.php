@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\TeamMemberController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\TopicController;
+use App\Http\Controllers\Api\DiscourseController;
 
 
 /*
@@ -66,6 +67,15 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('jobs/order', [JobController::class, 'order']);
   Route::get('job/state/{job}', [JobController::class, 'toggle']);
   Route::delete('job/{job}', [JobController::class, 'destroy']);
+
+  // Discourses
+  Route::get('discourses', [DiscourseController::class, 'get']);
+  Route::get('discourse/{discourse}', [DiscourseController::class, 'find']);
+  Route::post('discourse', [DiscourseController::class, 'store']);
+  Route::put('discourse/{discourse}', [DiscourseController::class, 'update']);
+  Route::post('discourses/order', [DiscourseController::class, 'order']);
+  Route::get('discourse/state/{discourse}', [DiscourseController::class, 'toggle']);
+  Route::delete('discourse/{discourse}', [DiscourseController::class, 'destroy']);
 
   // Topics (Discourse)
   Route::get('topics', [TopicController::class, 'get']);

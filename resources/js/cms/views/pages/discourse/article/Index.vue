@@ -3,13 +3,20 @@
   <loading-indicator v-if="isLoading"></loading-indicator>
   <div v-if="isFetched" class="is-loaded">
     <page-header>
-      <h1>Diskurs Themen</h1>
-      <router-link :to="{ name: 'topic-create'}" class="btn-add has-icon">
+      <h1>Diskurs Artikel</h1>
+      <router-link :to="{ name: 'article-create'}" class="btn-add has-icon">
         <plus-icon size="16"></plus-icon>
         <span>Hinzufügen</span>
       </router-link>
     </page-header>
-    <div v-if="data.length">
+    <draggable 
+      :disabled="false"
+      v-model="data" 
+      @end="order(data)"
+      ghost-class="draggable-ghost"
+      draggable=".listing__item"
+      class="listing"
+      v-if="data.length">
       <div
         :class="[d.publish == 0 ? 'is-disabled' : '', 'listing__item is-draggable']"
         v-for="d in data"
@@ -21,12 +28,12 @@
         <list-actions 
           :id="d.id" 
           :record="d"
-          :hasToggle="false"
-          :routes="{edit: 'topic-edit'}"
+          :routes="{edit: 'article-edit'}"
+          @toggle="toggle($event)"
           @destroy="destroy($event)">
         </list-actions>
       </div>
-    </div>
+    </draggable>
     <div v-else>
       <p class="no-records">{{messages.emptyData}}</p>
     </div>
@@ -44,6 +51,7 @@ import ListActions from "@/components/ui/ListActions.vue";
 import Separator from "@/components/ui/Separator.vue";
 import PageFooter from "@/components/ui/PageFooter.vue";
 import PageHeader from "@/components/ui/PageHeader.vue";
+import draggable from 'vuedraggable';
 
 export default {
 
@@ -56,6 +64,7 @@ export default {
     ButtonBack,
     PageFooter,
     PageHeader,
+    draggable,
   },
 
   mixins: [Helpers],
@@ -67,9 +76,11 @@ export default {
 
       // Routes
       routes: {
-        get: '/api/topics',
-        store: '/api/topic',
-        delete: '/api/topic',
+        get: '/api/discourses',
+        store: '/api/discourse',
+        delete: '/api/discourse',
+        order: '/api/discourses/order',
+        toggle: '/api/discourse/state',
       },
 
       // States
@@ -98,6 +109,16 @@ export default {
       });
     },
 
+    toggle(id) {
+      this.isLoading = true;
+      this.axios.get(`${this.routes.toggle}/${id}`).then(response => {
+        const index = this.data.findIndex(x => x.id === id);
+        this.data[index].publish = response.data;
+        this.$notify({ type: "success", text: this.messages.updated });
+        this.isLoading = false;
+      });
+    },
+
     destroy(id) {
       if (confirm(this.messages.confirm)) {
         this.isLoading = true;
@@ -106,6 +127,21 @@ export default {
           this.isLoading = false;
         });
       }
+    },
+
+    order() {
+      let articles = this.data.map(function(article, idx) {
+        article.order = idx;
+        return article;
+      });
+
+      if (this.debounce) return;
+      this.debounce = setTimeout(function() {
+        this.debounce = false 
+        this.axios.post(`${this.routes.order}`, {articles: articles}).then((response) => {
+          this.$notify({type: 'success', text: 'Reihenfolge angepasst'});
+        });
+      }.bind(this, articles), 500);
     },
   }
 }

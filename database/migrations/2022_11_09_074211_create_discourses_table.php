@@ -16,8 +16,10 @@ return new class extends Migration
     Schema::create('discourses', function (Blueprint $table) {
       $table->id();
       $table->json('title');
-      $table->json('text');
+      $table->json('text')->nullable();
       $table->string('link')->nullable();
+      $table->tinyInteger('order')->default(-1);
+      $table->softDeletes();
       $table->timestamps();
     });
   }

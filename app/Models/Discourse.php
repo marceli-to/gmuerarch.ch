@@ -6,7 +6,7 @@ use Spatie\Translatable\HasTranslations;
 use Spatie\ModelFlags\Models\Concerns\HasFlags;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TeamMember extends Base
+class Discourse extends Base
 {
   use HasTranslations, SoftDeletes, HasFlags;
 
@@ -59,6 +59,7 @@ class TeamMember extends Base
     'title',
     'text',
     'link',
+    'order'
   ];
 
   /**
@@ -69,6 +70,7 @@ class TeamMember extends Base
 
   protected $appends = [
     'publish',
+    'topic_ids'
   ];
 
   /*
@@ -135,6 +137,41 @@ class TeamMember extends Base
   public function getPublishAttribute()
   {
     return $this->hasFlag('isPublish') ? 1 : 0;    
+  }
+
+  /**
+   * Mutator for link:
+   * Fixes missing protocols for links
+   * 
+   * @param String $value
+   * @return void
+   */
+
+  public function setLinkAttribute($value)
+  {
+    $this->attributes['link'] = (!preg_match("~^(?:f|ht)tps?://~i", $value) && $value) ? "https://" . $value : $value;
+  }
+
+  /**
+   * Accessor for link:
+   * Fixes missing protocols for links
+   * 
+   * @return String $link
+   */
+
+  public function getLinkAttribute()
+  {
+    return (!preg_match("~^(?:f|ht)tps?://~i", $this->attributes['link']) && $this->attributes['link']) ? "https://" . $this->attributes['link'] : $this->attributes['link'];
+  }
+
+  /**
+   * Get array of ids from the m:n topic relationship
+   *
+   */
+
+  public function getTopicIdsAttribute()
+  {
+    return $this->topics->pluck('id');
   }
 
 }

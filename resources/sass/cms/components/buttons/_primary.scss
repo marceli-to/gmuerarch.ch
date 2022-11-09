@@ -11,8 +11,8 @@
 	border-radius: 2px;
 	border: none;
 	color: $color-white !important;
-  @include font-size($fs-sm);
-  @include font-medium();
+  @include font-size($fs-xs);
+  @include font-mono-bold();
   line-height: 1 !important;
 	padding: 16px 24px;
 	width: auto;

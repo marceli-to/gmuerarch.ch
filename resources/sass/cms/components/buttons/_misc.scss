@@ -9,7 +9,6 @@
 .btn-edit,
 .btn-delete {
   @extend %btn-primary;
-  @include font-size($fs-sm);
   padding: 10px 15px;
   line-height: 1 !important;
 }
