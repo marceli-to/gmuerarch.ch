@@ -23,7 +23,12 @@
         :key="d.id"
         >
         <div class="listing__item-body">
-          {{d.title.de}}
+          {{d.title.de}} 
+          <div class="flex ml-4x">
+            <chip v-for="topic in d.topics" :key="topic.id">
+              {{ topic.title.de }}
+            </chip>
+          </div>
         </div>
         <list-actions 
           :id="d.id" 
@@ -49,6 +54,7 @@ import ButtonBack from "@/components/ui/ButtonBack.vue";
 import Helpers from "@/mixins/Helpers";
 import ListActions from "@/components/ui/ListActions.vue";
 import Separator from "@/components/ui/Separator.vue";
+import Chip from "@/components/ui/Chip.vue";
 import PageFooter from "@/components/ui/PageFooter.vue";
 import PageHeader from "@/components/ui/PageHeader.vue";
 import draggable from 'vuedraggable';
@@ -65,6 +71,7 @@ export default {
     PageFooter,
     PageHeader,
     draggable,
+    Chip
   },
 
   mixins: [Helpers],
