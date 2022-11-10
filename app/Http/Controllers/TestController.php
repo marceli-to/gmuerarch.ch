@@ -5,6 +5,8 @@ use App\Models\TeamMember;
 use App\Models\Job;
 use App\Models\Topic;
 use App\Models\Discourse;
+use App\Models\Category;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class TestController extends BaseController
@@ -40,5 +42,23 @@ class TestController extends BaseController
       $query->where('id', $topic->id);
     })->get();
     dd($articles);
+  }
+
+  public function category(Category $category)
+  {
+    dd(Category::find($category->id));
+  }
+
+  public function projectByCategory($slug)
+  {
+    // Get the category first
+    $category = Category::where('slug', 'like', '%"'.$slug.'"%')->firstOrFail();
+
+    // Get the articles
+    $projects = Project::query()->with('images', 'categories')
+    ->whereHas('categories', function ($query) use ($category) {
+      $query->where('id', $category->id);
+    })->get();
+    dd($projects);
   }
 }

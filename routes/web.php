@@ -30,6 +30,9 @@ Route::get('/test/jobs', [TestController::class, 'jobs']);
 Route::get('/test/discourse/topic/{topic}', [TestController::class, 'topic']);
 Route::get('/test/discourse/by-topic/{topic:slug}', [TestController::class, 'discourseByTopic']);
 
+Route::get('/test/project/category/{category}', [TestController::class, 'category']);
+Route::get('/test/project/by-category/{category:slug}', [TestController::class, 'projectByCategory']);
+
 
 /*
 |--------------------------------------------------------------------------
