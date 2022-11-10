@@ -9,7 +9,8 @@ use App\Http\Controllers\Api\TeamMemberController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\TopicController;
 use App\Http\Controllers\Api\DiscourseController;
-
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,23 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('topic', [TopicController::class, 'store']);
   Route::put('topic/{topic}', [TopicController::class, 'update']);
   Route::delete('topic/{topic}', [TopicController::class, 'destroy']);
+
+
+  // Categories (Projects)
+  Route::get('categories', [CategoryController::class, 'get']);
+  Route::get('category/{category}', [CategoryController::class, 'find']);
+  Route::post('category', [CategoryController::class, 'store']);
+  Route::put('category/{category}', [CategoryController::class, 'update']);
+  Route::delete('category/{category}', [CategoryController::class, 'destroy']);
+
+  // Projects
+  Route::get('projects', [ProjectController::class, 'get']);
+  Route::get('project/{project}', [ProjectController::class, 'find']);
+  Route::post('project', [ProjectController::class, 'store']);
+  Route::put('project/{project}', [ProjectController::class, 'update']);
+  Route::post('project/order', [ProjectController::class, 'order']);
+  Route::get('project/state/{project}', [ProjectController::class, 'toggle']);
+  Route::delete('project/{project}', [ProjectController::class, 'destroy']);
 
 });
 
