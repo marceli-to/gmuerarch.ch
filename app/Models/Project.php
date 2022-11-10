@@ -117,7 +117,7 @@ class Project extends Base
   
   public function categories()
   {
-    return $this->belongsToMany(Topic::class);
+    return $this->belongsToMany(Category::class);
   }
 
   /**
@@ -138,7 +138,7 @@ class Project extends Base
 
   public function getCategoryIdsAttribute()
   {
-    return $this->topics->pluck('id');
+    return $this->categories->pluck('id');
   }
 
 }

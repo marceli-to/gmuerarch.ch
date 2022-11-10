@@ -42,6 +42,7 @@ import store from '@/config/store';
 import baseRoutes from '@/config/routes';
 import officeRoutes from '@/views/pages/office/config/routes';
 import discourseRoutes from '@/views/pages/discourse/config/routes';
+import projectRoutes from '@/views/pages/project/config/routes';
 import imageRoutes from '@/modules/images/config/routes';
 
 
@@ -52,6 +53,7 @@ const router = new VueRouter(
       ...baseRoutes,
       ...officeRoutes,
       ...discourseRoutes,
+      ...projectRoutes,
       ...imageRoutes,
     ]
   }

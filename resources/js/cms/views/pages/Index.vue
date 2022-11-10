@@ -13,6 +13,13 @@
       </div> -->
    
       <div class="card">
+        <router-link :to="{name: 'project-overview'}">
+          <h2>Projekte</h2>
+          <p>Verwaltung von Projekten und Kategorien</p>
+        </router-link>
+      </div>
+
+      <div class="card">
         <router-link :to="{name: 'office'}">
           <h2>Büro</h2>
           <p>Verwaltung von Team und offene Stellen</p>

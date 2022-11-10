@@ -10,7 +10,7 @@
     </div>
   </header>
   <nav :class="[!menuVisible ? '' : 'is-visible', 'page']">
-    <header>
+    <header class="user-header">
       <span>
         <strong>{{user}}</strong><br>
         <a href="/logout" class="feather-icon feather-icon--prepend">
@@ -30,6 +30,11 @@
         </router-link>
       </li>
       -->
+      <li>
+        <router-link :to="{name: 'project-overview'}">
+          <span>Projekte</span>
+        </router-link>
+      </li>
       <li>
         <router-link :to="{name: 'office'}">
           <span>Büro</span>
