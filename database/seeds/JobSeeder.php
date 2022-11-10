@@ -1,6 +1,7 @@
 <?php
 namespace Database\Seeders;
 use App\Models\Job;
+use App\Models\File;
 use Illuminate\Database\Seeder;
 
 class JobSeeder extends Seeder
@@ -26,6 +27,21 @@ class JobSeeder extends Seeder
           'en' => $faker->realText(150, 3)
         ],
       ]);
+
+      $job->flag('isPublish');
+
+      $rand = mt_rand(1,3);
+      File::create([
+        'uuid' => \Str::uuid(),
+        'name' => '636ce826efd1'.$rand.'_jobinserat-'. $rand . '.pdf',
+        'original_name' => 'jobinserat-'. $rand . '.pdf',
+        'extension' => 'pdf',
+        'size' => 145623,
+        'publish' => 1,
+        'fileable_type' => Job::class,
+        'fileable_id' => $job->id,
+      ]);
+
     }
   }
 }

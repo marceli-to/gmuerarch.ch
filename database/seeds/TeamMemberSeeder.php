@@ -20,8 +20,14 @@ class TeamMemberSeeder extends Seeder
       TeamMember::create([
         'firstname' => $faker->firstName,
         'name' => $faker->lastName,
-        'title' => $faker->jobTitle,
-        'description' => $faker->catchPhrase,
+        'title' => [
+          'de' => $faker->jobTitle,
+          'en' => $faker->jobTitle
+        ],
+        'description' => [
+          'de' => $faker->catchPhrase,
+          'en' => $faker->catchPhrase,
+        ],
       ]);
     }
   }

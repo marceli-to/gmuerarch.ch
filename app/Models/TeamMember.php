@@ -30,15 +30,15 @@ class TeamMember extends Base
 
   protected $attributes = [
     'title' => '{
-      "de": "null", "en": "null"
+      "de": null, "en": null
     }',
 
     'description' => '{
-      "de": "null", "en": "null"
+      "de": null, "en": null
     }',
 
     'cv' => '{
-      "de": "null", "en": "null"
+      "de": null, "en": null
     }',
   ];
   
