@@ -19,7 +19,7 @@
           <tinymce-editor
             :api-key="tinyApiKey"
             :init="tinyConfig"
-            v-model="data.description.de"
+            v-model="data.text.de"
           ></tinymce-editor>
         </div>
       </div>
@@ -36,7 +36,7 @@
           <tinymce-editor
             :api-key="tinyApiKey"
             :init="tinyConfig"
-            v-model="data.description.en"
+            v-model="data.text.en"
           ></tinymce-editor>
         </div>
       </div>
@@ -107,22 +107,15 @@ export default {
       // Model
       data: {
         id: null,
-        name: null,
-        firstname: null,
         title: {
           de: null,
           en: null,
         },
-        description: {
-          de: null,
-          en: null
-        },
-        cv: {
+        text: {
           de: null,
           en: null
         },
         publish: 1,
-        postum: 0,
         files: [],
       },
 

@@ -165,8 +165,8 @@ class JobController extends Controller
   {
     $job->setTranslation('title', 'de', $request->input('title.de'));
     $job->setTranslation('title', 'en', $request->input('title.en'));
-    $job->setTranslation('description', 'de', $request->input('description.de'));
-    $job->setTranslation('description', 'en', $request->input('description.en'));
+    $job->setTranslation('text', 'de', $request->input('text.de'));
+    $job->setTranslation('text', 'en', $request->input('text.en'));
     return $job;
   }
 }

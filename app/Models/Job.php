@@ -18,7 +18,7 @@ class Job extends Base
   
   protected $casts = [
     'title' => 'array',
-    'description' => 'array',
+    'text' => 'array',
   ];
 
   /**
@@ -32,7 +32,7 @@ class Job extends Base
       "de": "null", "en": "null"
     }',
 
-    'description' => '{
+    'text' => '{
       "de": "null", "en": "null"
     }',
 
@@ -46,7 +46,7 @@ class Job extends Base
 
   public $translatable = [
     'title',
-    'description',
+    'text',
   ];
 
   /**
@@ -57,7 +57,7 @@ class Job extends Base
    
 	protected $fillable = [
     'title',
-    'description',
+    'text',
     'order'
   ];
 

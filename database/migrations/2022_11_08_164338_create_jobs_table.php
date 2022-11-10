@@ -16,7 +16,7 @@ return new class extends Migration
     Schema::create('jobs', function (Blueprint $table) {
       $table->id();
       $table->json('title');
-      $table->json('description')->nullable();
+      $table->json('text')->nullable();
       $table->tinyInteger('order')->default(-1);
       $table->softDeletes();
       $table->timestamps();

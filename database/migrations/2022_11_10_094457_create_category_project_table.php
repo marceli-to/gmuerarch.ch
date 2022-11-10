@@ -17,6 +17,7 @@ return new class extends Migration
       $table->foreignId('project_id')->constrained();
       $table->foreignId('category_id')->constrained();
       $table->primary(['project_id', 'category_id']);
+      $table->timestamps();
     });
   }
 
