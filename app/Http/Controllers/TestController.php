@@ -16,21 +16,33 @@ class TestController extends BaseController
     parent::__construct();
   }
 
+  /**
+   * Team
+   */
   public function team()
   {
     dd(TeamMember::with('image')->get());
   }
 
+  /**
+   * Jobs
+   */
   public function jobs()
   {
     dd(Job::with('files')->get());
   }
 
+  /**
+   * Discourse (topic)
+   */
   public function topic(Topic $topic)
   {
     dd(Topic::find($topic->id));
   }
 
+  /**
+   * Discourse
+   */
   public function discourseByTopic($slug)
   {
     // Get the topic first
@@ -44,11 +56,17 @@ class TestController extends BaseController
     dd($articles);
   }
 
+  /**
+   * Project (category)
+   */
   public function category(Category $category)
   {
     dd(Category::find($category->id));
   }
 
+  /**
+   * Project (by category)
+   */
   public function projectByCategory($slug)
   {
     // Get the category first
@@ -60,5 +78,13 @@ class TestController extends BaseController
       $query->where('id', $category->id);
     })->get();
     dd($projects);
+  }
+
+  /**
+   * Project (with grids)
+   */
+  public function projectGrids(Project $project)
+  {
+    dd($project->with('imageGrids')->find($project->id));
   }
 }

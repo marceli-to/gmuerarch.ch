@@ -32,6 +32,7 @@ Route::get('/test/discourse/by-topic/{topic:slug}', [TestController::class, 'dis
 
 Route::get('/test/project/category/{category}', [TestController::class, 'category']);
 Route::get('/test/project/by-category/{category:slug}', [TestController::class, 'projectByCategory']);
+Route::get('/test/project/grids/{project}', [TestController::class, 'projectGrids']);
 
 
 /*

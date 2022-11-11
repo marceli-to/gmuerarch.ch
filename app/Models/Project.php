@@ -111,6 +111,12 @@ class Project extends Base
   }
 
 
+  public function imageGrids()
+  {
+    return $this->morphMany(ImageGrid::class, 'gridable');
+  }
+
+
   /**
    * The topics that belong to this discourse.
    */
