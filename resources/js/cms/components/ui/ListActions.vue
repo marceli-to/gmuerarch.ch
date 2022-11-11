@@ -1,6 +1,15 @@
 <template>
   <div class="listing__item-action">
 
+    <div v-if="hasGrid">
+      <router-link
+        :to="{name: routes.grid, params: { id: id }}"
+        class="feather-icon"
+      >
+        <grid-icon size="18"></grid-icon>
+      </router-link>
+    </div>
+
     <div v-if="hasDownload">
       <a
         :href="'/storage/uploads/' + record.file"
@@ -72,7 +81,8 @@ import {
   DollarSignIcon,
   ClipboardIcon,
   MailIcon,
-  XCircleIcon
+  XCircleIcon,
+  GridIcon,
 }
 from 'vue-feather-icons';
 
@@ -92,7 +102,8 @@ export default {
     DollarSignIcon,
     ClipboardIcon,
     MailIcon,
-    XCircleIcon
+    XCircleIcon,
+    GridIcon
   },
 
   props: {
@@ -128,6 +139,11 @@ export default {
     },
 
     hasDraggable: {
+      type: Boolean,
+      default: false
+    },
+
+    hasGrid: {
       type: Boolean,
       default: false
     },

@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\TopicController;
 use App\Http\Controllers\Api\DiscourseController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\ImageGridController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,10 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('project/order', [ProjectController::class, 'order']);
   Route::get('project/state/{project}', [ProjectController::class, 'toggle']);
   Route::delete('project/{project}', [ProjectController::class, 'destroy']);
+
+  // Image grid
+  Route::post('image-grid', [ImageGridController::class, 'store']);
+
 
 });
 

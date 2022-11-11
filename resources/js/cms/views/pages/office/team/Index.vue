@@ -104,8 +104,10 @@ export default {
   methods: {
 
     fetch() {
+      this.isLoading = true;
       this.axios.get(`${this.routes.get}`).then(response => {
         this.data = response.data.data;
+        this.isLoading = false;
         this.isFetched = true;
       });
     },

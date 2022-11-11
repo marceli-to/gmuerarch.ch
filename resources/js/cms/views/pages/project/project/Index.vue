@@ -23,6 +23,7 @@
         :key="d.id"
         >
         <div class="listing__item-body">
+          <chip :cls="`chip-dark mr-3x`">{{d.id}}</chip>
           {{d.title.de}} 
           <div class="flex ml-4x">
             <chip v-for="category in d.categories" :key="category.id">
@@ -33,7 +34,8 @@
         <list-actions 
           :id="d.id" 
           :record="d"
-          :routes="{edit: 'project-edit'}"
+          :routes="{edit: 'project-edit', grid: 'project-grid'}"
+          :hasGrid="true"
           @toggle="toggle($event)"
           @destroy="destroy($event)">
         </list-actions>
@@ -110,8 +112,10 @@ export default {
   methods: {
 
     fetch() {
+      this.isLoading = true;
       this.axios.get(`${this.routes.get}`).then(response => {
         this.data = response.data.data;
+        this.isLoading = false;
         this.isFetched = true;
       });
     },

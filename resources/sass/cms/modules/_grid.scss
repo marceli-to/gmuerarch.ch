@@ -1,0 +1,85 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: modules/grid
+ * -----------------------------------------------------------------------------
+ */
+
+.grid-layout {
+  @extend %grid-cols-12;
+  @extend %mb-4x;
+
+  .grid-item {
+    border: 2px dashed $color-medium-grey;
+    min-height: 400px;
+    padding: 5px;
+    position: relative;
+    width: 100%;
+
+    img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .grid-stack {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      min-height: 190px;
+
+      &:nth-child(1) {
+        margin-bottom: 10px;
+      }
+      &:nth-child(2) {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &.grid-layout--1 {
+    > div {
+      @extend %span-12;
+    }
+  }
+  &.grid-layout--1\:1,
+  &.grid-layout--1\:2,
+  &.grid-layout--2\:1 {
+    > div {
+      &:nth-child(1) {
+        @extend %span-6;
+      }
+
+      &:nth-child(2) {
+       @extend %span-6;
+      }
+    }
+  }
+}
+
+.grid-layout-selector {
+  @extend %mb-4x;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    @extend %ml-3x;
+    display: block;
+
+    &:hover {
+      svg {
+        color: $color-black;
+      }
+    }
+  }
+
+  svg {
+    display: block;
+    height: auto;
+    color: $color-medium-grey;
+    width: 82px;
+    transition: color .1s ease-in;
+  }
+}

@@ -197,10 +197,12 @@ export default {
 
     fetch() {
       this.isFetched = false;
+      this.isLoading = true;
       this.axios.get(`${this.routes.get}/${this.$route.params.id}`).then(response => {
         this.article = response.data.article;
         this.topics = response.data.topics;
         this.isFetched = true;
+        this.isLoading = false;
       });
     },
 

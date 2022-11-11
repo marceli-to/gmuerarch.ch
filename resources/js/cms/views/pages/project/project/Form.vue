@@ -221,10 +221,12 @@ export default {
 
     fetch() {
       this.isFetched = false;
+      this.isLoading = true;
       this.axios.get(`${this.routes.get}/${this.$route.params.id}`).then(response => {
         this.project = response.data.project;
         this.categories = response.data.categories;
         this.isFetched = true;
+        this.isLoading = false;
       });
     },
 
