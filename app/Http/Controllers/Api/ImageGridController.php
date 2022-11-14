@@ -42,8 +42,6 @@ class ImageGridController extends Controller
       ]);
     }
 
-
-
     return response()->json($imageGrid->with('items'));
   }
 
@@ -74,7 +72,8 @@ class ImageGridController extends Controller
    */
   public function destroy(ImageGrid $imageGrid)
   {
-    foreach($imageGrid->items as $item)
+    $imageGrid = ImageGrid::with('imageGridItems')->find($imageGrid->id);
+    foreach($imageGrid->imageGridItems as $item)
     {
       $item->delete();
     }

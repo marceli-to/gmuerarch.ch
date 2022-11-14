@@ -1,15 +1,18 @@
 <template>
   <div v-if="isFetched">
     <loading-indicator v-if="isLoading"></loading-indicator>
-    <grid :grids="project.image_grids" :model="project" :type="'Project'"></grid>
+    <grid 
+      :grids="project.image_grids" 
+      :images="project.images"
+      :model="project" :type="'Project'"
+      @addedRowItem="fetch()"
+      @addedRow="fetch()"
+      @deletedRow="fetch()">
+    </grid>
   </div>
 </template>
 <script>
 import { PlusIcon, EditIcon, Trash2Icon } from 'vue-feather-icons';
-import ButtonBack from "@/components/ui/ButtonBack.vue";
-import Helpers from "@/mixins/Helpers";
-import PageFooter from "@/components/ui/PageFooter.vue";
-import PageHeader from "@/components/ui/PageHeader.vue";
 import draggable from 'vuedraggable';
 import Grid from "@/modules/grid/Index.vue";
 

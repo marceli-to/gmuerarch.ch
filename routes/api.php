@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\DiscourseController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\ImageGridController;
+use App\Http\Controllers\Api\ImageGridItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,9 @@ Route::middleware('auth:sanctum')->group(function() {
 
   // Image grid
   Route::post('image-grid', [ImageGridController::class, 'store']);
+  Route::delete('image-grid/{imageGrid}', [ImageGridController::class, 'destroy']);
+
+  Route::post('image-grid-item', [ImageGridItemController::class, 'store']);
 
 
 });
