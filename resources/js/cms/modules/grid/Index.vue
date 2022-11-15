@@ -2,7 +2,8 @@
 <div v-if="isFetched">
 
   <page-header>
-    <h1>Bildraster «{{ $props.model.title.de }}»</h1>
+    <h1 v-if="$props.modelName == 'Project'">Bildraster «{{ $props.model.title.de }}»</h1>
+    <h1 v-else>Bildraster Startseite</h1>
     <div>
       <a href="" class="btn-add has-icon mr-2x" @click.prevent="toggleGridSelector()">
         <plus-icon size="16"></plus-icon>
@@ -21,13 +22,11 @@
   </grid-layout-selector>
 
   <grid-image-selector
-   :project="$props.model"
-   :images="$props.images"
-   @close="toggleImageSelector()"
-   @select="addImage($event)"
-   v-if="hasImageSelector">
-  </grid-image-selector>
-
+    :projectId="$props.modelName == 'Project' ? $props.model.id : null"
+    @close="toggleImageSelector()"
+    @select="addImage($event)"
+    v-if="hasImageSelector">
+  </grid-image-selector>  
 
   <template v-if="!isSortable">
     <grid-row 
@@ -111,20 +110,18 @@
 
   <template v-else>
     <draggable 
-    :disabled="false"
-    v-model="gridItems" 
-    @end="order()"
-    ghost-class="draggable-ghost"
-    draggable=".is-draggable"
-    class="listing"
-    v-if="gridItems.length">
-    <div v-for="grid in gridItems" :key="grid.id" class="listing__item is-draggable">
-      <grid-layout :layout="grid.layout" />
-    </div> 
-  </draggable>
+      :disabled="false"
+      v-model="gridItems" 
+      @end="order()"
+      ghost-class="draggable-ghost"
+      draggable=".is-draggable"
+      class="listing"
+      v-if="gridItems.length">
+      <div v-for="grid in gridItems" :key="grid.id" class="listing__item is-draggable">
+        <grid-layout :layout="grid.layout" />
+      </div> 
+    </draggable>
   </template>
-
-
 </div>
 </template>
 <script>
@@ -162,17 +159,12 @@ export default {
       default: null,
     },
 
-    images: {
-      type: Array,
-      default: null,
-    },
-
     model: {
       type: Object,
       default: null
     },
     
-    type: {
+    modelName: {
       type: String,
       default: null
     }
@@ -242,7 +234,7 @@ export default {
         items: data.items,
         model: {
           id: this.$props.model.id,
-          type: this.$props.type
+          name: this.$props.modelName
         },
       };
 
@@ -250,6 +242,7 @@ export default {
       this.axios.post(this.routes.store, grid).then(response => {
         this.$notify({ type: "success", text: this.messages.stored });
         this.isLoading = false;
+        this.hasGridSelector = false;
         this.$emit('addedRow');
       });
     },

@@ -120,6 +120,7 @@
     @extend %py-3x;
     @extend %pb-3x;
     background-color: $color-white;
+    min-width: 480px;
     max-width: 720px !important;
     padding-left: $space-2x !important;
     padding-right: $space-2x !important;

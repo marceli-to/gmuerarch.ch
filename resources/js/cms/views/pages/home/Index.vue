@@ -2,9 +2,9 @@
   <div v-if="isFetched">
     <loading-indicator v-if="isLoading"></loading-indicator>
     <grid 
-      :grids="project.image_grids" 
-      :modelName="'Project'"
-      :model="project"
+      :grids="home.image_grids"
+      :model="home" 
+      :modelName="'Home'"
       @sortedRows="fetch()"
       @addedRowItem="fetch()"
       @resetItem="fetch()"
@@ -25,11 +25,11 @@ export default {
   data() {
     return {
 
-      project: {},
+      home: {},
 
       // Routes
       routes: {
-        get: '/api/project',
+        get: '/api/home',
       },
 
       // States
@@ -52,8 +52,8 @@ export default {
   methods: {
     fetch() {
       this.isLoading = true;
-      this.axios.get(`${this.routes.get}/${this.$route.params.id}`).then(response => {
-        this.project = response.data.project;
+      this.axios.get(`${this.routes.get}`).then(response => {
+        this.home = response.data.home;
         this.isFetched = true;
         this.isLoading = false;
       });

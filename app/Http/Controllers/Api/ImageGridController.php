@@ -30,7 +30,7 @@ class ImageGridController extends Controller
   {
     $imageGrid = ImageGrid::create([
       'layout' => $request->input('layout'),
-      'gridable_type' => "App\Models\\" . $request->input('model.type'),
+      'gridable_type' => "App\Models\\" . $request->input('model.name'),
       'gridable_id' => $request->input('model.id'),
     ]);
 

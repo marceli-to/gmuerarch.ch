@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\TopicController;
 use App\Http\Controllers\Api\DiscourseController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ImageGridController;
 use App\Http\Controllers\Api\ImageGridItemController;
 
@@ -113,6 +114,8 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('image-grid-item', [ImageGridItemController::class, 'store']);
   Route::put('image-grid-item/{imageGridItem}', [ImageGridItemController::class, 'reset']);
 
+  // Home
+  Route::get('home', [HomeController::class, 'find']);
 
 });
 

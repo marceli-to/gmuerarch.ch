@@ -5,12 +5,12 @@
     </page-header>
     <div class="content content--wide cards">
 
-      <!-- <div class="card">
-        <router-link :to="{name: 'home-dashboard'}">
+      <div class="card">
+        <router-link :to="{name: 'home'}">
           <h2>Startseite</h2>
           <p>Verwaltung der Startseite</p>
         </router-link>
-      </div> -->
+      </div>
    
       <div class="card">
         <router-link :to="{name: 'project-overview'}">
