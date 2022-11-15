@@ -107,8 +107,11 @@ Route::middleware('auth:sanctum')->group(function() {
   // Image grid
   Route::post('image-grid', [ImageGridController::class, 'store']);
   Route::delete('image-grid/{imageGrid}', [ImageGridController::class, 'destroy']);
+  Route::post('image-grid/order', [ImageGridController::class, 'order']);
 
+  // Image grid item
   Route::post('image-grid-item', [ImageGridItemController::class, 'store']);
+  Route::put('image-grid-item/{imageGridItem}', [ImageGridItemController::class, 'reset']);
 
 
 });

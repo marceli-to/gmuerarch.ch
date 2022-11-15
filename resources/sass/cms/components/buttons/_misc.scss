@@ -8,9 +8,10 @@
 .btn-add,
 .btn-edit,
 .btn-delete,
-.btn-select {
+.btn-select,
+.btn-move {
   @extend %btn-primary;
-  padding: 10px 15px;
+  padding: 10px;
   line-height: 1 !important;
   transition: background-color .12s ease-in-out;
 }
@@ -26,6 +27,11 @@
 
 .btn-select {
   background-color: $color-green;
+}
+
+.btn-move {
+  background-color: $color-blue;
+
 }
 
 .btn-close {

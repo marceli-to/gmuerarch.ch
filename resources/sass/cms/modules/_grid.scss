@@ -33,6 +33,13 @@
       object-fit: cover;
       width: 100%;
     }
+
+    .btn-delete {
+      right: $space-3x;
+      position: absolute;
+      top: $space-3x;
+      z-index: 200;
+    }
   }
 
   .grid-stack {
@@ -113,7 +120,7 @@
     @extend %py-3x;
     @extend %pb-3x;
     background-color: $color-white;
-    max-width: 640px !important;
+    max-width: 720px !important;
     padding-left: $space-2x !important;
     padding-right: $space-2x !important;
     position: relative;
@@ -131,9 +138,16 @@
 
   img {
     @extend %m-1x;
+    cursor: pointer;
     display: block;
     height: 100px;
     flex: 0 0 auto;
+    opacity: 1;
+    transition: opacity .1s ease-in;
     width: auto;
+
+    &:hover {
+      opacity: .7;
+    }
   }
 }

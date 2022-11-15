@@ -5,7 +5,9 @@
       :grids="project.image_grids" 
       :images="project.images"
       :model="project" :type="'Project'"
+      @sortedRows="fetch()"
       @addedRowItem="fetch()"
+      @resetItem="fetch()"
       @addedRow="fetch()"
       @deletedRow="fetch()">
     </grid>

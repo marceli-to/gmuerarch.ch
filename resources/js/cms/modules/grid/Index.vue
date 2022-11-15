@@ -1,11 +1,18 @@
 <template>
 <div v-if="isFetched">
+
   <page-header>
-    <h1>Bildraster Projekt</h1>
-    <a href="" class="btn-add has-icon" @click.prevent="toggleGridSelector()">
-      <plus-icon size="16"></plus-icon>
-      <span>Zeile</span>
-    </a>
+    <h1>Bildraster «{{ $props.model.title.de }}»</h1>
+    <div>
+      <a href="" class="btn-add has-icon mr-2x" @click.prevent="toggleGridSelector()">
+        <plus-icon size="16"></plus-icon>
+        <span>Zeile hinzufügen</span>
+      </a>
+      <a href="" class="btn-move has-icon" @click.prevent="toggleSortable()">
+        <move-icon size="16"></move-icon>
+        <span>Zeilen verschieben</span>
+      </a>
+    </div>
   </page-header>
 
   <grid-layout-selector 
@@ -20,84 +27,115 @@
    v-if="hasImageSelector">
   </grid-image-selector>
 
-  <grid-row 
-    :key="grid.id" 
-    v-for="grid in $props.grids" 
-    :class="`grid-layout grid-layout--${grid.layout}`">
-    <a 
-      href="javascript:;" 
-      class="btn-delete has-icon"
-      @click.prevent="deleteRow(grid.id)">
-      <trash-2-icon size="16"></trash-2-icon>
-      <span>Löschen</span>
-    </a>
-    <div>
 
-      <template v-if="grid.layout == '1'">
-        <grid-row-item
-          v-for="item in grid.image_grid_items"
-          :key="item.id"
-          :item="item"
-          @showImages="showImageSelector($event)">
-        </grid-row-item>  
-      </template>
+  <template v-if="!isSortable">
+    <grid-row 
+      :key="grid.id" 
+      v-for="grid in $props.grids" 
+      :class="`grid-layout grid-layout--${grid.layout}`">
+      <a 
+        href="javascript:;" 
+        class="btn-delete has-icon"
+        @click.prevent="deleteRow(grid.id)">
+        <trash-2-icon size="16"></trash-2-icon>
+        <span>Zeile löschen</span>
+      </a>
 
-      <template v-if="grid.layout == '1:1'">
-        <grid-row-item
-          v-for="item in grid.image_grid_items"
-          :key="item.id"
-          :item="item"
-          @showImages="showImageSelector($event)">
-        </grid-row-item>  
-      </template>
+      <div>
 
-      <template v-if="grid.layout == '1:2'">
-        <grid-row-item 
-          :item="grid.image_grid_items[0] ? grid.image_grid_items[0] : null"
-          @showImages="showImageSelector($event)">
-        </grid-row-item>
-        <div class="grid-stack">
-          <grid-row-item 
-            :item="grid.image_grid_items[1] ? grid.image_grid_items[1] : null"
+        <template v-if="grid.layout == '1'">
+          <grid-row-item
+            v-for="item in grid.image_grid_items"
+            :key="item.id"
+            :item="item"
+            @resetItem="resetItem($event)"
             @showImages="showImageSelector($event)">
-          </grid-row-item>
-          <grid-row-item 
-            :item="grid.image_grid_items[2] ? grid.image_grid_items[2] : null"
-            @showImages="showImageSelector($event)">
-          </grid-row-item>
-        </div>
-      </template>
+          </grid-row-item>  
+        </template>
 
-      <template v-if="grid.layout == '2:1'">
-        <div class="grid-stack">
+        <template v-if="grid.layout == '1:1'">
+          <grid-row-item
+            v-for="item in grid.image_grid_items"
+            :key="item.id"
+            :item="item"
+            @resetItem="resetItem($event)"
+            @showImages="showImageSelector($event)">
+          </grid-row-item>  
+        </template>
+
+        <template v-if="grid.layout == '1:2'">
           <grid-row-item 
             :item="grid.image_grid_items[0] ? grid.image_grid_items[0] : null"
+            @resetItem="resetItem($event)"
             @showImages="showImageSelector($event)">
           </grid-row-item>
-          <grid-row-item 
-            :item="grid.image_grid_items[1] ? grid.image_grid_items[1] : null"
-            @showImages="showImageSelector($event)">
-          </grid-row-item>
-        </div>
-        <grid-row-item
-          :item="grid.image_grid_items[2] ? grid.image_grid_items[2] : null"
-          @showImages="showImageSelector($event)">
-        </grid-row-item>
-      </template>
+          <div class="grid-stack">
+            <grid-row-item 
+              :item="grid.image_grid_items[1] ? grid.image_grid_items[1] : null"
+              @resetItem="resetItem($event)"
+              @showImages="showImageSelector($event)">
+            </grid-row-item>
+            <grid-row-item 
+              :item="grid.image_grid_items[2] ? grid.image_grid_items[2] : null"
+              @resetItem="resetItem($event)"
+              @showImages="showImageSelector($event)">
+            </grid-row-item>
+          </div>
+        </template>
 
-    </div>
-  </grid-row>
+        <template v-if="grid.layout == '2:1'">
+          <div class="grid-stack">
+            <grid-row-item 
+              :item="grid.image_grid_items[0] ? grid.image_grid_items[0] : null"
+              @resetItem="resetItem($event)"
+              @showImages="showImageSelector($event)">
+            </grid-row-item>
+            <grid-row-item 
+              :item="grid.image_grid_items[1] ? grid.image_grid_items[1] : null"
+              @resetItem="resetItem($event)"
+              @showImages="showImageSelector($event)">
+            </grid-row-item>
+          </div>
+          <grid-row-item
+            :item="grid.image_grid_items[2] ? grid.image_grid_items[2] : null"
+            @resetItem="resetItem($event)"
+            @showImages="showImageSelector($event)">
+          </grid-row-item>
+        </template>
+
+      </div>
+
+    </grid-row>
+  </template>
+
+  <template v-else>
+    <draggable 
+    :disabled="false"
+    v-model="gridItems" 
+    @end="order()"
+    ghost-class="draggable-ghost"
+    draggable=".is-draggable"
+    class="listing"
+    v-if="gridItems.length">
+    <div v-for="grid in gridItems" :key="grid.id" class="listing__item is-draggable">
+      <grid-layout :layout="grid.layout" />
+    </div> 
+  </draggable>
+  </template>
+
 
 </div>
 </template>
 <script>
 import ErrorHandling from "@/mixins/ErrorHandling";
-import { PlusIcon, Trash2Icon } from 'vue-feather-icons';
+import { PlusIcon, Trash2Icon, MoveIcon } from 'vue-feather-icons';
 import GridLayoutSelector from "@/modules/grid/components/GridLayoutSelector.vue";
 import GridImageSelector from "@/modules/grid/components/GridImageSelector.vue";
 import GridRow from "@/modules/grid/components/GridRow.vue";
 import GridRowItem from "@/modules/grid/components/GridRowItem.vue";
+import draggable from 'vuedraggable';
 import PageHeader from "@/components/ui/PageHeader.vue";
+import GridLayout from "@/modules/grid/icons/GridLayout.vue";
 
 export default {
 
@@ -106,9 +144,12 @@ export default {
     GridImageSelector,
     GridRow,
     GridRowItem,
+    draggable,
     PageHeader,
     PlusIcon,
-    Trash2Icon
+    Trash2Icon,
+    MoveIcon,
+    GridLayout
   },
 
   mixins: [ErrorHandling],
@@ -139,7 +180,7 @@ export default {
   data() {
     return {
 
-      grid: [],
+      gridItems: [],
 
       currentRow: 0,
       currentItemId: 0,
@@ -150,14 +191,14 @@ export default {
         store: '/api/image-grid',
         order: '/api/image-grid/order',
         delete: '/api/image-grid',
-
         storeItem: '/api/image-grid-item',
-
+        resetItem: '/api/image-grid-item',
       },
 
       // States
       isLoading: false,
       isFetched: true,
+      isSortable: false,
       hasGridSelector: false,
       hasImageSelector: false,
 
@@ -172,19 +213,25 @@ export default {
     }
   },
 
+  mounted() {
+    this.gridItems = this.$props.grids;
+  },
+
   methods: {
 
-    order(data) {
-      let events = data.map(function(event, index) {
-        event.order = index;
-        return event;
+    order() {
+      let grids = this.gridItems.map(function(grid, index) {
+        grid.order = index;
+        return grid;
       });
       if (this.debounce) return;
       this.debounce = setTimeout(function() {
-        this.debounce = false;
-        this.axios.post(`${this.routes.order}`, {items: events}).then((response) => {
+      this.debounce = false;
+        this.axios.post(`${this.routes.order}`, {items: grids}).then((response) => {
+          this.$notify({ type: "success", text: this.messages.stored });
+          this.$emit('sortedRows');
         });
-      }.bind(this, events), 500);
+      }.bind(this, grids), 500);
     },
 
     addRow(data) {
@@ -217,6 +264,17 @@ export default {
       }
     },
 
+    resetItem(id) {
+      if (confirm(this.messages.confirm)) {
+        this.isLoading = true;
+        this.axios.put(`${this.routes.resetItem}/${id}`).then(response => {
+          this.$notify({ type: "success", text: this.messages.deleted });
+          this.isLoading = false;
+          this.$emit('resetItem');
+        });
+      }
+    },
+
     addImage(image) {
       const item = {
         id: this.currentItemId,
@@ -240,6 +298,11 @@ export default {
       this.hasImageSelector = this.hasImageSelector ? false : true;
     },
 
+    toggleSortable() {
+      this.isSortable = this.isSortable ? false : true;
+      this.gridItems = this.$props.grids;
+    },
+
     showImageSelector(data) {
       this.currentItemId = data.id;
       this.currentPos = data.position;
@@ -251,6 +314,13 @@ export default {
       this.currentPos = null;
       this.hasImageSelector = false;
     }
+  },
+
+  watch: {
+    grids() {
+      this.gridItems = this.$props.grids;
+    }
   }
+
 }
 </script>

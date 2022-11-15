@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DataCollection;
-use App\Models\ImageGrid;
 use App\Models\ImageGridItem;
 use Illuminate\Http\Request;
 
@@ -23,6 +22,19 @@ class ImageGridItemController extends Controller
     $imageGridItem->position = $request->input('position');
     $imageGridItem->save();
     return response()->json($imageGridItem);
+  }
+
+  /**
+   * Reset a grid item
+   *
+   * @param  ImageGridItem $imageGridItem
+   * @return \Illuminate\Http\Response
+   */
+  public function reset(ImageGridItem $imageGridItem)
+  {
+    $imageGridItem->image_id = NULL;
+    $imageGridItem->save();
+    return response()->json('successfully deleted');
   }
 
 }
