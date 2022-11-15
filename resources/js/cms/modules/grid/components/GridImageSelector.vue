@@ -4,7 +4,7 @@
       <a href="" class="btn-close" @click.prevent="$emit('close')">
         <x-icon size="24"></x-icon>
       </a>
-      <h2>Projekttitel</h2>
+      <h2>{{ $props.project.title.de }}</h2>
       <div class="grid-image-selector__images">
         <figure v-for="image in $props.images" :key="image.id">
           <img 
@@ -35,6 +35,10 @@ export default {
       type: Array,
       default: null,
     },
+    project: {
+      type: Object,
+      default: '',
+    }
   },
 
 }

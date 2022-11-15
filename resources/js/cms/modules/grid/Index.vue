@@ -21,6 +21,7 @@
   </grid-layout-selector>
 
   <grid-image-selector
+   :project="$props.model"
    :images="$props.images"
    @close="toggleImageSelector()"
    @select="addImage($event)"
