@@ -44,6 +44,11 @@
 
   > figure {
     margin-bottom: $space-2x;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    
     @include bp-sm() {
       margin-bottom: 0;
     }
