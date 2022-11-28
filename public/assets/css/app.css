@@ -9740,10 +9740,10 @@ i, em {
   color: #111111;
   display: flex;
   height: 16px;
-  left: 10px;
+  left: 15px;
   justify-content: center;
   position: fixed;
-  top: 10px;
+  top: 15px;
   width: 22px;
 }
 .btn-menu svg.burger {
@@ -11111,7 +11111,7 @@ nav.site {
   }
   nav.site ul {
     opacity: 0;
-    padding-left: 10px;
+    padding-left: 15px;
     transition: opacity 0.12s 0.24s ease-in;
   }
   nav.site li {
