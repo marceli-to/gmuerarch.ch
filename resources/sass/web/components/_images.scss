@@ -15,12 +15,6 @@
 }
 
 .image-grid {
-  position: relative; 
-  height: 0; 
-  overflow: hidden; 
-  position: relative;
-  width: 100%;
-  height: auto;
 
   @include bp-sm() {
     > figure {

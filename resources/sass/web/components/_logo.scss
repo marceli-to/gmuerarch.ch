@@ -5,9 +5,9 @@
  */
 
 .logo {
-  color: $color-primary;
+  color: $color-black;
   margin-top: $space-2x;
-  max-width: 250px;
+  max-width: 275px;
 
   @include bp-sm() {
     margin-top: 0;

@@ -59,9 +59,10 @@ nav.site {
   a {
     text-decoration: none;
 
+    &.is-active,
     &:hover {
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 2px;
       text-decoration-thickness: 1px;
     }
   }

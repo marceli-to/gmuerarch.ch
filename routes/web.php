@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TestController;
 
 
@@ -21,6 +22,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 // Frontend
 Route::get('/', [HomeController::class, 'index'])->name('page.index');
 Route::get('/projekt/{slug?}/{project}', [ProjectController::class, 'show'])->name('page.project.show');
+Route::get('/kontakt', [ContactController::class, 'index'])->name('page.contact.index');
 
 // Url based images
 Route::get('/img/{template}/{filename}/{maxSize?}/{coords?}/{ratio?}', [ImageController::class, 'getResponse']);

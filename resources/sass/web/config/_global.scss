@@ -34,8 +34,6 @@ $bp-lg: 1240px;
 
 $breakpoints: (
   sm: $bp-sm,
-  md: $bp-md,
-  lg: $bp-lg,
 );
 
 
@@ -45,4 +43,5 @@ $breakpoints: (
 $site-header-height-xs: 110px;
 $site-header-height-sm: 165px;
 
+$full-height-xs: calc(100vh - #{$site-header-height-xs});
 $full-height-sm: calc(100vh - #{$site-header-height-sm});

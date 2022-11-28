@@ -13,46 +13,9 @@
   }
 }
 
-@for $i from 1 through 12 {
-  %xs\:grid-cols-#{$i},
-  .xs\:grid-cols-#{$i} {
-    @include bp-xs() {
-      display: grid;
-      grid-template-columns: repeat($i, minmax(0, 1fr));
-    }
-  }
-}
-
-@for $i from 1 through 12 {
-  %sm\:grid-cols-#{$i},
-  .sm\:grid-cols-#{$i} {
-    @include bp-sm() {
-      display: grid;
-      grid-template-columns: repeat($i, minmax(0, 1fr));
-    }
-  }
-}
-
-@for $i from 1 through 12 {
-  %md\:grid-cols-#{$i},
-  .md\:grid-cols-#{$i} {
-    @include bp-md() {
-      display: grid;
-      grid-template-columns: repeat($i, minmax(0, 1fr));
-    }
-  }
-}
-
 %grid,
 .grid {
   display: grid;
-}
-
-%\!sm\:grid,
-.\!sm\:grid {
-  @include bp-sm() {
-    display: grid !important;
-  }
 }
 
 %grid-cols-none,
@@ -62,23 +25,26 @@
 
 %grid-gap,
 .grid-gap {
-  grid-gap: $space-4x;
+  grid-gap: $space-2x;
   @include bp-md() {
-    grid-gap: $space-6x;
+    grid-gap: $space-3x;
   }
 }
 
 %grid-column-gap,
 .grid-column-gap {
-  grid-column-gap: $space-4x;
+  grid-column-gap: $space-2x;
   @include bp-md() {
-    grid-column-gap: $space-6x;
+    grid-column-gap: $space-3x;
   }
 }
 
 %grid-row-gap,
 .grid-row-gap {
-  grid-row-gap: $space-4x;
+  grid-row-gap: $space-2x;
+  @include bp-md() {
+    grid-row-gap: $space-3x;
+  }
 }
 
 %grid-gap-none,
@@ -91,7 +57,6 @@
   grid-row-gap: 0;
 }
 
-
 @for $i from 1 through 12 {
   %span-#{$i},
   .span-#{$i} {
@@ -100,27 +65,9 @@
 }
 
 @for $i from 1 through 12 {
-  %xs\:span-#{$i},
-  .xs\:span-#{$i} {
-    @include bp-xs() {
-      grid-column: span $i / span $i;
-    }
-  }
-}
-
-@for $i from 1 through 12 {
   %sm\:span-#{$i},
   .sm\:span-#{$i} {
     @include bp-sm() {
-      grid-column: span $i / span $i;
-    }
-  }
-}
-
-@for $i from 1 through 12 {
-  %md\:span-#{$i},
-  .md\:span-#{$i} {
-    @include bp-md() {
       grid-column: span $i / span $i;
     }
   }
@@ -142,5 +89,49 @@
   %end-#{$i},
   .end-#{$i} {
     grid-column-end: $i;
+  }
+}
+
+// Content grid
+.content-grid {
+
+  + .content-grid {
+    @include bp-sm() {
+      margin-top: $space-3x;
+    }
+  }
+
+  img {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &.content-grid,
+  &.content-grid--1,
+  &.content-grid--1\:1,
+  &.content-grid--2\:1,
+  &.content-grid--1\:2 {
+
+    .content-grid__item {
+      margin-bottom: $space-2x;
+      
+      @include bp-sm() {
+        height: $full-height-sm;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &.content-grid--1\:1,
+  &.content-grid--2\:1,
+  &.content-grid--1\:2 {
+    @include bp-sm() {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: $space-3x;
+    }
   }
 }
