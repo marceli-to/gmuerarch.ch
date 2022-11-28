@@ -9783,15 +9783,16 @@ ul.list li {
  */
 .logo {
   color: #111111;
+  display: block;
   margin-top: 10px;
   max-width: 275px;
+  text-decoration: none;
 }
 @media only screen and (min-width: 700px) {
   .logo {
     margin-top: 0;
     max-width: 560px;
     left: 50%;
-    order: 2;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);

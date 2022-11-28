@@ -4,7 +4,9 @@
     <x-icon type="cross" style="cross" />
   </a>
   <div>
-    @include('partials.logo')
+    <a href="{{ route('page.home') }}" class="logo" title="{{ __('Home') }}">
+      @include('partials.logo')
+    </a>
     @include('partials.menu')
   </div>
 

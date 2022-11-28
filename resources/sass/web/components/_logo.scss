@@ -6,14 +6,15 @@
 
 .logo {
   color: $color-black;
+  display: block;
   margin-top: $space-2x;
   max-width: 275px;
+  text-decoration: none;
 
   @include bp-sm() {
     margin-top: 0;
     max-width: 560px;
     left: 50%;
-    order: 2;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);

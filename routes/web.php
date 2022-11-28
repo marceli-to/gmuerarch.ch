@@ -20,7 +20,7 @@ Auth::routes(['verify' => true, 'register' => false]);
 Route::get('/logout', 'Auth\LoginController@logout');
 
 // Frontend
-Route::get('/', [HomeController::class, 'index'])->name('page.index');
+Route::get('/', [HomeController::class, 'index'])->name('page.home');
 Route::get('/projekt/{slug?}/{project}', [ProjectController::class, 'show'])->name('page.project.show');
 Route::get('/kontakt', [ContactController::class, 'index'])->name('page.contact.index');
 
