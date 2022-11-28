@@ -25,7 +25,12 @@ section.content-contact {
 
   .map {
     margin-bottom: 0 !important;
+    margin-top: $space-3x;
     min-height: 300px;
+
+    @include bp-sm() {
+      margin-top: 0;
+    }
     
     .marker {
       background-image: url($url-icons + 'marker.svg');

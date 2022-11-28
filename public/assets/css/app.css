@@ -10864,7 +10864,13 @@ section.content-contact a {
 }
 section.content-contact .map {
   margin-bottom: 0 !important;
+  margin-top: 15px;
   min-height: 300px;
+}
+@media only screen and (min-width: 700px) {
+  section.content-contact .map {
+    margin-top: 0;
+  }
 }
 section.content-contact .map .marker {
   background-image: url("../img/icons/marker.svg");
