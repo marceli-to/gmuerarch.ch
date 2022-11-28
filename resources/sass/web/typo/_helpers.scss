@@ -17,24 +17,6 @@
   text-transform: lowercase;
 }
 
-%text-indent,
-.text-indent {
-  margin-bottom: 0;
-  &:not(:first-of-type) {
-    text-indent: $space-14x;
-  }
-}
-
-%prevent-text-indent,
-.prevent-text-indent {
-  text-indent: 0 !important;
-}
-
-%letter-spacing,
-.letter-spacing {
-  letter-spacing: .02em;
-}
-
 .cap { text-transform: capitalize; }
 .align-center { text-align: center; }
 .align-justify { text-align: justify; }
@@ -62,13 +44,6 @@
   @include font-size($fs-md);
 }
 
-.text-lead {
-  @include font-bold();
-}
-
-.text-max-width {
-  max-width: 720px;
-}
 
 /**
  * Typography - Generic elements

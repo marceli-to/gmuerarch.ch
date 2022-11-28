@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class HomeController extends BaseController
@@ -20,7 +21,8 @@ class HomeController extends BaseController
 
   public function index()
   {
-    return view($this->viewPath . 'index');
+    $grid = Home::with('imageGrids.imageGridItems.image')->find(1);
+    return view($this->viewPath . 'index', ['grid' => $grid]);
   }
 
 }

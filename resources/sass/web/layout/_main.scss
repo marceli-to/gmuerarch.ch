@@ -5,5 +5,9 @@
  */
 
 main.site {
+  padding-top: $site-header-height-sm;
 
+  @include bp-md() {
+    padding-top: $site-header-height-md;
+  }
 }

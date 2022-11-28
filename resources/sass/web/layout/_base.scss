@@ -18,6 +18,7 @@ body {
 	@include font-size($fs-sm);
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  min-height: calc(100vh - var(--vh-offset, 0px));
 	position: relative;
 }
 

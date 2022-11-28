@@ -1,0 +1,43 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: components/buttons/menu
+ * -----------------------------------------------------------------------------
+ */
+
+.btn-menu {
+  align-items: center;
+  color: $color-primary;
+  display: flex;
+  height: 16px;
+  left: $space-2x;
+  justify-content: center;
+  position: fixed;
+  top: $space-2x;
+  width: 22px;
+
+  svg {
+    @extend %is-responsive;
+
+    &.burger {
+      height: auto;
+      width: 20px;
+    }
+
+    &.cross {
+      display: none;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  &.is-active {
+    svg {
+      &.burger {
+        display: none;
+      }
+      &.cross {
+        display: block;
+      }
+    }
+  }
+}

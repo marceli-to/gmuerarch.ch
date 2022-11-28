@@ -5,5 +5,47 @@
  */
 
 nav.site {
+  @include font-size($fs-menu);
+  @include font-medium();
+  width: 100%;
+
+  @include bp-xs() {
+    background-color: $color-white;
+    height: calc(100% - #{$site-header-height-sm});
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: $site-header-height-sm;
+    transform: translateX(-100%);
+    transition: transform .12s ease-in;
+    max-width: 90%;
+
+    &.is-visible {
+      pointer-events: all;
+      transform: translateX(0);
+      transition: transform .12s ease-in;
+
+      ul {
+        opacity: 1;
+        transition: opacity .12s .24s ease-in;
+      }
+    }
+
+    ul {
+      opacity: 0;
+      padding-left: $space-2x;
+      transition: opacity .12s .24s ease-in;
+    }
+  
+    li {
+      display: block;
+      margin-bottom: $space-5x;
+    }
+
+  }
+
+  a {
+
+  }
   
 }

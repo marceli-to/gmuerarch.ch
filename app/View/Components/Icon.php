@@ -12,14 +12,23 @@ class Icon extends Component
   public $type;
 
   /**
+   * Style
+   *
+   * @var string
+   */
+  public $style;
+
+  /**
    * Create a new component instance.
    *
    * @param $type
    * @return void
    */
-  public function __construct($type = NULL)
+  public function __construct($type = NULL, $style = NULL)
   {
     $this->type = $type;
+    $this->style = $style;
+
   }
 
   /**

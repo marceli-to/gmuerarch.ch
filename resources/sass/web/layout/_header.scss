@@ -5,6 +5,27 @@
  */
 
 header.site-header {
+  background-color: $color-white;
+  height: $site-header-height-sm;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 200;
+  
+  @include bp-md() {
+    height: $site-header-height-md;
+  }
+  
   > div {
+    align-items: center;
+    display: flex;
+    height: inherit;
+    justify-content: center;
+  }
+
+  .logo {
+    @extend %mt-2x;
+    max-width: 250px;
   }
 }

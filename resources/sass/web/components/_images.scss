@@ -13,3 +13,54 @@
   max-width: 100%;
   width: 100%;
 }
+
+.image-grid {
+  position: relative; 
+  height: 0; 
+  overflow: hidden; 
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  @include bp-sm() {
+    > figure {
+      height: calc(100vh - #{$site-header-height-md});
+    }
+  }
+
+  + .image-grid {
+    @include bp-sm() {
+      margin-top: $space-3x;
+    }
+  }
+
+  img {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__1 {
+  }
+
+  &__1\:1,
+  &__2\:1,
+  &__1\:2 {
+
+    > figure {
+      margin-bottom: $space-2x;
+      @include bp-sm() {
+        margin-bottom: 0;
+      }
+    }
+
+    @include bp-sm() {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: $space-3x;
+    }
+  }
+
+}
