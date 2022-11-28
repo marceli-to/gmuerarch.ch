@@ -44,11 +44,6 @@
 
   > figure {
     margin-bottom: $space-2x;
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-    
     @include bp-sm() {
       margin-bottom: 0;
     }
@@ -60,7 +55,6 @@
   &__1\:1,
   &__2\:1,
   &__1\:2 {
-
 
     @include bp-sm() {
       display: grid;

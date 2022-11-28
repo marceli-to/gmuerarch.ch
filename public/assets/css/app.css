@@ -9873,9 +9873,6 @@ ul.list li {
 .image-grid > figure {
   margin-bottom: 10px;
 }
-.image-grid > figure:last-of-type {
-  margin-bottom: 0;
-}
 @media only screen and (min-width: 700px) {
   .image-grid > figure {
     margin-bottom: 0;
@@ -11064,7 +11061,7 @@ nav a {
  * -----------------------------------------------------------------------------
  */
 nav.site {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
   font-family: "Akzidenz-Grotesk-Medium", Helvetica, Arial, sans-serif;
   font-display: auto;
