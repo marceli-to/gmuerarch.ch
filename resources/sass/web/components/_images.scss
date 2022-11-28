@@ -24,7 +24,7 @@
 
   @include bp-sm() {
     > figure {
-      height: calc(100vh - #{$site-header-height-md});
+      height: $full-height-sm;
     }
   }
 
@@ -42,20 +42,25 @@
     width: 100%;
   }
 
-  > figure {
-    margin-bottom: $space-2x;
-    @include bp-sm() {
-      margin-bottom: 0;
+  &__1,
+  &__1\:1,
+  &__2\:1,
+  &__1\:2 {
+    > figure {
+      margin-bottom: $space-2x;
+      @include bp-sm() {
+        margin-bottom: 0;
+      }
     }
   }
 
   &__1 {
+
   }
 
   &__1\:1,
   &__2\:1,
   &__1\:2 {
-
     @include bp-sm() {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

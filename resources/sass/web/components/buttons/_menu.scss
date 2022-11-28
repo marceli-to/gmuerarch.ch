@@ -15,6 +15,10 @@
   top: $space-3x;
   width: 22px;
 
+  @include bp-sm() {
+    display: none;
+  }
+
   svg {
     @extend %is-responsive;
 

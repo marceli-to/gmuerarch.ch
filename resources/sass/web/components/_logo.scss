@@ -6,7 +6,20 @@
 
 .logo {
   color: $color-primary;
-  
+  margin-top: $space-2x;
+  max-width: 250px;
+
+  @include bp-sm() {
+    margin-top: 0;
+    max-width: 560px;
+    left: 50%;
+    order: 2;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
   svg {
     display: block;
     height: auto;

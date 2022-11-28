@@ -38,13 +38,11 @@ $breakpoints: (
   lg: $bp-lg,
 );
 
-/* Site
- * -------------------- */
-
-$site-max-width: 1200px;
 
 /* Site header
  * -------------------- */
 
-$site-header-height-sm: 110px;
-$site-header-height-md: 165px;
+$site-header-height-xs: 110px;
+$site-header-height-sm: 165px;
+
+$full-height-sm: calc(100vh - #{$site-header-height-sm});

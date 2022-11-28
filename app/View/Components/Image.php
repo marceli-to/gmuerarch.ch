@@ -4,34 +4,12 @@ use Illuminate\View\Component;
 
 class Image extends Component
 {
-
   /**
    * Image
    *
    * @var Object
    */
   public $image;
-
-  /**
-   * Ratio
-   *
-   * @var String
-   */
-  public $ratio;
-
-  /**
-   * Wrapper class
-   *
-   * @var String
-   */
-  public $wrapperClass;
-
-  /**
-   * Show caption
-   *
-   * @var Boolean
-   */
-  public $showCaption;
 
   /**
    * Maximum sizes for responsive images
@@ -59,13 +37,10 @@ class Image extends Component
    *
    * @return void
    */
-  public function __construct($image = NULL, $ratio = NULL, $wrapperClass = NULL, $showCaption = FALSE, $maxSizes = [], $width = NULL, $height = NULL)
+  public function __construct($image = NULL, $maxSizes = [], $width = NULL, $height = NULL)
   {
     $this->image = $image;
     $this->maxSizes = $maxSizes;
-    $this->ratio = $ratio;
-    $this->wrapperClass = $wrapperClass;
-    $this->showCaption = $showCaption;
     $this->width = $width;
     $this->height = $height;
   }

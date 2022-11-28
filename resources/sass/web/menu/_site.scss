@@ -11,13 +11,13 @@ nav.site {
 
   @include bp-xs() {
     background-color: $color-white;
-    height: calc(100% - #{$site-header-height-sm});
+    height: calc(100% - #{$site-header-height-xs});
     left: 0;
     pointer-events: none;
     position: fixed;
-    top: $site-header-height-sm;
+    top: $site-header-height-xs;
     transform: translateX(-100%);
-    transition: transform .12s ease-in;
+    transition: transform 0s ease-in;
     max-width: 90%;
 
     &.is-visible {
@@ -34,7 +34,7 @@ nav.site {
     ul {
       opacity: 0;
       padding-left: $space-3x;
-      transition: opacity .12s .24s ease-in;
+      transition: opacity 0 ease-in;
     }
   
     li {
@@ -44,8 +44,26 @@ nav.site {
 
   }
 
-  a {
+  @include bp-sm() {
+    order: 1;
 
+    ul {
+      display: flex;
+    }
+
+    li {
+      margin-right: $space-4x;
+    }
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
   }
   
 }

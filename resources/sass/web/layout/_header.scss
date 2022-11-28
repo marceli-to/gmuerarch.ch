@@ -6,15 +6,15 @@
 
 header.site-header {
   background-color: $color-white;
-  height: $site-header-height-sm;
+  height: $site-header-height-xs;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 200;
   
-  @include bp-md() {
-    height: $site-header-height-md;
+  @include bp-sm() {
+    height: $site-header-height-sm;
   }
   
   > div {
@@ -22,10 +22,12 @@ header.site-header {
     display: flex;
     height: inherit;
     justify-content: center;
-  }
 
-  .logo {
-    @extend %mt-2x;
-    max-width: 250px;
+    @include bp-sm() {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: $space-4x;
+    }
   }
 }
