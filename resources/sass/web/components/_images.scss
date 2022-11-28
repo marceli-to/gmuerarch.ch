@@ -42,6 +42,13 @@
     width: 100%;
   }
 
+  > figure {
+    margin-bottom: $space-2x;
+    @include bp-sm() {
+      margin-bottom: 0;
+    }
+  }
+
   &__1 {
   }
 
@@ -49,12 +56,6 @@
   &__2\:1,
   &__1\:2 {
 
-    > figure {
-      margin-bottom: $space-2x;
-      @include bp-sm() {
-        margin-bottom: 0;
-      }
-    }
 
     @include bp-sm() {
       display: grid;
