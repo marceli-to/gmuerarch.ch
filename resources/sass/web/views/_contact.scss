@@ -6,17 +6,8 @@
 
 section.content-contact {
   color: $color-grey;
-  //display: flex;
   @include font-size($fs-md);
   @include font-regular();
-  // flex-direction: column;
-  // justify-content: space-between;
-  min-height: $full-height-xs;
-
-  @include bp-sm() {
-    display: block;
-    min-height: auto;
-  }
 
   p,
   a {
