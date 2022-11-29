@@ -5,10 +5,10 @@
  */
 
 main.site {
-  padding: $site-header-height-xs $space-2x 0 $space-2x;
+  padding: $site-header-height-xs $space-2x $space-2x $space-2x;
 
   @include bp-sm() {
-    padding: $site-header-height-sm $space-3x 0 $space-3x;
+    padding: $site-header-height-sm $space-3x $space-2x $space-3x;
   }
 
   &.site--auth {
