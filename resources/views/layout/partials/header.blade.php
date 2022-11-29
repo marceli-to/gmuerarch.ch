@@ -5,9 +5,9 @@
   </a>
   <div>
     <a href="{{ route('page.home') }}" class="logo" title="{{ __('Home') }}">
-      @include('partials.logo')
+      @include('icons.logo')
     </a>
-    @include('partials.menu')
+    @include('menu.global')
   </div>
 
 </header>
