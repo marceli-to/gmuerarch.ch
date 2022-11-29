@@ -20,7 +20,7 @@
           </div>        
         </template>
 
-        <template v-if="projects.length">
+        <template v-if="projects.length > 0">
           <h2>Projekt wählen</h2>
           <div class="select-wrapper mt-2x px-1x">
             <select v-model="selectedProjectId" @change="selectImages()">
