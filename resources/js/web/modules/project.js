@@ -2,6 +2,7 @@
 
   const selectors = {
     listItem: 'li.is-visible a[data-project]',
+    listItemFirst: 'li.is-visible a.is-active[data-project]',
     imageItem:  'picture[data-project]',
   };
 
@@ -16,33 +17,25 @@
     listItemsArray.forEach(function (item) {
       item.addEventListener("mouseover", function() {
         const id = item.dataset.project;
+        imageItemsArray.forEach(function (image) {
+          image.classList.add('is-hidden');
+        });
+        const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
+        targetImage.classList.remove('is-hidden');
+      });
 
+      item.addEventListener("mouseleave", function() {
         imageItemsArray.forEach(function (image) {
           image.classList.add('is-hidden');
         });
 
+        const itemFirst = document.querySelector(selectors.listItemFirst);
+        const id = itemFirst.dataset.project;
         const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
         targetImage.classList.remove('is-hidden');
-
       });
+
     });
-
-
-/*
-item.addEventListener("touchstart", function() {
-  this.classList.add(classes.touched);
-}, false);
-item.addEventListener("touchend", function() {
-  this.classList.remove(classes.touched);
-}, false);
-
-*/
-
-
-  };
-
-  const toggle = function(){
-
   };
 
   init();
