@@ -28,3 +28,56 @@ nav.projects {
     width: auto;
   }
 }
+
+nav.project {
+  @include bp-sm() {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .project__meta {
+    align-items: center;
+    display: flex;
+    
+    @include bp-xs() {
+      right: $space-3x;
+      position: fixed;
+      top: $space-3x;
+    }
+
+    a {
+      @extend %underline;
+      color: $color-black;
+    }
+  }
+
+  .project__browse {
+    display: flex;
+    padding: 0 $space-1x;
+
+    @include bp-sm() {
+      padding: 0 $space-3x;
+    }
+
+    a {
+      display: block;
+      height: auto;
+      margin-left: $space-1x;
+      margin-right: $space-1x;
+      text-decoration: none;
+      width: 20px;
+
+      @include bp-sm() {
+        width: 24px;
+      }
+
+      svg {
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+}

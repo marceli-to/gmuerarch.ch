@@ -19,6 +19,7 @@ class ImageGridItemController extends Controller
   {
     $imageGridItem = ImageGridItem::find($request->input('id'));
     $imageGridItem->image_id = $request->input('image_id');
+    $imageGridItem->project_id = $request->input('project_id');
     $imageGridItem->position = $request->input('position');
     $imageGridItem->save();
     return response()->json($imageGridItem);

@@ -22,9 +22,5 @@ export default {
       default: '1'
     }
   },
-
-  mounted() {
-    console.log(this.$props);
-  }
 }
 </script>

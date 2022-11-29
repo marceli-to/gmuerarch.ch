@@ -15,12 +15,12 @@
                 :src="getSource(image, 'cache')" 
                 height="300" 
                 width="300" v-if="image"
-                @click="$emit('select', image.id)" />
+                @click="$emit('select', {image: image.id, project: project.id})" />
             </figure>
           </div>        
         </template>
 
-        <template v-if="projects">
+        <template v-if="projects.length">
           <h2>Projekt wählen</h2>
           <div class="select-wrapper mt-2x px-1x">
             <select v-model="selectedProjectId" @change="selectImages()">
@@ -34,16 +34,10 @@
                 :src="getSource(image, 'cache')" 
                 height="300" 
                 width="300" v-if="image"
-                @click="$emit('select', image.id)" />
+                @click="$emit('select', {image: image.id, project: selectedProject.id})" />
             </figure>
           </div>        
         </template>
-
-
-
-
-
-
       </div>
     </div>
   </div>
@@ -101,7 +95,6 @@ export default {
       this.isLoading = true;
       this.axios.get(`${this.routes.getProject}/${this.$props.projectId}`).then(response => {
         this.project = response.data.project;
-        console.log(this.project);
         this.isFetched = true;
         this.isLoading = false;
       });

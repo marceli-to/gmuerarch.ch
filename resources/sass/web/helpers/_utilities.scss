@@ -96,6 +96,13 @@
   }
 }
 
-// .is-hidden {
-//   opacity: .4;
-// }
+%underline,
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

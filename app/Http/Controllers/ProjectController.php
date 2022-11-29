@@ -35,7 +35,6 @@ class ProjectController extends BaseController
       ->whereHas('categories', function ($query) use ($category) {
         $query->where('id', $category->id);
       })->get();
-
     }
 
     return view(
@@ -52,15 +51,17 @@ class ProjectController extends BaseController
   /**
    * Show a single project by a given project
    *
+   * @param String $category
    * @param String $slug
    * @param Project $project
    * @return \Illuminate\Http\Response
    */
 
-  public function show($slug = NULL, Project $project)
+  public function show($category = NULL, $slug = NULL, Project $project)
   {
-    $project = Project::findOrFail($project->id);
-    return view($this->viewPath . 'show', ['project' => $project]);
+    $category = Category::where('slug', 'like', '%"'.$category.'"%')->firstOrFail();
+    $project = Project::with('imageGrids')->findOrFail($project->id);
+    return view($this->viewPath . 'show', ['category' => $category, 'project' => $project]);
   }
 
 }

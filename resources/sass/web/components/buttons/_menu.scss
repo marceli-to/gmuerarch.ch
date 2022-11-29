@@ -21,10 +21,15 @@
 
   .menu-icon {
     align-items: center;
-    height: 20px;
+    height: 18px;
     display: none;
     justify-content: center;
-    width: 20px;
+    width: 18px;
+
+    @include bp-sm() {
+      height: 20px;
+      width: 20px;
+    }
 
     &.menu-icon--burger {
       display: flex;
@@ -36,13 +41,22 @@
     &.burger {
       display: block;
       height: auto;
-      width: 20px;
+      width: 18px;
+
+      @include bp-sm() {
+        width: 20px;
+      }
     }
 
     &.cross {
       display: block;
-      height: 18px;
-      width: 18px;
+      height: 16px;
+      width: 16px;
+
+      @include bp-sm() {
+        height: 18px;
+        width: 18px;
+      }
     }
 
   }

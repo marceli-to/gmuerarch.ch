@@ -13,6 +13,7 @@ class ImageGridItem extends Base
 
   protected $fillable = [
     'position',
+    'project_id',
     'image_id',
     'image_grid_id'
   ];
@@ -33,6 +34,15 @@ class ImageGridItem extends Base
   public function imageGrid()
   {
     return $this->belongsTo(ImageGrid::class);
+  }
+
+  /**
+   * The project that belongs to this image grid item.
+   */
+  
+  public function project()
+  {
+    return $this->belongsTo(Project::class);
   }
 
 }

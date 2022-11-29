@@ -7,27 +7,36 @@
 .logo {
   color: $color-black;
   display: block;
-  margin-top: $space-2x;
   max-width: 275px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
   text-decoration: none;
-
-  &.logo--project {
-    color: $color-grey-light;
-  }
+  transform: translate(-50%, -50%);
+  width: 100%;
 
   @include bp-sm() {
-    margin-top: 0;
     max-width: 560px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
   }
 
   svg {
     display: block;
     height: auto;
     width: 100%;
+  }
+
+  &.logo--projects,
+  &.logo--project {
+    @include bp-xs() {
+      color: $color-grey-light;
+    }
+  }
+
+  &.logo--project {
+    @include bp-sm {
+      max-width: 360px;
+      top: 18px;
+      transform: translate(-50%, 0);
+    }
   }
 }

@@ -27,8 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('page.home');
 
 // Frontend - Projects
 Route::get('/projekte/{category?}', [ProjectController::class, 'index'])->name('page.project.index');
-Route::get('/projekt/{slug?}/{project}', [ProjectController::class, 'show'])->name('page.project.show');
-//Route::get('/projekte/{slug?}/{category}', [ProjectController::class, 'findByCategory'])->name('page.projects.category');
+Route::get('/projekt/{category}/{slug}/{project}', [ProjectController::class, 'show'])->name('page.project.show');
 
 // Frontend - Worklist
 Route::get('/werkliste', [WorklistController::class, 'index'])->name('page.worklist.index');

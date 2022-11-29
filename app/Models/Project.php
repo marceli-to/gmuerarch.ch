@@ -115,12 +115,10 @@ class Project extends Base
     return $this->morphMany(Image::class, 'imageable')->orderBy('order');
   }
 
-
   public function imageGrids()
   {
     return $this->morphMany(ImageGrid::class, 'gridable')->orderBy('order');
   }
-
 
   /**
    * The topics that belong to this discourse.
