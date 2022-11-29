@@ -7,17 +7,17 @@
         </a>
       </li>
       <li>
-        <a href="" title="{{ __('Werkliste') }}">
+        <a href="{{ route('page.worklist.index') }}" title="{{ __('Werkliste') }}" class="{{ request()->routeIs('page.worklist.index') ? 'is-active' : '' }}">
           {{ __('Werkliste') }}
         </a>
       </li>
       <li>
-        <a href="" title="{{ __('Büro') }}">
+        <a href="{{ route('page.office.index') }}" title="{{ __('Büro') }}" class="{{ request()->routeIs('page.office.index') ? 'is-active' : '' }}">
           {{ __('Büro') }}
         </a>
       </li>
       <li>
-        <a href="" title="{{ __('Diskurs') }}">
+        <a href="{{ route('page.discourse.index') }}" title="{{ __('Diskurs') }}" class="{{ request()->routeIs('page.discourse.index') ? 'is-active' : '' }}">
           {{ __('Diskurs') }}
         </a>
       </li>

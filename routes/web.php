@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\WorklistController;
+use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\DiscourseController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TestController;
 
@@ -22,6 +25,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 // Frontend
 Route::get('/', [HomeController::class, 'index'])->name('page.home');
 Route::get('/projekt/{slug?}/{project}', [ProjectController::class, 'show'])->name('page.project.show');
+Route::get('/werkliste', [WorklistController::class, 'index'])->name('page.worklist.index');
+Route::get('/buero', [OfficeController::class, 'index'])->name('page.office.index');
+Route::get('/diskurs', [DiscourseController::class, 'index'])->name('page.discourse.index');
 Route::get('/kontakt', [ContactController::class, 'index'])->name('page.contact.index');
 
 // Url based images

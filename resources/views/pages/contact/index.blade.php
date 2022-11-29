@@ -1,7 +1,9 @@
 @extends('layout.web')
+@section('seo_title', __('Kontakt'))
+@section('seo_description', '')
 @section('content')
 <section class="content content-contact content-grid content-grid--1:1">
-  <div class="content-grid__item">
+  <div class="content-grid__item content__text">
     <p>
       Silvia Gmür Reto Gmür Architekten<br>
       Pfluggässlein 3<br>
