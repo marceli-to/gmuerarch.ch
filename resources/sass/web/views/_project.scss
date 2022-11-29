@@ -7,7 +7,7 @@
 .project-list {
   @include bp-xs() {
     background-color: $color-white;
-    height: $full-height-xs;
+    height: $full-viewport-height-xs;
     padding-right: $space-3x;
     position: absolute !important;
     max-width: 85%;
@@ -17,8 +17,67 @@
 
 .project-previews {
   @include bp-xs() {
-    height: $full-height-xs;
+    height: $full-viewport-height-xs;
     position: absolute !important;
     width: 100%;
+  }
+}
+
+.project-info {
+  background-color: $color-white;
+  opacity: 0;
+  overflow-y: auto;
+  pointer-events: none;
+  position: fixed;
+  transition: transform .12s ease-in;
+  width: 100%;
+  z-index: -1;
+
+  &.is-visible {
+    pointer-events: all;
+    opacity: 1;
+    z-index: 200;
+  }
+
+  @include bp-xs() {
+    left: 0;
+    max-width: 90%;
+    padding: $space-6x $space-2x $space-2x $space-2x;
+    transform: translateX(-100%);
+    top: $site-header-height-xs;
+
+    &.is-visible {
+      height: $full-viewport-height-xs;
+      transform: translateX(0);
+    }
+  }
+
+  @include bp-sm() {
+    right: 0;
+    width: 50%;
+    padding: $space-12x $space-3x $space-6x $space-3x;
+    transform: translateX(100%);
+    top: $site-header-height-sm;
+
+    &.is-visible {
+      height: $full-viewport-height-sm;
+      transform: translateX(0);
+    }
+  }
+
+  h2 {
+    @include font-regular();
+    @include font-size($fs-lg);
+    margin-bottom: $space-3x;
+  }
+
+  .project-info__abstract {
+    @include font-medium();
+    @include font-size($fs-lg);
+    margin-bottom: $space-3x;
+  }
+
+  .project-info__text {
+    @include font-size($fs-md);
   }
 }

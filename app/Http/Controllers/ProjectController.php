@@ -25,7 +25,7 @@ class ProjectController extends BaseController
   { 
     // Get all categories & all projects
     $categories = Category::with('projects')->has('projects')->get();
-    $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->get();
+    $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->orderBy('order')->get();
 
     // Get category from url
     if ($category)
@@ -61,7 +61,63 @@ class ProjectController extends BaseController
   {
     $category = Category::where('slug', 'like', '%"'.$category.'"%')->firstOrFail();
     $project = Project::with('imageGrids')->findOrFail($project->id);
-    return view($this->viewPath . 'show', ['category' => $category, 'project' => $project]);
+    return view($this->viewPath . 'show', 
+      [
+        'category' => $category, 'project' => $project,
+        'browse'   => $this->getBrowse($project->id, $category->id),
+      ]
+    );
   }
+
+  /**
+   * Get project browse navigation
+   * 
+   * @param Integer $projectId
+   * @param Integer $categoryId
+   * @return Array $items
+   */
+
+  protected function getBrowse($projectId = NULL, $categoryId = NULL)
+  {
+    $projects = Project::query()->with('images', 'categories')
+    ->whereHas('categories', function ($query) use ($categoryId) {
+      $query->where('id', $categoryId);
+    })->orderBy('order')->get();
+    
+    $keys     = [];
+    $items    = [];
+
+    foreach($projects as $p)
+    {
+      $keys[] = (int) $p->id;
+    }
+
+    // Get current key
+    $key = array_search($projectId, $keys);
+
+    if ($key == 0)
+    {
+      $prevId = end($keys);
+      $nextId = isset($keys[$key+1]) ? $keys[$key+1] : NULL;
+    }
+    else if ($key == count($keys) - 1)
+    {
+      $prevId = $keys[$key-1];
+      $nextId = $keys[0];
+    }
+    else
+    {
+      $prevId = $keys[$key-1];
+      $nextId = $keys[$key+1];
+    }
+
+    $items = [
+      'prev' => Project::find($prevId),
+      'next' => Project::find($nextId),
+    ];
+    return $items;
+  }
+
+
 
 }

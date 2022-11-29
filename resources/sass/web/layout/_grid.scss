@@ -120,7 +120,7 @@
       position: relative;
       
       @include bp-sm() {
-        height: $full-height-sm;
+        height: $full-viewport-height-sm;
         margin-bottom: 0;
       }
     }

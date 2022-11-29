@@ -1,4 +1,4 @@
-@if ($maxSizes)
+@if ($maxSizes && $image)
   <picture 
     class="{{ $overlay ? 'is-overlay' : '' }} {{ !$visible ? 'is-hidden' : '' }}"
     data-project="{{ $project ? $project->id : '' }}">

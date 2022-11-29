@@ -55,7 +55,7 @@ strong, b {
 }
 
 p {
-  @extend %mb-10x;
+  @extend %mb-3x;
 	&:last-child {
 		margin-bottom: 0 !important;
 	}

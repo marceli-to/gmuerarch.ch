@@ -43,5 +43,8 @@ $breakpoints: (
 $site-header-height-xs: 120px;
 $site-header-height-sm: 165px;
 
-$full-height-xs: calc(100vh - #{$site-header-height-xs});
-$full-height-sm: calc(100vh - #{$site-header-height-sm});
+$full-viewport-height-xs: calc(100vh - #{$site-header-height-xs});
+$full-viewport-height-sm: calc(100vh - #{$site-header-height-sm});
+
+$full-height-xs: calc(100% - #{$site-header-height-xs});
+$full-height-sm: calc(100% - #{$site-header-height-sm});

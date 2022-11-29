@@ -3,6 +3,19 @@
 @section('seo_description', '')
 @section('content')
 <section class="content">
+  <div class="project-info js-project-info">
+    <h2>{{ $project->subtitle }}</h2>
+    @if ($project->abstract)
+      <div class="project-info__abstract">
+        {!! $project->abstract !!}
+      </div>
+    @endif
+    @if ($project->text)
+      <div class="project-info__text">
+        {!! $project->text !!}
+      </div>
+    @endif
+  </div>
   @foreach($project->imageGrids as $imageGrid)
     <div class="content-grid content-grid--{{ $imageGrid->layout }}">
       @foreach($imageGrid->imageGridItems as $gridItem)

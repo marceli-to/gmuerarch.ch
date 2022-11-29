@@ -1,16 +1,24 @@
 (function () {
 
+  const classes = {
+    visible: 'is-visible',
+    active: 'is-active',
+  };
+
   const selectors = {
     listItem: 'li.is-visible a[data-project]',
     listItemFirst: 'li.is-visible a.is-active[data-project]',
     imageItem:  'picture[data-project]',
+
+    btnInfo: '.js-btn-project-info',
+    wrapperInfo: '.js-project-info'
   };
 
   const init = () => {
 
+    // Mouse over project list
     const listItems = document.querySelectorAll(selectors.listItem);
     const listItemsArray = [].slice.call(listItems);
-
     const imageItems = document.querySelectorAll(selectors.imageItem);
     const imageItemsArray = [].slice.call(imageItems);
 
@@ -36,7 +44,19 @@
       });
 
     });
+
+    // Toggle info
+    const btnInfo = document.querySelector(selectors.btnInfo);
+    if (btnInfo) {
+      btnInfo.addEventListener("click", toggleInfo, false);
+    }
   };
+
+  const toggleInfo = function(){
+    const wrapperInfo = document.querySelector(selectors.wrapperInfo);
+    wrapperInfo.classList.toggle(classes.visible);
+  };
+
 
   init();
   

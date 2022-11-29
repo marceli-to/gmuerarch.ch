@@ -141,18 +141,18 @@ export default {
     },
 
     order() {
-      let articles = this.data.map(function(article, idx) {
-        article.order = idx;
-        return article;
+      let projects = this.data.map(function(project, idx) {
+        project.order = idx;
+        return project;
       });
 
       if (this.debounce) return;
       this.debounce = setTimeout(function() {
         this.debounce = false 
-        this.axios.post(`${this.routes.order}`, {articles: articles}).then((response) => {
+        this.axios.post(`${this.routes.order}`, {projects: projects}).then((response) => {
           this.$notify({type: 'success', text: 'Reihenfolge angepasst'});
         });
-      }.bind(this, articles), 500);
+      }.bind(this, projects), 500);
     },
   }
 }
