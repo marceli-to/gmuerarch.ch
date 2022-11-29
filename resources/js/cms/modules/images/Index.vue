@@ -14,10 +14,11 @@
       <image-edit 
         :images="data"
         :imagePreviewRoute="'cache'"
-        :ratioW="this.$props.imageRatioW"
-        :ratioH="this.$props.imageRatioH"
-        :allowRatioSwitch="this.$props.allowRatioSwitch"
-        :ratioFormats="this.$props.ratioFormats"
+        :hasPreviewState="$props.hasPreviewState"
+        :ratioW="$props.imageRatioW"
+        :ratioH="$props.imageRatioH"
+        :allowRatioSwitch="$props.allowRatioSwitch"
+        :ratioFormats="$props.ratioFormats"
       ></image-edit>
     </div>
   </div>
@@ -53,6 +54,11 @@ export default {
       default: false,
     },
 
+    hasPreviewState: {
+      type: Boolean,
+      default: false,
+    },
+
     ratioFormats: {
       type: Array,
       default: () => (
@@ -80,6 +86,7 @@ export default {
         store: '/api/image',
         delete: '/api/image',
         toggle: '/api/image/state',
+        togglePreview: '/api/image/preview/state',
         coords: '/api/image/coords',
       },
 
@@ -127,6 +134,7 @@ export default {
         coords_h: 0,
         coords_x: 0,
         coords_y: 0,
+        preview: 0,
         publish: 1,
         imageable_id: this.$props.typeId,
         imageable_type: this.$props.type,
@@ -155,6 +163,15 @@ export default {
       this.axios.get(`${this.routes.toggle}/${image.id}`).then(response => {
         const index = this.data.findIndex(x => x.id === image.id);
         this.data[index].publish = response.data;
+        this.isLoading = false;
+      });
+    },
+
+    togglePreviewState(image) {
+      this.isLoading = true;
+      this.axios.get(`${this.routes.togglePreview}/${image.id}`).then(response => {
+        const index = this.data.findIndex(x => x.id === image.id);
+        this.data[index].preview = response.data;
         this.isLoading = false;
       });
     },

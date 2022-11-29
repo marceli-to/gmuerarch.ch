@@ -105,9 +105,14 @@ class Project extends Base
     return $this->morphOne(Image::class, 'imageable')->where('publish', 1);
   }
 
+  public function previewImage()
+  {
+    return $this->morphOne(Image::class, 'imageable')->where('preview', 1);
+  }
+
   public function images()
   {
-    return $this->morphMany(Image::class, 'imageable');
+    return $this->morphMany(Image::class, 'imageable')->orderBy('order');
   }
 
 

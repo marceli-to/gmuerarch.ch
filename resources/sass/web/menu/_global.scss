@@ -5,6 +5,8 @@
  */
 
 nav {
+  @include font-size($fs-menu);
+  @include font-medium();
 
   li {
     display: block;
@@ -13,5 +15,13 @@ nav {
   a {
     color: $color-black;
     display: block;
+    text-decoration: none;
+
+    &.is-active,
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
   }
 }

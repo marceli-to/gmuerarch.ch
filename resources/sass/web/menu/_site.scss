@@ -5,8 +5,6 @@
  */
 
 nav.site {
-  @include font-size($fs-menu);
-  @include font-medium();
   width: 100%;
 
   @include bp-xs() {
@@ -40,6 +38,10 @@ nav.site {
     li {
       display: block;
       margin-bottom: $space-5x;
+
+      > ul {
+        margin-top: $space-5x;
+      }
     }
 
   }
@@ -55,16 +57,5 @@ nav.site {
       margin-right: $space-4x;
     }
   }
-
-  a {
-    text-decoration: none;
-
-    &.is-active,
-    &:hover {
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-thickness: 1px;
-    }
-  }
-  
+ 
 }

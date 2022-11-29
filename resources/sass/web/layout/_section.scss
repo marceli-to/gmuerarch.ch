@@ -5,10 +5,11 @@
  */
 
 section.content {
+  position: relative;
   
   .content__text {
     @include bp-sm() {
-      margin-top: 60px;
+      padding-top: 60px;
     }
   }
 }

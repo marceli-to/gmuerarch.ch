@@ -2,9 +2,20 @@
   <div>
     <ul>
       <li>
-        <a href="" title="{{ __('Projekte') }}">
+        <a href="{{ route('page.project.index') }}" title="{{ __('Projekte') }}" class="{{ request()->routeIs('page.project*') ? 'is-active' : '' }}">
           {{ __('Projekte') }}
         </a>
+        @if ($project_categories)
+          <ul class="sm:hide">
+            @foreach($project_categories as $category)
+              <li>
+                <a href="{{ route('page.project.index', ['category' => $category->slug]) }}" title="{{ $category->title }}">
+                  {{ $category->title }}
+                </a>
+              </li>
+            @endforeach
+          </ul>
+        @endif
       </li>
       <li>
         <a href="{{ route('page.worklist.index') }}" title="{{ __('Werkliste') }}" class="{{ request()->routeIs('page.worklist.index') ? 'is-active' : '' }}">

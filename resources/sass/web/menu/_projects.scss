@@ -1,0 +1,29 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: layout/menu/projects
+ * -----------------------------------------------------------------------------
+ */
+
+nav.projects {
+  color: $color-grey;
+  @include font-regular();
+  margin-top: $space-3x;
+
+  li {
+    display: block;
+    margin-bottom: $space-3x;
+    width: auto;
+
+    &.is-hidden {
+      display: none;
+    }
+  }
+
+  a {
+    color: $color-grey;
+    @include font-regular();
+    display: inline-block;
+    line-height: 1.2;
+    width: auto;
+  }
+}

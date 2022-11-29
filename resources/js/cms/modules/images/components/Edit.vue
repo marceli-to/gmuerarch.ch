@@ -39,7 +39,9 @@
             <image-actions 
               :image="image" 
               :hasPreview="false"
+              :hasPreviewState="$props.hasPreviewState"
               :publish="image.publish" 
+              :preview="image.preview"
               :imagePreviewRoute="'cache'">
             </image-actions>
           </div>
@@ -139,6 +141,7 @@
             <label>Beschreibung</label>
             <textarea v-model="overlayItem.description"></textarea>
           </div>
+
           <div class="form-buttons flex justify-between">
             <a
               href="javascript:;"
@@ -170,6 +173,7 @@ import ImageActions from "@/modules/images/components/Actions.vue";
 import ImageEdit from "@/modules/images/mixins/edit";
 import ImageCrop from "@/modules/images/mixins/crop";
 import ImageUtils from "@/modules/images/mixins/utils";
+import RadioButton from "@/components/ui/RadioButton.vue";
 
 export default {
   
@@ -178,7 +182,8 @@ export default {
     XIcon,
     DownloadIcon,
     Cropper,
-    draggable
+    draggable,
+    RadioButton
   },
 
   mixins: [ImageUtils, ImageEdit, ImageCrop],
@@ -208,6 +213,16 @@ export default {
     allowRatioSwitch: {
       type: Boolean,
       default: true,
+    },
+
+    hasPreview: {
+      type: Boolean,
+      default: false,
+    },
+
+    hasPreviewState: {
+      type: Boolean,
+      default: false,
     },
 
     ratioFormats: {

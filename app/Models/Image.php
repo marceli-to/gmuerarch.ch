@@ -27,6 +27,7 @@ class Image extends Base
     'coords_x',
     'coords_y',
     'order',
+    'preview',
     'publish',
     'locked',
     'imageable_id',
@@ -52,6 +53,15 @@ class Image extends Base
   {
     return $this->morphTo();
   }
+
+	/**
+   * Scope for preview images
+   */
+
+	public function scopePreview($query)
+	{
+		return $query->where('preview', 1);
+	}
 
 	/**
    * Scope for published images

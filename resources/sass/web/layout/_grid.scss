@@ -117,6 +117,7 @@
 
     .content-grid__item {
       margin-bottom: $space-2x;
+      position: relative;
       
       @include bp-sm() {
         height: $full-height-sm;

@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::put('image/coords/{image}', [ImageController::class, 'coords']);
   Route::put('image/{image}', [ImageController::class, 'update']);
   Route::get('image/state/{image}', [ImageController::class, 'toggle']);
+  Route::get('image/preview/state/{image}', [ImageController::class, 'preview']);
   Route::delete('image/{image}', [ImageController::class, 'destroy']);
 
   // Files

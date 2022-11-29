@@ -66,8 +66,10 @@
 // Menu
 @import 'menu/global';
 @import 'menu/site';
+@import 'menu/page';
+@import 'menu/projects';
 
 // Views
 @import 'views/auth';
 @import 'views/contact';
-
+@import 'views/project';

@@ -22,15 +22,27 @@ use App\Http\Controllers\TestController;
 Auth::routes(['verify' => true, 'register' => false]);
 Route::get('/logout', 'Auth\LoginController@logout');
 
-// Frontend
+// Frontend - Home
 Route::get('/', [HomeController::class, 'index'])->name('page.home');
+
+// Frontend - Projects
+Route::get('/projekte/{category?}', [ProjectController::class, 'index'])->name('page.project.index');
 Route::get('/projekt/{slug?}/{project}', [ProjectController::class, 'show'])->name('page.project.show');
+//Route::get('/projekte/{slug?}/{category}', [ProjectController::class, 'findByCategory'])->name('page.projects.category');
+
+// Frontend - Worklist
 Route::get('/werkliste', [WorklistController::class, 'index'])->name('page.worklist.index');
+
+// Frontend - Office
 Route::get('/buero', [OfficeController::class, 'index'])->name('page.office.index');
+
+// Frontend - Discourse
 Route::get('/diskurs', [DiscourseController::class, 'index'])->name('page.discourse.index');
+
+// Frontend - Contact
 Route::get('/kontakt', [ContactController::class, 'index'])->name('page.contact.index');
 
-// Url based images
+// Frontend - url based images
 Route::get('/img/{template}/{filename}/{maxSize?}/{coords?}/{ratio?}', [ImageController::class, 'getResponse']);
 
 // Output testing

@@ -1,0 +1,22 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: layout/menu/page
+ * -----------------------------------------------------------------------------
+ */
+
+nav.page {
+
+  @include bp-xs() {
+    max-width: 90%;
+  }
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    margin-bottom: $space-3x;
+    margin-right: $space-4x;
+  }
+}

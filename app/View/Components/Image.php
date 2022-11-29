@@ -33,16 +33,40 @@ class Image extends Component
   public $height; 
 
   /**
+   * Visible state
+   *
+   * @var Boolean
+   */
+  public $visible; 
+
+  /**
+   * Overlay state
+   *
+   * @var Boolean
+   */
+  public $overlay; 
+
+  /**
+   * Project
+   *
+   * @var Object
+   */
+  public $project; 
+
+  /**
    * Create a new component instance.
    *
    * @return void
    */
-  public function __construct($image = NULL, $maxSizes = [], $width = NULL, $height = NULL)
+  public function __construct($image = NULL, $maxSizes = [], $width = NULL, $height = NULL, $visible = TRUE, $overlay = FALSE, $project = NULL)
   {
     $this->image = $image;
     $this->maxSizes = $maxSizes;
     $this->width = $width;
     $this->height = $height;
+    $this->visible = $visible;
+    $this->overlay = $overlay;
+    $this->project = $project;
   }
 
   /**

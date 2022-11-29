@@ -19,6 +19,30 @@
     display: none;
   }
 
+  &.btn-menu--projects {
+    @include font-size($fs-menu);
+    @include font-medium();
+    width: auto;
+
+    span {
+      margin-left: $space-3x;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
+    &.is-active {
+      svg {
+        &.burger {
+          display: none;
+        }
+        &.cross {
+          display: block;
+        }
+      }
+    }
+  }
+
   svg {
     @extend %is-responsive;
 
@@ -45,3 +69,4 @@
     }
   }
 }
+

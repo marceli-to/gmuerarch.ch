@@ -10,6 +10,7 @@ class BaseController extends Controller
   public function __construct()
   {
     $categories = Category::with('projects')->has('projects')->get();
-    \View::share('project_catgories', $categories);
+    \View::share('project_categories', $categories);
+    \View::share('project_active_category', $categories[0]);
   }
 }
