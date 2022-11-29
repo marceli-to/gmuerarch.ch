@@ -30,7 +30,7 @@
               <li data-categories="{{ $categories->join(',') }}" 
                   class="{{ !in_array($project_active_category->id, $categories->toArray()) ? 'is-hidden' : 'is-visible' }}">
 
-                <a href="" 
+                <a href="{{ route('page.project.show', ['slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
                   title="{{ $project->title }}" 
                   class="{{ $project->id == $project_active->id ? 'is-active' : '' }}"
                   data-project="{{ $project->id }}">

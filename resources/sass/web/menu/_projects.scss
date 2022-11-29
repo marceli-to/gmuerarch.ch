@@ -11,7 +11,7 @@ nav.projects {
 
   li {
     display: block;
-    margin-bottom: $space-3x;
+    margin-bottom: 0;
     width: auto;
 
     &.is-hidden {
@@ -24,6 +24,7 @@ nav.projects {
     @include font-regular();
     display: inline-block;
     line-height: 1.2;
+    padding-bottom: $space-3x;
     width: auto;
   }
 }

@@ -16,7 +16,11 @@ nav.page {
   }
 
   li {
-    margin-bottom: $space-3x;
-    margin-right: $space-4x;
+    margin-bottom: $space-2x;
+    margin-right: $space-3x;
+
+    @include bp-sm() {
+      margin-right: $space-4x;
+    }
   }
 }
