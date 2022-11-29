@@ -10,4 +10,8 @@ main.site {
   @include bp-sm() {
     padding: $site-header-height-sm $space-3x 0 $space-3x;
   }
+
+  &.site--auth {
+    padding-top: 0 !important;
+  }
 }
