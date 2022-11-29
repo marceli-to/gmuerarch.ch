@@ -270,7 +270,6 @@ export default {
     },
 
     addImage(data) {
-      console.log(data);
       const item = {
         id: this.currentItemId,
         position: this.currentPos,
