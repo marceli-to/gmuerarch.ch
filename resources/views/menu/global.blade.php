@@ -23,9 +23,10 @@
         </a>
       </li>
       <li>
-        <a href="{{ route('page.office.index') }}" title="{{ __('Büro') }}" class="{{ request()->routeIs('page.office.index') ? 'is-active' : '' }}">
+        <a href="{{ route('page.office.team') }}" title="{{ __('Büro') }}" class="{{ request()->routeIs('page.office*') ? 'is-active' : '' }}">
           {{ __('Büro') }}
         </a>
+        
       </li>
       <li>
         <a href="{{ route('page.discourse.index') }}" title="{{ __('Diskurs') }}" class="{{ request()->routeIs('page.discourse.index') ? 'is-active' : '' }}">

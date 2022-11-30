@@ -67,10 +67,12 @@
 // Menu
 @import 'menu/global';
 @import 'menu/site';
+@import 'menu/content';
 @import 'menu/page';
 @import 'menu/projects';
 
 // Views
 @import 'views/auth';
 @import 'views/contact';
+@import 'views/office';
 @import 'views/project';

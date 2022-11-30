@@ -1,0 +1,49 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: layout/menu/content
+ * -----------------------------------------------------------------------------
+ */
+
+
+nav.content {
+  color: $color-grey;
+  @include font-regular();
+  margin-top: $space-3x;
+
+  li {
+    display: block;
+    margin-bottom: 0;
+    width: auto;
+
+    &.is-hidden {
+      display: none;
+    }
+  }
+
+  a {
+    color: $color-grey;
+    @include font-regular();
+    display: inline-block;
+    line-height: 1.2;
+    padding-bottom: $space-3x;
+    width: auto;
+  }
+
+  &.content--team {
+
+    li {
+      line-height: 1.4;
+      margin-bottom: $space-5x;
+
+      &.is-postum {
+        margin-bottom: $space-10x;
+      }
+    }
+
+    a {
+      @extend %underline;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}

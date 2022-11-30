@@ -2,10 +2,12 @@ import Dashboard from '@/views/pages/office/Index.vue';
 import TeamMemberIndex from '@/views/pages/office/team/Index.vue';
 import TeamMemberCreate from '@/views/pages/office/team/partials/Create.vue';
 import TeamMemberEdit from '@/views/pages/office/team/partials/Edit.vue';
+import TeamImages from '@/views/pages/office/team/images/Index.vue';
 
 import JobIndex from '@/views/pages/office/job/Index.vue';
 import JobCreate from '@/views/pages/office/job/partials/Create.vue';
 import JobEdit from '@/views/pages/office/job/partials/Edit.vue';
+import JobImages from '@/views/pages/office/job/images/Index.vue';
 
 const routes = [
   {
@@ -30,6 +32,12 @@ const routes = [
   },
 
   {
+    name: 'team-images',
+    path: '/administration/office/team-images',
+    component: TeamImages,
+  },
+
+  {
     name: 'jobs',
     path: '/administration/office/jobs',
     component: JobIndex,
@@ -44,6 +52,13 @@ const routes = [
     path: '/administration/office/job/edit/:id',
     component: JobEdit,
   },
+
+  {
+    name: 'job-images',
+    path: '/administration/office/job-images',
+    component: JobImages,
+  },
+
 
 ];
 

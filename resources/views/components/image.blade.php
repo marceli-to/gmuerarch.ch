@@ -1,6 +1,6 @@
 @if ($maxSizes && $image)
   <picture 
-    class="{{ $overlay ? 'is-overlay' : '' }} {{ !$visible ? 'is-hidden' : '' }}"
+    class="{{ $overlay ? 'is-overlay' : '' }} {{ !$visible ? 'is-hidden' : '' }} {{ $classes }}"
     data-project="{{ $project ? $project->id : '' }}">
     @foreach($maxSizes as $minWidth => $maxSize)
       @if ($minWidth > 0)

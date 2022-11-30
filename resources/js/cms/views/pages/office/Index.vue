@@ -11,9 +11,21 @@
         </router-link>
       </div>
       <div class="card">
+        <router-link :to="{name: 'team-images'}">
+          <h2>Teambilder</h2>
+          <p>Verwaltung der Teambilder</p>
+        </router-link>
+      </div>
+      <div class="card">
         <router-link :to="{name: 'jobs'}">
-          <h2>Offene Stellen</h2>
+          <h2>Jobs</h2>
           <p>Verwaltung der offenen Stellen</p>
+        </router-link>
+      </div>
+      <div class="card">
+        <router-link :to="{name: 'job-images'}">
+          <h2>Jobbilder</h2>
+          <p>Verwaltung der Bilder für offene Stellen</p>
         </router-link>
       </div>
     </div>

@@ -5,7 +5,7 @@
 <section class="content content-grid content-grid--1:1">
   <div class="content-grid__item content__text project-list project-list--works">
   @if ($projects)
-    <nav class="projects">
+    <nav class="content">
       <ul>
         @foreach($projects as $project)
           <li class="is-visible">

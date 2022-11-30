@@ -1,0 +1,14 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: views/project
+ * -----------------------------------------------------------------------------
+ */
+
+.office__image {
+  @include bp-sm() {
+    right: $space-3x;
+    position: fixed !important;
+    top: $site-header-height-sm;
+    width: calc(50% - #{$space-5x});
+  }
+}

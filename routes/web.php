@@ -34,6 +34,9 @@ Route::get('/werkliste', [WorklistController::class, 'index'])->name('page.workl
 
 // Frontend - Office
 Route::get('/buero', [OfficeController::class, 'index'])->name('page.office.index');
+Route::get('/buero/team', [OfficeController::class, 'team'])->name('page.office.team');
+Route::get('/buero/lebenslauf/{slug?}/{teamMember}', [OfficeController::class, 'cv'])->name('page.office.cv');
+Route::get('/buero/offene-stellen', [OfficeController::class, 'jobs'])->name('page.office.jobs');
 
 // Frontend - Discourse
 Route::get('/diskurs', [DiscourseController::class, 'index'])->name('page.discourse.index');

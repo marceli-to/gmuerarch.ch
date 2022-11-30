@@ -4,31 +4,6 @@
  * -----------------------------------------------------------------------------
  */
 
-nav.projects {
-  color: $color-grey;
-  @include font-regular();
-  margin-top: $space-3x;
-
-  li {
-    display: block;
-    margin-bottom: 0;
-    width: auto;
-
-    &.is-hidden {
-      display: none;
-    }
-  }
-
-  a {
-    color: $color-grey;
-    @include font-regular();
-    display: inline-block;
-    line-height: 1.2;
-    padding-bottom: $space-3x;
-    width: auto;
-  }
-}
-
 nav.project {
   @include bp-sm() {
     align-items: center;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div v-if="hasPreviewState">
       <a
         href="javascript:;"
         class="feather-icon"
@@ -97,6 +97,11 @@ export default {
     hasPreview: {
       type: Boolean,
       default: true
+    },
+
+    hasPreviewState: {
+      type: Boolean,
+      default: false
     },
 
     hasCrop: {

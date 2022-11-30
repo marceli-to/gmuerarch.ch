@@ -14,6 +14,10 @@ section.content-contact {
     color: $color-grey;
   }
 
+  a {
+    @extend %underline;
+  }
+
   .map {
     margin-bottom: 0 !important;
     margin-top: $space-8x;

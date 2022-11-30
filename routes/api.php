@@ -6,7 +6,9 @@ use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\TeamMemberController;
+use App\Http\Controllers\Api\TeamImageController;
 use App\Http\Controllers\Api\JobController;
+use App\Http\Controllers\Api\JobImageController;
 use App\Http\Controllers\Api\TopicController;
 use App\Http\Controllers\Api\DiscourseController;
 use App\Http\Controllers\Api\CategoryController;
@@ -64,6 +66,9 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('team-member/state/{teamMember}', [TeamMemberController::class, 'toggle']);
   Route::delete('team-member/{teamMember}', [TeamMemberController::class, 'destroy']);
 
+  // Team member
+  Route::get('team-images', [TeamImageController::class, 'get']);
+
   // Jobs
   Route::get('jobs', [JobController::class, 'get']);
   Route::get('job/{job}', [JobController::class, 'find']);
@@ -72,6 +77,9 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('jobs/order', [JobController::class, 'order']);
   Route::get('job/state/{job}', [JobController::class, 'toggle']);
   Route::delete('job/{job}', [JobController::class, 'destroy']);
+
+  // Job images
+  Route::get('job-images', [JobImageController::class, 'get']);
 
   // Discourses
   Route::get('discourses', [DiscourseController::class, 'get']);

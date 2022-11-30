@@ -20,7 +20,7 @@
         </ul>
       </nav>
       @if ($projects)
-        <nav class="projects">
+        <nav class="content">
           <ul>
             @foreach($projects as $project)
               @php 

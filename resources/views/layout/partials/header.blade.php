@@ -8,6 +8,11 @@
         {{ __('Projekte') }}
       </a>
     @endif
+    @if (request()->routeIs('page.worklist.index'))
+      <a href="{{ route('page.worklist.index') }}" title="{{ __('Projekte') }}" class="btn-projects sm:hide">
+        {{ __('Werkliste') }}
+      </a>
+    @endif
   <div>
     <a href="{{ route('page.home') }}" class="logo {{ request()->routeIs('page.project*') ? 'logo--projects' : '' }}" title="{{ __('Home') }}">
       @include('icons.logo')

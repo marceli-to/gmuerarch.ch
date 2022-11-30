@@ -54,11 +54,18 @@ class Image extends Component
   public $project; 
 
   /**
+   * Classes
+   *
+   * @var String
+   */
+  public $classes; 
+
+  /**
    * Create a new component instance.
    *
    * @return void
    */
-  public function __construct($image = NULL, $maxSizes = [], $width = NULL, $height = NULL, $visible = TRUE, $overlay = FALSE, $project = NULL)
+  public function __construct($image = NULL, $maxSizes = [], $width = NULL, $height = NULL, $visible = TRUE, $overlay = FALSE, $project = NULL, $classes = '')
   {
     $this->image = $image;
     $this->maxSizes = $maxSizes;
@@ -67,6 +74,7 @@ class Image extends Component
     $this->visible = $visible;
     $this->overlay = $overlay;
     $this->project = $project;
+    $this->classes = $classes;
   }
 
   /**
