@@ -123,6 +123,22 @@
         height: $full-viewport-height-sm;
         margin-bottom: 0;
       }
+
+      &.is-fixed {
+        position: fixed !important;
+        right: $space-3x;
+        width: calc(50% - #{$space-5x});
+
+        @include bp-xs() {
+          height: $full-viewport-height-xs;
+          top: $site-header-height-xs;
+        }
+
+        @include bp-sm() {
+          height: $full-viewport-height-sm;
+          top: $site-header-height-sm;
+        }
+      }
     }
   }
 

@@ -20,7 +20,7 @@
     </nav>
   @endif
   </div>
-  <div class="content-grid__item project-previews xs-hide">
+  <div class="content-grid__item is-fixed xs-hide">
     <x-project-preview-images :projects="$projects" />
   </div>
 </section>

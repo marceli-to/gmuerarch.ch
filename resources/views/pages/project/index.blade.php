@@ -44,7 +44,7 @@
     @endif
 
   </div>
-  <div class="content-grid__item project-previews">
+  <div class="content-grid__item is-fixed">
     <x-project-preview-images :projects="$projects_by_category" />
   </div>
 </section>

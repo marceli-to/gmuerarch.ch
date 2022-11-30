@@ -20,15 +20,6 @@
   }
 }
 
-
-.project-previews {
-  @include bp-xs() {
-    height: $full-viewport-height-xs;
-    position: absolute !important;
-    width: 100%;
-  }
-}
-
 .project-info {
   background-color: $color-white;
   opacity: 0;
@@ -42,6 +33,7 @@
   &.is-visible {
     pointer-events: all;
     opacity: 1;
+    transform: translateX(0);
     z-index: 200;
   }
 
@@ -54,7 +46,6 @@
 
     &.is-visible {
       height: $full-viewport-height-xs;
-      transform: translateX(0);
     }
   }
 
@@ -67,7 +58,6 @@
 
     &.is-visible {
       height: $full-viewport-height-sm;
-      transform: translateX(0);
     }
   }
 
