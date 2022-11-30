@@ -12,7 +12,7 @@
 
   const init = () => {
     const btnMenu = document.querySelector(selectors.btnMenu);
-
+    
     if (btnMenu) {
       btnMenu.addEventListener("click", toggle, false);
     }
@@ -20,6 +20,7 @@
   };
 
   const toggle = function(){
+    console.log('d');
     const menu = document.querySelector(selectors.menu);
     menu.classList.toggle(classes.visible);
 

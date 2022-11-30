@@ -10,91 +10,40 @@
   display: flex;
   height: 20px;
   left: $space-3x;
-  justify-content: flex-start;
+  justify-content: center;
   position: fixed;
   top: $space-3x;
   width: 20px;
+  z-index: 500;
 
   @include bp-sm() {
     display: none;
   }
 
-  .menu-icon {
-    align-items: center;
-    height: 18px;
-    display: none;
-    justify-content: center;
-    width: 18px;
-
-    @include bp-sm() {
-      height: 20px;
-      width: 20px;
-    }
-
-    &.menu-icon--burger {
-      display: flex;
-    }
-  }
-
   svg {
+    width: 100%;
 
     &.burger {
       display: block;
       height: auto;
-      width: 18px;
-
-      @include bp-sm() {
-        width: 20px;
-      }
     }
 
     &.cross {
-      display: block;
-      height: 16px;
-      width: 16px;
-
-      @include bp-sm() {
-        height: 18px;
-        width: 18px;
-      }
+      display: none;
+      height: 18px;
     }
 
   }
 
   &.is-active {
 
-    .menu-icon--burger {
-      display: none;
-    }
-    
-    .menu-icon--cross {
-      display: flex;
-    }
-  }
-
-  &.btn-menu--projects {
-    @include font-size($fs-menu);
-    @include font-medium();
-    width: auto;
-
-    @include bp-sm() {
-      display: flex;
-    }
-
-    span {
-      margin-left: $space-2x;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-thickness: 1px;
-    }
-
-    &.is-active {
-      .menu-icon--burger {
+    svg {
+      &.burger {
         display: none;
       }
       
-      .menu-icon--cross {
-        display: flex;
+      &.cross {
+        display: block;
       }
     }
   }

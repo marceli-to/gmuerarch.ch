@@ -7,7 +7,7 @@
 
   const selectors = {
     listItem: 'li.is-visible a[data-project]',
-    listItemFirst: 'li.is-visible a.is-active[data-project]',
+    listItemFirst: 'li.is-visible:first-child a[data-project]',
     imageItem:  'picture[data-project]',
 
     btnInfo: '.js-btn-project-info',
@@ -18,6 +18,7 @@
 
     // Mouse over project list
     const listItems = document.querySelectorAll(selectors.listItem);
+    const listItemFirst = listItems[0];
     const listItemsArray = [].slice.call(listItems);
     const imageItems = document.querySelectorAll(selectors.imageItem);
     const imageItemsArray = [].slice.call(imageItems);
@@ -40,8 +41,7 @@
             image.classList.add('is-hidden');
           });
   
-          const itemFirst = document.querySelector(selectors.listItemFirst);
-          const id = itemFirst.dataset.project;
+          const id = listItemFirst.dataset.project;
           const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
           targetImage.classList.remove('is-hidden');
         });

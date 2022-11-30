@@ -1,0 +1,23 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: components/buttons/menu
+ * -----------------------------------------------------------------------------
+ */
+
+.btn-projects {
+  @extend %underline;
+  color: $color-black;
+  @include font-size($fs-menu);
+  @include font-medium();
+  left: $space-9x;
+  position: absolute;
+  top: $space-3x;
+
+  @include bp-sm() {
+    top: $space-3x;
+  }
+
+  &.btn-projects--show {
+    left: $space-3x;
+  }
+}

@@ -2,16 +2,16 @@
 <div v-if="isFetched">
 
   <page-header>
-    <h1 v-if="$props.modelName == 'Project'">Bildraster «{{ $props.model.title.de }}»</h1>
-    <h1 v-else>Bildraster Startseite</h1>
+    <h1 v-if="$props.modelName == 'Project'">{{ $props.model.title.de }}</h1>
+    <h1 v-else>Startseite</h1>
     <div>
       <a href="" class="btn-add has-icon mr-2x" @click.prevent="toggleGridSelector()">
         <plus-icon size="16"></plus-icon>
-        <span>Zeile hinzufügen</span>
+        <span>Hinzufügen</span>
       </a>
       <a href="" class="btn-move has-icon" @click.prevent="toggleSortable()">
         <move-icon size="16"></move-icon>
-        <span>Zeilen verschieben</span>
+        <span>Verschieben</span>
       </a>
     </div>
   </page-header>

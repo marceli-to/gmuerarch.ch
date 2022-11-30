@@ -32,7 +32,6 @@
 
                 <a href="{{ route('page.project.show', ['category' => $project_active_category->slug, 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
                   title="{{ $project->title }}" 
-                  class="{{ $project->id == $project_active->id ? 'is-active' : '' }}"
                   data-project="{{ $project->id }}">
                   {{ $project->title }}
                 </a>

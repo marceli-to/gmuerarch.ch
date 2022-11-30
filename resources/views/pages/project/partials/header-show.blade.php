@@ -1,7 +1,6 @@
 <header class="site-header site-header--project">
-  <a href="javascript:history.back()" class="btn-menu btn-menu--projects">
-    <x-icon type="burger" />
-    <span>{{ __('Projekte') }}</span>
+  <a href="{{ route('page.project.index') }}" title="{{ __('Projekte') }}" class="btn-projects btn-projects--show">
+    {{ __('Projekte') }}
   </a>
   <div>
     <a href="{{ route('page.home') }}" class="logo logo--project" title="{{ __('Home') }}">
