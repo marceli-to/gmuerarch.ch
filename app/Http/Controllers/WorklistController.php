@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class WorklistController extends BaseController
@@ -20,7 +21,8 @@ class WorklistController extends BaseController
 
   public function index()
   {
-    return view($this->viewPath . 'index');
+    $projects = Project::with('previewImage')->flagged('isPublish')->flagged('isWorklist')->orderBy('order')->get();
+    return view($this->viewPath . 'index', ['projects' => $projects]);
   }
 
 }

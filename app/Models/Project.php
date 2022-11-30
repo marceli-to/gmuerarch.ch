@@ -21,6 +21,7 @@ class Project extends Base
     'subtitle' => 'array',
     'abstract' => 'array',
     'text' => 'array',
+    'text_worklist' => 'array',
   ];
 
   /**
@@ -42,7 +43,9 @@ class Project extends Base
     'text' => '{
       "de": "null", "en": "null"
     }',
-
+    'text_worklist' => '{
+      "de": "null", "en": "null"
+    }',
   ];
   
   /**
@@ -56,6 +59,7 @@ class Project extends Base
     'subtitle',
     'abstract',
     'text',
+    'text_worklist'
   ];
 
   /**
@@ -69,6 +73,7 @@ class Project extends Base
     'subtitle',
     'abstract',
     'text',
+    'text_worklist',
     'order'
   ];
 
@@ -80,6 +85,7 @@ class Project extends Base
 
   protected $appends = [
     'publish',
+    'worklist',
     'category_ids'
   ];
 
@@ -137,6 +143,16 @@ class Project extends Base
   public function getPublishAttribute()
   {
     return $this->hasFlag('isPublish') ? 1 : 0;    
+  }
+
+    /**
+   * Get the publish attribute
+   * 
+   */
+
+  public function getWorklistAttribute()
+  {
+    return $this->hasFlag('isWorklist') ? 1 : 0;    
   }
 
 

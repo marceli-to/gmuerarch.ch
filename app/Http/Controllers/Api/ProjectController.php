@@ -52,6 +52,7 @@ class ProjectController extends Controller
     $project->categories()->attach($request->input('category_ids'));
     $this->handleI18n($project, $request);
     $this->handleFlag($project, 'isPublish', $request->input('publish'));
+    $this->handleFlag($project, 'isWorklist', $request->input('worklist'));
     $this->handleImages($project, $request->input('images'));
     return response()->json(['projectId' => $project->id]);
   }
@@ -70,9 +71,9 @@ class ProjectController extends Controller
     $project->setTranslation('title', 'en', $request->input('title.en'));
     $project->categories()->sync($request->input('category_ids'));
     $project->save();
-
     $this->handleI18n($project, $request);
     $this->handleFlag($project, 'isPublish', $request->input('publish'));
+    $this->handleFlag($project, 'isWorklist', $request->input('worklist'));
     $this->handleImages($project, $request->input('images'));
     return response()->json('successfully updated');
   }
@@ -183,6 +184,8 @@ class ProjectController extends Controller
     $project->setTranslation('abstract', 'en', $request->input('abstract.en'));
     $project->setTranslation('text', 'de', $request->input('text.de'));
     $project->setTranslation('text', 'en', $request->input('text.en'));
+    $project->setTranslation('text_worklist', 'de', $request->input('text_worklist.de'));
+    $project->setTranslation('text_worklist', 'en', $request->input('text_worklist.en'));
     $project->save();
     return $project;
   }

@@ -36,6 +36,11 @@
         </div>
 
         <div class="form-row">
+          <label>Text Werkliste</label>
+          <textarea v-model="project.text_worklist.de" />
+        </div>
+
+        <div class="form-row">
           <label>Kategorie</label>
           <div v-for="(category, index) in categories" :key="index" class="flex mb-2x">
             <input type="checkbox" :id="`category-${category.id}`" :name="`category-${category.id}`" :value="category.id" v-model="project.category_ids">
@@ -73,6 +78,10 @@
             v-model="project.text.en"
           ></tinymce-editor>
         </div>
+        <div class="form-row">
+          <label>Text Werkliste</label>
+          <textarea v-model="project.text_worklist.en" />
+        </div>
       </div>
     </div>
 
@@ -95,6 +104,14 @@
             v-bind:publish.sync="project.publish"
             :model="project.publish"
             :name="'publish'">
+          </radio-button>
+        </div>
+        <div class="form-row">
+          <radio-button 
+            :label="'In Werkliste anzeigen?'"
+            v-bind:worklist.sync="project.worklist"
+            :model="project.worklist"
+            :name="'worklist'">
           </radio-button>
         </div>
       </div>
@@ -166,8 +183,13 @@ export default {
           de: null,
           en: null
         },
+        text_worklist: {
+          de: '',
+          en: ''
+        },
         category_ids: [],
         publish: 1,
+        worklist: 1,
         images: [],
         files: [],
       },
@@ -269,8 +291,8 @@ export default {
   computed: {
     title() {
       return this.$props.type == "edit" 
-        ? "Diskurs-Artikel bearbeiten" 
-        : "Diskurs-Artikel hinzufügen";
+        ? "Projekt bearbeiten" 
+        : "Projekt hinzufügen";
     }
   }
 };

@@ -23,29 +23,27 @@ class ProjectController extends BaseController
 
   public function index($category = NULL)
   { 
-    // Get all categories & all projects
-    $categories = Category::with('projects')->has('projects')->get();
-    $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->orderBy('order')->get();
+    // Get category
+    $category = $category ? Category::where('slug', 'like', '%"'.$category.'"%')->firstOrFail() : Category::with('projects')->has('projects')->first();
 
-    // Get category from url
-    if ($category)
-    {
-      $category = Category::where('slug', 'like', '%"'.$category.'"%')->firstOrFail();
-      $projectsByCategory = Project::query()->with('images', 'previewImage', 'categories')
-      ->whereHas('categories', function ($query) use ($category) {
-        $query->where('id', $category->id);
-      })->get();
-    }
+    // Get projects
+    $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->orderBy('order')->get();
+    $projectsByCategory = Project::query()->with('images', 'previewImage', 'categories')
+    ->whereHas('categories', function ($query) use ($category) {
+      $query->where('id', $category->id);
+    })->flagged('isPublish')->get();
 
     return view(
       $this->viewPath . 'index', 
       [
         'projects' => $projects,
-        'projects_by_category' => isset($projectsByCategory) ? $projectsByCategory : $projects,
-        'project_active' =>  isset($projectsByCategory) ? $projectsByCategory[0] : $projects[0], 
-        'project_active_category' => $category ? $category : $categories[0]
+        'projects_by_category' => $projectsByCategory,
+        'project_active' =>  $projectsByCategory, 
+        'project_active_category' => $category
       ]
     );
+
+
   }
 
   /**

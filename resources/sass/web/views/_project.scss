@@ -13,8 +13,13 @@
     position: absolute !important;
     width: 100%;
     z-index: 100;
+
+    &.project-list--works {
+      max-width: 100%;
+    }
   }
 }
+
 
 .project-previews {
   @include bp-xs() {
@@ -74,7 +79,7 @@
 
   .project-info__abstract {
     @include font-medium();
-    @include font-size($fs-lg);
+    @include font-size($fs-md);
     margin-bottom: $space-3x;
   }
 
