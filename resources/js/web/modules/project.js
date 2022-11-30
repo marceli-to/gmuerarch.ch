@@ -10,7 +10,7 @@
     listItemFirst: 'li.is-visible:first-child a[data-project]',
     imageItem:  'picture[data-project]',
 
-    btnInfo: '.js-btn-page-info',
+    btnInfo: '.js-btn-project-info',
     wrapperInfo: '.js-project-info'
   };
 
