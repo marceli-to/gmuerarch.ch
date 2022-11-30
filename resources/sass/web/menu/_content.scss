@@ -31,6 +31,10 @@ nav.content {
 
   &.content--team {
 
+    @include bp-xs() {
+      padding-bottom: $space-1x;
+    }
+
     li {
       line-height: 1.4;
       margin-bottom: $space-5x;

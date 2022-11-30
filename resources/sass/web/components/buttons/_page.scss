@@ -4,7 +4,7 @@
  * -----------------------------------------------------------------------------
  */
 
-.btn-projects {
+.btn-page {
   @extend %underline;
   color: $color-black;
   @include font-size($fs-menu);
@@ -15,9 +15,5 @@
 
   @include bp-sm() {
     top: $space-3x;
-  }
-
-  &.btn-projects--show {
-    left: $space-3x;
   }
 }

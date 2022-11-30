@@ -4,13 +4,18 @@
     <x-icon type="cross" />
   </a>
     @if (request()->routeIs('page.project*'))
-      <a href="{{ route('page.project.index') }}" title="{{ __('Projekte') }}" class="btn-projects sm:hide">
+      <a href="{{ route('page.project.index') }}" title="{{ __('Projekte') }}" class="btn-page sm:hide">
         {{ __('Projekte') }}
       </a>
     @endif
     @if (request()->routeIs('page.worklist.index'))
-      <a href="{{ route('page.worklist.index') }}" title="{{ __('Projekte') }}" class="btn-projects sm:hide">
+      <a href="{{ route('page.worklist.index') }}" title="{{ __('Projekte') }}" class="btn-page sm:hide">
         {{ __('Werkliste') }}
+      </a>
+    @endif
+    @if (request()->routeIs('page.office*'))
+      <a href="{{ route('page.office.team') }}" title="{{ __('Büro') }}" class="btn-page sm:hide">
+        {{ __('Büro') }}
       </a>
     @endif
   <div>

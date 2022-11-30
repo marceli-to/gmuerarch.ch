@@ -33,8 +33,13 @@ header.site-header {
   }
 
   &.site-header--project {
+    
     > div {
       justify-content: flex-end;
+    }
+
+    .btn-page {
+      left: $space-3x;
     }
   }
 }
