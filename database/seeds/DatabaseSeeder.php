@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
       \Database\Seeders\ProjectSeeder::class,
       \Database\Seeders\JobSeeder::class,
       \Database\Seeders\TeamMemberSeeder::class,
-      \Database\Seeders\ImageGridSeeder::class,
+      // \Database\Seeders\ImageGridSeeder::class,
     ]);
   }
 }

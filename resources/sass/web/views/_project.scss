@@ -8,10 +8,12 @@
   @include bp-xs() {
     background-color: $color-white;
     height: $full-viewport-height-xs;
+    max-width: 90%;
     padding-right: $space-3x;
     position: absolute !important;
-    max-width: 85%;
+    width: 100%;;
     z-index: 100;
+
   }
 }
 

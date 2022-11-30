@@ -22,28 +22,32 @@
     const imageItems = document.querySelectorAll(selectors.imageItem);
     const imageItemsArray = [].slice.call(imageItems);
 
-    listItemsArray.forEach(function (item) {
-      item.addEventListener("mouseover", function() {
-        const id = item.dataset.project;
-        imageItemsArray.forEach(function (image) {
-          image.classList.add('is-hidden');
+    if ("ontouchstart" in document.documentElement == false)
+    {
+      listItemsArray.forEach(function (item) {
+
+        item.addEventListener("mouseover", function() {
+          const id = item.dataset.project;
+          imageItemsArray.forEach(function (image) {
+            image.classList.add('is-hidden');
+          });
+          const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
+          targetImage.classList.remove('is-hidden');
         });
-        const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
-        targetImage.classList.remove('is-hidden');
-      });
-
-      item.addEventListener("mouseleave", function() {
-        imageItemsArray.forEach(function (image) {
-          image.classList.add('is-hidden');
+  
+        item.addEventListener("mouseleave", function() {
+          imageItemsArray.forEach(function (image) {
+            image.classList.add('is-hidden');
+          });
+  
+          const itemFirst = document.querySelector(selectors.listItemFirst);
+          const id = itemFirst.dataset.project;
+          const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
+          targetImage.classList.remove('is-hidden');
         });
-
-        const itemFirst = document.querySelector(selectors.listItemFirst);
-        const id = itemFirst.dataset.project;
-        const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
-        targetImage.classList.remove('is-hidden');
+  
       });
-
-    });
+    }
 
     // Toggle info
     const btnInfo = document.querySelector(selectors.btnInfo);
@@ -56,7 +60,6 @@
     const wrapperInfo = document.querySelector(selectors.wrapperInfo);
     wrapperInfo.classList.toggle(classes.visible);
   };
-
 
   init();
   

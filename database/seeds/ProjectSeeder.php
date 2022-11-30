@@ -28,12 +28,12 @@ class ProjectSeeder extends Seeder
           'en' => $faker->sentence(7, true)
         ],
         'abstract' => [
-          'de' => $faker->realText(80, 2),
-          'en' => $faker->realText(75, 3)
+          'de' => $faker->realText(400, 2),
+          'en' => $faker->realText(400, 3)
         ],
         'text' => [
-          'de' => $faker->realText(200, 2),
-          'en' => $faker->realText(150, 3)
+          'de' => $faker->realText(500, 2),
+          'en' => $faker->realText(450, 3)
         ],
       ]);
 
@@ -45,24 +45,16 @@ class ProjectSeeder extends Seeder
         'category_id' => $rand
       ]);
 
-      for($y = 1; $y<=4; $y++)
+      for($y = 1; $y < 16; $y++)
       {
+        $rand = mt_rand(1,15);
         Image::create([
           'uuid' => \Str::uuid(),
-          'name' => '636ce826efd2'.$y.'-image-'.$y.'-3x4.jpg',
-          'original_name' => 'image-'.$y.'-3x4.jpg',
+          'name' => 'gmuer-'.$y.'.jpg',
+          'original_name' => 'gmuer-'.$y.'.jpg',
           'extension' => 'jpg',
           'size' => '145623'.$y,
-          'publish' => 1,
-          'imageable_type' => Project::class,
-          'imageable_id' => $project->id,
-        ]);
-        Image::create([
-          'uuid' => \Str::uuid(),
-          'name' => '636ce826efd2'.$y.'-image-'.$y.'-16x9.jpg',
-          'original_name' => 'image-'.$y.'-16x9.jpg',
-          'extension' => 'jpg',
-          'size' => '145623'.$y,
+          'order' => $rand,
           'publish' => 1,
           'imageable_type' => Project::class,
           'imageable_id' => $project->id,
