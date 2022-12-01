@@ -186,7 +186,7 @@
     @include bp-sm() {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: $space-3x;
+      column-gap: $space-4x;
     }
   }
 }
