@@ -10655,7 +10655,7 @@ header.site-header.site-header--project .btn-page {
 }
 @media only screen and (min-width: 700px) {
   .content-grid.content-grid .content-grid__item, .content-grid.content-grid--1 .content-grid__item, .content-grid.content-grid--1\:1 .content-grid__item, .content-grid.content-grid--2\:1 .content-grid__item, .content-grid.content-grid--1\:2 .content-grid__item {
-    height: calc(100vh - 165px);
+    height: calc(100vh - 165px - var(--vh-offset, 0px));
     margin-bottom: 0;
   }
 }
@@ -10666,13 +10666,13 @@ header.site-header.site-header--project .btn-page {
 }
 @media only screen and (max-width: 699.999px) {
   .content-grid.content-grid .content-grid__item.is-fixed, .content-grid.content-grid--1 .content-grid__item.is-fixed, .content-grid.content-grid--1\:1 .content-grid__item.is-fixed, .content-grid.content-grid--2\:1 .content-grid__item.is-fixed, .content-grid.content-grid--1\:2 .content-grid__item.is-fixed {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 120px - var(--vh-offset, 0px));
     top: 120px;
   }
 }
 @media only screen and (min-width: 700px) {
   .content-grid.content-grid .content-grid__item.is-fixed, .content-grid.content-grid--1 .content-grid__item.is-fixed, .content-grid.content-grid--1\:1 .content-grid__item.is-fixed, .content-grid.content-grid--2\:1 .content-grid__item.is-fixed, .content-grid.content-grid--1\:2 .content-grid__item.is-fixed {
-    height: calc(100vh - 165px);
+    height: calc(100vh - 165px - var(--vh-offset, 0px));
     top: 165px;
   }
 }
@@ -10826,9 +10826,6 @@ nav.content li {
 }
 nav.content li.is-hidden {
   display: none;
-}
-nav.content li:last-of-type a {
-  padding-bottom: 0 !important;
 }
 nav.content a {
   color: #4d4d4d;
@@ -11113,7 +11110,7 @@ section.content-contact .map .marker {
 @media only screen and (max-width: 699.999px) {
   .project-list {
     background-color: #ffffff;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 120px - var(--vh-offset, 0px));
     max-width: calc(90% + 10px);
     padding-right: 15px;
     position: absolute !important;
@@ -11150,7 +11147,7 @@ section.content-contact .map .marker {
     top: 120px;
   }
   .project-info.is-visible {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 120px - var(--vh-offset, 0px));
   }
 }
 @media only screen and (min-width: 700px) {
@@ -11162,7 +11159,7 @@ section.content-contact .map .marker {
     top: 165px;
   }
   .project-info.is-visible {
-    height: calc(100vh - 165px);
+    height: calc(100vh - 165px - var(--vh-offset, 0px));
   }
 }
 .project-info h2 {
