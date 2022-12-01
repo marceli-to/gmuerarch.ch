@@ -15,7 +15,7 @@
           </li>
         @endif
         <li>
-          <a href="{{ route('page.office.jobs') }}" title="{{ __('Offene Stellen') }}">{{ __('Offene Stellen') }}</a>
+          <a href="{{ route('page.office.jobs') }}" class="{{ $section == 'jobs' ? 'is-active' : '' }}" title="{{ __('Offene Stellen') }}">{{ __('Offene Stellen') }}</a>
         </li>
       </ul>
     </nav>
