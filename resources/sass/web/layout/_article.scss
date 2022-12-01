@@ -8,15 +8,25 @@ article.content {
   color: $color-grey;
   @include font-size($fs-lg);
   @include font-regular();
+  padding-bottom: $space-3x;
 
+  @include bp-sm() {
+    padding-bottom: $space-4x;
+  }
+  
   a {
     @extend %underline;
     color: $color-grey;
   }
 
   &.content--team {
+
     @include bp-xs() {
       margin-top: $space-5x;
+    }
+
+    h2 {
+      @include font-size($fs-lg);
     }
 
     nav.content {
