@@ -3,7 +3,7 @@
 @section('seo_description', '')
 @section('content')
 <section class="content">
-  <div class="project-info js-project-info">
+  <div class="project-info pb-3x js-project-info">
     <h2>{{ $project->subtitle }}</h2>
     @if ($project->abstract)
       <div class="project-info__abstract">
