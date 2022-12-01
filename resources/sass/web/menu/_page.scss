@@ -6,10 +6,6 @@
 
 nav.page {
 
-  @include bp-xs() {
-    max-width: 90%;
-  }
-  
   ul {
     display: flex;
     flex-wrap: wrap;

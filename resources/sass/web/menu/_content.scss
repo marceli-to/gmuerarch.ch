@@ -31,13 +31,13 @@ nav.content {
 
   &.content--team {
 
-    @include bp-xs() {
-      padding-bottom: $space-1x;
-    }
-
     li {
       line-height: 1.4;
       margin-bottom: $space-5x;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
 
       &.is-postum {
         margin-bottom: $space-10x;

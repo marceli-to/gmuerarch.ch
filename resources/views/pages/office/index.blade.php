@@ -2,8 +2,8 @@
 @section('seo_title', __('Büro'))
 @section('seo_description', '')
 @section('content')
-<section class="content content-grid content-grid--1:1 office">
-  <div class="content-grid__item content__text office__list">
+<section class="content content-grid content-grid--1:1">
+  <div class="content-grid__item sm:pt-12x">
     <nav class="page">
       <ul>
         <li>
@@ -53,7 +53,7 @@
     @endif
   </div>
 
-  <div class="content-grid__item office__image">
+  <div class="content-grid__item is-fixed">
     @if ($teamImage)
       <x-image 
         :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 

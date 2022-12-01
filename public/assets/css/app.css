@@ -10710,11 +10710,6 @@ main.site.site--auth {
 section.content {
   position: relative;
 }
-@media only screen and (min-width: 700px) {
-  section.content .content__text {
-    padding-top: 60px;
-  }
-}
 
 /**→
  * -----------------------------------------------------------------------------
@@ -10839,14 +10834,12 @@ nav.content a {
   padding-bottom: 15px;
   width: auto;
 }
-@media only screen and (max-width: 699.999px) {
-  nav.content.content--team {
-    padding-bottom: 5px;
-  }
-}
 nav.content.content--team li {
   line-height: 1.4;
   margin-bottom: 25px;
+}
+nav.content.content--team li:last-of-type {
+  margin-bottom: 0;
 }
 nav.content.content--team li.is-postum {
   margin-bottom: 50px;
@@ -10861,11 +10854,6 @@ nav.content.content--team a {
  * File: layout/menu/page
  * -----------------------------------------------------------------------------
  */
-@media only screen and (max-width: 699.999px) {
-  nav.page {
-    max-width: 90%;
-  }
-}
 nav.page ul {
   display: flex;
   flex-wrap: wrap;
@@ -11111,8 +11099,7 @@ section.content-contact .map .marker {
   .project-list {
     background-color: #ffffff;
     height: calc(100vh - 120px - var(--vh-offset, 0px));
-    max-width: calc(90% + 10px);
-    padding-right: 15px;
+    max-width: 90%;
     position: absolute !important;
     width: 100%;
     z-index: 100;

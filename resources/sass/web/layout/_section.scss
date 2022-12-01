@@ -6,10 +6,4 @@
 
 section.content {
   position: relative;
-  
-  .content__text {
-    @include bp-sm() {
-      padding-top: 60px;
-    }
-  }
 }

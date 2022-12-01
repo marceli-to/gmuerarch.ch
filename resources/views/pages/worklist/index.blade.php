@@ -3,7 +3,7 @@
 @section('seo_description', '')
 @section('content')
 <section class="content content-grid content-grid--1:1">
-  <div class="content-grid__item content__text project-list project-list--works">
+  <div class="content-grid__item sm:pt-12x project-list project-list--works">
   @if ($projects)
     <nav class="content">
       <ul>
@@ -20,7 +20,7 @@
     </nav>
   @endif
   </div>
-  <div class="content-grid__item is-fixed xs-hide">
+  <div class="content-grid__item is-fixed xs:hide">
     <x-project-preview-images :projects="$projects" />
   </div>
 </section>

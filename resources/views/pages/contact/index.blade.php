@@ -3,7 +3,7 @@
 @section('seo_description', '')
 @section('content')
 <section class="content content-contact content-grid content-grid--1:1">
-  <div class="content-grid__item content__text">
+  <div class="content-grid__item sm:pt-12x">
     <p>
       Silvia Gmür Reto Gmür Architekten<br>
       Pfluggässlein 3<br>
