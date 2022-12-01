@@ -18,6 +18,12 @@ nav.content {
     &.is-hidden {
       display: none;
     }
+
+    &:last-of-type {
+      a {
+        padding-bottom: 0 !important;
+      }
+    }
   }
 
   a {
