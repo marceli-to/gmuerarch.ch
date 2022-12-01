@@ -4,7 +4,7 @@
 @section('content')
 <section class="content content-grid content-grid--1:1">
   <div class="content-grid__item sm:pt-12x">
-    <article class="content content--contact">
+    <article class="content">
       <p>
         Silvia Gmür Reto Gmür Architekten<br>
         Pfluggässlein 3<br>
@@ -36,7 +36,7 @@ var geojson = {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [7.589448398659148,47.55619108998608],
+      coordinates: [7.589387843808185,47.5559782917443],
     },
     properties: {
       title: 'Silvia Gmür Reto Gmür Architekten',
