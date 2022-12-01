@@ -1,0 +1,29 @@
+/**
+ * -----------------------------------------------------------------------------
+ * File: components/map
+ * -----------------------------------------------------------------------------
+ */
+
+.map {
+  margin-bottom: 0 !important;
+  margin-top: $space-8x;
+  min-height: 300px;
+
+  @include bp-sm() {
+    margin-top: 0;
+  }
+  
+  .marker {
+    background-image: url($url-icons + 'marker.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+
+    @include bp-md() {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
