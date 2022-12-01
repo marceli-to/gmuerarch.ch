@@ -5,6 +5,7 @@
   <rect y="10" width="16" height="1" fill="black"/>
 </svg>
 @endif
+
 @if ($type == 'cross')
 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="cross">
   <rect y="11.8995" width="16" height="1" transform="rotate(-45 0 11.8995)" fill="#C84027"/>
@@ -22,4 +23,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.3 16.6">
   <path fill="currrentColor" d="M18 0l-1 1 6.6 6.6H0v1.5h23.6L17 15.6l1 1 8.3-8.3L18 0z"/>
 </svg>
+@endif
+
+@if ($type == 'arrow-up')
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><polygon fill="#c8422a" points="3.8 0 3.8 1.8 11.6 1.8 0 13.3 1.3 14.6 12.9 3 12.9 10.8 14.6 10.8 14.6 0 3.8 0"/></svg>
 @endif

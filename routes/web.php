@@ -39,7 +39,7 @@ Route::get('/buero/lebenslauf/{slug?}/{teamMember}', [OfficeController::class, '
 Route::get('/buero/offene-stellen', [OfficeController::class, 'jobs'])->name('page.office.jobs');
 
 // Frontend - Discourse
-Route::get('/diskurs', [DiscourseController::class, 'index'])->name('page.discourse.index');
+Route::get('/diskurs/{topic?}', [DiscourseController::class, 'index'])->name('page.discourse.index');
 
 // Frontend - Contact
 Route::get('/kontakt', [ContactController::class, 'index'])->name('page.contact.index');

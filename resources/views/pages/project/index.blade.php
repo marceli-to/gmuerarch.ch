@@ -19,28 +19,28 @@
           @endforeach
         </ul>
       </nav>
-      @if ($projects)
-        <nav class="content">
-          <ul>
-            @foreach($projects as $project)
-              @php 
-                $categories = $project->categories->pluck('id');
-              @endphp
+    @endif
+    @if ($projects)
+      <nav class="content">
+        <ul>
+          @foreach($projects as $project)
+            @php 
+              $categories = $project->categories->pluck('id');
+            @endphp
 
-              <li data-categories="{{ $categories->join(',') }}" 
-                  class="{{ !in_array($project_active_category->id, $categories->toArray()) ? 'is-hidden' : 'is-visible' }}">
+            <li data-categories="{{ $categories->join(',') }}" 
+                class="{{ !in_array($project_active_category->id, $categories->toArray()) ? 'is-hidden' : 'is-visible' }}">
 
-                <a href="{{ route('page.project.show', ['category' => $project_active_category->slug, 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
-                  title="{{ $project->title }}" 
-                  data-project="{{ $project->id }}">
-                  {{ $project->title }}
-                </a>
+              <a href="{{ route('page.project.show', ['category' => $project_active_category->slug, 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
+                title="{{ $project->title }}" 
+                data-project="{{ $project->id }}">
+                {{ $project->title }}
+              </a>
 
-              </li>
-            @endforeach
-          </ul>
-        </nav>
-      @endif
+            </li>
+          @endforeach
+        </ul>
+      </nav>
     @endif
 
   </div>

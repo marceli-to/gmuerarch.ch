@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
+use App\Models\Discourse;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class DiscourseController extends BaseController
@@ -15,11 +17,29 @@ class DiscourseController extends BaseController
   /**
    * Show the discourse page
    *
+   * @param String $topic
    * @return \Illuminate\Http\Response
    */
 
-  public function index()
+  public function index($topic = NULL)
   {
+    // Get topic
+    $topic = $topic ? Topic::where('slug', 'like', '%"'.$topic.'"%')->firstOrFail() : Topic::with('discourses')->has('discourses')->first();
+    
+    // Get discourses
+    $discourses = Discourse::query()->with('publishedImage', 'topics', 'publishedFile')
+    ->whereHas('topics', function ($query) use ($topic) {
+      $query->where('id', $topic->id);
+    })->flagged('isPublish')->get();
+
+    return view(
+      $this->viewPath . 'index', 
+      [
+        'discourses' => $discourses,
+        'active_topic' => $topic
+      ]
+    );
+
     return view($this->viewPath . 'index');
   }
 

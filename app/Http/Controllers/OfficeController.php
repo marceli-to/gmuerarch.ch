@@ -64,7 +64,7 @@ class OfficeController extends BaseController
 
   public function jobs()
   {
-    $jobs = Job::with('file')->flagged('isPublish')->get();
+    $jobs = Job::with('file')->flagged('isPublish')->orderBy('order')->get();
     $jobImage = JobImage::with('publishedImage')->find(1);
     return view($this->viewPath . 'index', ['jobs' => $jobs, 'jobImage' => $jobImage, 'section' => 'jobs']);
   }

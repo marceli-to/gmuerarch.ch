@@ -13,6 +13,26 @@
   }
 }
 
+@for $i from 1 through 12 {
+  %sm\:grid-cols-#{$i},
+  .sm\:grid-cols-#{$i} {
+    @include bp-sm() {
+      display: grid;
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  %md\:grid-cols-#{$i},
+  .md\:grid-cols-#{$i} {
+    @include bp-md() {
+      display: grid;
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+  }
+}
+
 %grid,
 .grid {
   display: grid;
@@ -68,6 +88,24 @@
   %sm\:span-#{$i},
   .sm\:span-#{$i} {
     @include bp-sm() {
+      grid-column: span $i / span $i;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  %md\:span-#{$i},
+  .md\:span-#{$i} {
+    @include bp-md() {
+      grid-column: span $i / span $i;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  %lg\:span-#{$i},
+  .lg\:span-#{$i} {
+    @include bp-lg() {
       grid-column: span $i / span $i;
     }
   }

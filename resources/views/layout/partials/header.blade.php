@@ -18,6 +18,11 @@
         {{ __('Büro') }}
       </a>
     @endif
+    @if (request()->routeIs('page.discourse*'))
+      <a href="{{ route('page.discourse.index') }}" title="{{ __('Diskurs') }}" class="btn-page sm:hide">
+        {{ __('Diskurs') }}
+      </a>
+    @endif
   <div>
     <a href="{{ route('page.home') }}" class="logo {{ request()->routeIs('page.project*') ? 'logo--projects' : '' }}" title="{{ __('Home') }}">
       @include('icons.logo')

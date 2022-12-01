@@ -42,8 +42,6 @@ class ProjectController extends BaseController
         'project_active_category' => $category
       ]
     );
-
-
   }
 
   /**
