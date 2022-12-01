@@ -10666,7 +10666,7 @@ header.site-header.site-header--project .btn-page {
 }
 @media only screen and (max-width: 699.999px) {
   .content-grid.content-grid .content-grid__item.is-fixed, .content-grid.content-grid--1 .content-grid__item.is-fixed, .content-grid.content-grid--1\:1 .content-grid__item.is-fixed, .content-grid.content-grid--2\:1 .content-grid__item.is-fixed, .content-grid.content-grid--1\:2 .content-grid__item.is-fixed {
-    height: calc(100vh - 120px - var(--vh-offset, 0px));
+    height: calc(100vh - 120px);
     top: 120px;
   }
 }
@@ -11098,7 +11098,7 @@ section.content-contact .map .marker {
 @media only screen and (max-width: 699.999px) {
   .project-list {
     background-color: #ffffff;
-    height: calc(100vh - 120px - var(--vh-offset, 0px));
+    height: calc(100vh - 120px);
     max-width: 90%;
     position: absolute !important;
     width: 100%;
@@ -11134,7 +11134,7 @@ section.content-contact .map .marker {
     top: 120px;
   }
   .project-info.is-visible {
-    height: calc(100vh - 120px - var(--vh-offset, 0px));
+    height: calc(100vh - 120px);
   }
 }
 @media only screen and (min-width: 700px) {
