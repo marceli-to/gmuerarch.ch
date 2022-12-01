@@ -14,7 +14,7 @@ export default {
   style_formats: [{
     title: 'Text',
     items: [
-      { title: 'Liste', block: 'ul', classes : 'list' },
+      { title: 'Unterstrichen', inline: 'span', classes : 'underline-static' },
       { title: 'Überschrift 1', block : 'h1'},
       { title: 'Überschrift 2', block : 'h2'},
     ],

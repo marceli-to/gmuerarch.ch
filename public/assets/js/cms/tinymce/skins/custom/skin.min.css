@@ -149,3 +149,9 @@
 .is-inline-edit + .tox:not([dir=rtl]) .tox-toolbar__group:not(:last-of-type) {
     border-right: 1px dashed #eeeeee;
 }
+
+.underline-static {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}

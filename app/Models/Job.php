@@ -81,7 +81,7 @@ class Job extends Base
 
   public function file()
   {
-    return $this->morphOne(File::class, 'fileable');
+    return $this->morphOne(File::class, 'fileable')->where('publish', 1);
   }
 
 

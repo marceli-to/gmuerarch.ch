@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
 use App\Models\TeamMember;
 use App\Models\TeamImage;
+use App\Models\Job;
+use App\Models\JobImage;
 use Illuminate\Http\Request;
 
 class OfficeController extends BaseController
@@ -51,6 +53,20 @@ class OfficeController extends BaseController
   {
     $teamMember = TeamMember::with('publishedImage')->findOrFail($teamMember->id);
     return view($this->viewPath . 'index', ['teamMember' => $teamMember,  'section' => 'cv']);
+  }
+
+
+  /**
+   * Show a list of jobs
+   *
+   * @return \Illuminate\Http\Response
+   */
+
+  public function jobs()
+  {
+    $jobs = Job::with('file')->flagged('isPublish')->get();
+    $jobImage = JobImage::with('publishedImage')->find(1);
+    return view($this->viewPath . 'index', ['jobs' => $jobs, 'jobImage' => $jobImage, 'section' => 'jobs']);
   }
 
 }

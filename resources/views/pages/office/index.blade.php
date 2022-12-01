@@ -26,6 +26,9 @@
     @if ($section == 'cv' && $teamMember)
       @include('pages.office.partials.cv')
     @endif
+    @if ($section == 'jobs' && $jobs)
+      @include('pages.office.partials.jobs')
+    @endif
   </div>
 
   <div class="content-grid__item is-fixed">
@@ -46,6 +49,16 @@
         height="900"
         :classes="'xs:hide'"
         :image="$teamMember->publishedImage" 
+      />
+    @endif
+
+    @if (isset($jobImage) && $jobImage->publishedImage)
+      <x-image 
+        :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
+        width="1600"
+        height="900"
+        :classes="'xs:hide'"
+        :image="$jobImage->publishedImage" 
       />
     @endif
 

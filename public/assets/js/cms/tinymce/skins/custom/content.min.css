@@ -70,4 +70,10 @@ h2 {
 h3 {
   display: inline-block !important;
 }
+
+.underline-static {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
 /*# sourceMappingURL=content.min.css.map */
