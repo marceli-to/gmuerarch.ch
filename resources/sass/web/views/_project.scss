@@ -39,7 +39,7 @@
   @include bp-xs() {
     left: 0;
     max-width: 90%;
-    padding: $space-6x $space-2x $space-2x $space-2x;
+    padding: $space-6x $space-3x $space-2x $space-3x;
     transform: translateX(-100%);
     top: $site-header-height-xs;
 
@@ -51,7 +51,7 @@
   @include bp-sm() {
     right: 0;
     width: 50%;
-    padding: $space-12x $space-3x $space-6x $space-3x;
+    padding: $space-12x $space-4x $space-6x $space-4x;
     transform: translateX(100%);
     top: $site-header-height-sm;
 

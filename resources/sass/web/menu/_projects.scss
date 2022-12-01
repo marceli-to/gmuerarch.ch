@@ -30,7 +30,7 @@ nav.project {
 
   .project__browse {
     display: flex;
-    padding: 0 $space-1x;
+    padding: 0 $space-2x;
 
     @include bp-sm() {
       padding: 0 $space-3x;
