@@ -106,3 +106,9 @@
     text-decoration: none;
   }
 }
+
+.underline-static {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}

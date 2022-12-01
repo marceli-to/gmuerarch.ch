@@ -2,15 +2,18 @@
 @section('seo_title', __('Kontakt'))
 @section('seo_description', '')
 @section('content')
-<section class="content content-contact content-grid content-grid--1:1">
+<section class="content content-grid content-grid--1:1">
   <div class="content-grid__item sm:pt-12x">
-    <p>
-      Silvia Gmür Reto Gmür Architekten<br>
-      Pfluggässlein 3<br>
-      CH-4001 Basel<br>
-      Telefon 061 261 24 62<br>
-      <a href="mailto:mail@gmuerarch.ch" title="{{ __('E-Mail') }}">mail@gmuerarch.ch</a><br>
-      <a href="https://www.gmuerarch.ch" title="{{ __('Webseite') }}">www.gmuerarch.ch</a>
+    <article class="content content--contact">
+      <p>
+        Silvia Gmür Reto Gmür Architekten<br>
+        Pfluggässlein 3<br>
+        CH-4001 Basel<br>
+        Telefon 061 261 24 62<br>
+        <a href="mailto:mail@gmuerarch.ch" title="{{ __('E-Mail') }}">mail@gmuerarch.ch</a><br>
+        <a href="https://www.gmuerarch.ch" title="{{ __('Webseite') }}">www.gmuerarch.ch</a>
+      </p>
+    </article>
   </div>
   <div class="content-grid__item map" id="map"></div>
 </section>

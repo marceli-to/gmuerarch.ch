@@ -5,6 +5,6 @@
  */
 
 h1 {
-  @include font-size($fs-lg);
+  @include font-size($fs-xl);
   @include font-medium();
 }

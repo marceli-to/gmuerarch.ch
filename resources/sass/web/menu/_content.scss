@@ -27,25 +27,4 @@ nav.content {
     padding-bottom: $space-3x;
     width: auto;
   }
-
-  &.content--team {
-
-    li {
-      margin-bottom: $space-5x;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      &.is-postum {
-        margin-bottom: $space-10x;
-      }
-    }
-
-    a {
-      @extend %underline;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-  }
 }

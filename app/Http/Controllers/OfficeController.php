@@ -38,4 +38,19 @@ class OfficeController extends BaseController
     return view($this->viewPath . 'index', ['team' => $team, 'teamImage' => $teamImage, 'section' => 'team']);
   }
 
+
+  /**
+   * Show the cv of a teammember
+   *
+   * @param String $slug
+   * @param TeamMember $teamMember
+   * @return \Illuminate\Http\Response
+   */
+
+  public function cv($slug = NULL, TeamMember $teamMember)
+  {
+    $teamMember = TeamMember::with('publishedImage')->findOrFail($teamMember->id);
+    return view($this->viewPath . 'index', ['teamMember' => $teamMember,  'section' => 'cv']);
+  }
+
 }

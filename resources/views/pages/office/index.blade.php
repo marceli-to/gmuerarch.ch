@@ -7,11 +7,13 @@
     <nav class="page">
       <ul>
         <li>
-          <a href="{{ route('page.office.team') }}" title="{{ __('Team') }}">{{ __('Team') }}</a>
+          <a href="{{ route('page.office.team') }}" class="{{ $section == 'team' ? 'is-active' : '' }}" title="{{ __('Team') }}">{{ __('Team') }}</a>
         </li>
-        {{-- <li>
-          <a href="{{ route('page.office.team') }}" title="{{ __('Lebenslauf') }}">{{ __('Lebenslauf') }}</a>
-        </li> --}}
+        @if ($section == 'cv')
+          <li>
+            <span class="underline">{{ __('Lebenslauf') }}</span>
+          </li>
+        @endif
         <li>
           <a href="{{ route('page.office.jobs') }}" title="{{ __('Offene Stellen') }}">{{ __('Offene Stellen') }}</a>
         </li>
@@ -19,42 +21,15 @@
     </nav>
 
     @if ($section == 'team' && $team)
-      @if ($teamImage)
-        <x-image 
-          :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
-          width="1600"
-          height="900"
-          :classes="'sm:hide mb-4x'"
-          :image="$teamImage->image" 
-        />
-      @endif
-      <nav class="content content--team">
-        <ul>
-          @foreach($team as $t)
-            <li class="{{ $t->postum ? 'is-postum' : '' }}">
-              @if ($t->postum)
-                <h2 class="mb-3x">{{ __('Postum') }}</h2>
-              @endif
-              @if ($t->cv)
-                <a href="" title="{{ __('CV') }} {{ $t->firstname }} {{ $t->name }}">
-                  {{ $t->firstname }} {{ $t->name }}@if($t->description), {{ $t->description }}@endif
-                </a>
-                @if ($t->title)<br>{{ $t->title }}@endif
-              @else
-                <div>
-                  {{ $t->firstname }} {{ $t->name }}@if($t->description), {{ $t->description }}@endif
-                  @if ($t->title)<br>{{ $t->title }}@endif
-                </div>
-              @endif
-            </li>
-          @endforeach
-        </ul>
-      </nav>
+      @include('pages.office.partials.team')
+    @endif
+    @if ($section == 'cv' && $teamMember)
+      @include('pages.office.partials.cv')
     @endif
   </div>
 
   <div class="content-grid__item is-fixed">
-    @if ($teamImage)
+    @if (isset($teamImage) && $teamImage)
       <x-image 
         :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
         width="1600"
@@ -63,6 +38,17 @@
         :image="$teamImage->image" 
       />
     @endif
+
+    @if (isset($teamMember) && $teamMember->publishedImage)
+      <x-image 
+        :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
+        width="1600"
+        height="900"
+        :classes="'xs:hide'"
+        :image="$teamMember->publishedImage" 
+      />
+    @endif
+
   </div>
 </section>
 @endsection

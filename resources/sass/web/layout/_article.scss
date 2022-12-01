@@ -4,5 +4,77 @@
  * -----------------------------------------------------------------------------
  */
 
-article {
+article.content {
+  color: $color-grey;
+  @include font-size($fs-lg);
+  @include font-regular();
+
+  a {
+    @extend %underline;
+    color: $color-grey;
+  }
+
+  &.content--team {
+    @include bp-xs() {
+      margin-top: $space-5x;
+    }
+
+    nav.content {
+
+      li {
+        margin-bottom: $space-5x;
+  
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+  
+        &.is-postum {
+          margin-bottom: $space-8x;
+
+          @include bp-sm() {
+            margin-bottom: $space-10x;
+          }
+        }
+
+        > div, h2, a {
+          line-height: 1.35;
+        }
+
+      }
+  
+      a {
+        @extend %underline;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+    }
+  }
+
+  &.content--contact {
+  
+    .map {
+      margin-bottom: 0 !important;
+      margin-top: $space-8x;
+      min-height: 300px;
+  
+      @include bp-sm() {
+        margin-top: 0;
+      }
+      
+      .marker {
+        background-image: url($url-icons + 'marker.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+    
+        @include bp-md() {
+          height: 40px;
+          width: 40px;
+        }
+      }
+    }
+  }
 }

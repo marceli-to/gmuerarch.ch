@@ -60,12 +60,6 @@
     }
   }
 
-  h2 {
-    @include font-regular();
-    @include font-size($fs-lg);
-    margin-bottom: $space-3x;
-  }
-
   .project-info__abstract {
     @include font-medium();
     @include font-size($fs-md);

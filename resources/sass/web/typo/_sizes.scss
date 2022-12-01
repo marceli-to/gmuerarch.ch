@@ -21,10 +21,14 @@ $fs-md: (
 );
 
 $fs-lg: (
-  null: (17px,1.4),
-  sm:   (22px,1.4),
+  null: (17px,1.25),
+  sm:   (20px,1.25),
 );
 
+$fs-xl: (
+  null: (18px,1.3),
+  sm:   (22px,1.3),
+);
 
 $fs-menu: (
   null: (17px,1),
