@@ -1,5 +1,6 @@
 <header class="site-header site-header--project">
   <a href="{{ route('page.project.index') }}" title="{{ __('Projekte') }}" class="btn-page">
+    <x-icon type="cross" />
     {{ __('Projekte') }}
   </a>
   <div>

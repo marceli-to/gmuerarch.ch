@@ -39,10 +39,20 @@ header.site-header {
     }
 
     .btn-page {
+      display: flex;
       left: $space-3x;
+      
       @include bp-sm() {
         left: $space-4x;
       }
+
+      svg {
+        display: block;
+        margin-right: 12px;
+        height: 18px;
+        width: auto;
+      }
+
     }
   }
 }

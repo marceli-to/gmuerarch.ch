@@ -11,9 +11,13 @@
   @include font-medium();
   left: $space-9x;
   position: absolute;
-  top: $space-3x;
+  top: 17px;
 
   @include bp-sm() {
     top: $space-4x;
+  }
+
+  svg {
+    display: none;
   }
 }
