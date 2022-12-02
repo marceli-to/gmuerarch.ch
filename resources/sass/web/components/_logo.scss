@@ -7,16 +7,18 @@
 .logo {
   color: $color-black;
   display: block;
-  max-width: 275px;
+  //max-width: 275px;
   left: 50%;
   position: absolute;
   top: 50%;
   text-decoration: none;
   transform: translate(-50%, -50%);
   width: 100%;
+  width: clamp(275px, 85%, 320px);
 
   @include bp-sm() {
     max-width: 560px;
+    width: 100%;
   }
 
   svg {

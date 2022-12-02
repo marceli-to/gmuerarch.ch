@@ -20,10 +20,8 @@
   };
 
   const toggle = function(){
-    console.log('d');
     const menu = document.querySelector(selectors.menu);
     menu.classList.toggle(classes.visible);
-
     const btnMenu = document.querySelector(selectors.btnMenu);
     btnMenu.classList.toggle(classes.active);
   };
