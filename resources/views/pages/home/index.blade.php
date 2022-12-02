@@ -3,24 +3,24 @@
 <section class="content">
   @foreach($grid['imageGrids'] as $imageGrid)
     <div class="content-grid content-grid--{{ $imageGrid->layout }}">
-      @foreach($imageGrid->imageGridItems as $gridItem)
-        <figure class="content-grid__item">
-          <a href="{{ route('page.project.show', 
-              [
-                'category' => $gridItem->project->categories->first()->slug, 
-                'slug' => AppHelper::slug($gridItem->project->title), 
-                'project' => $gridItem->image->imageable_id
-              ]
-            )}}">
-            <x-image 
-              :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
-              width="1600"
-              height="900"
-              :image="$gridItem->image" 
-            />
-          </a>
-        </figure>
-      @endforeach
+
+      @if ($imageGrid->layout == '1:2')
+        @include('components.project.grid-item', ['gridItem' => $imageGrid->imageGridItems[0], 'stack' => FALSE])
+        <div class="content-grid__item content-grid__item--stack">
+          @include('components.project.grid-item', ['gridItem' => $imageGrid->imageGridItems[1], 'stack' => TRUE])
+          @include('components.project.grid-item', ['gridItem' => $imageGrid->imageGridItems[2], 'stack' => TRUE])
+        </div>
+      @elseif ($imageGrid->layout == '2:1')
+        <div class="content-grid__item content-grid__item--stack">
+          @include('components.project.grid-item', ['gridItem' => $imageGrid->imageGridItems[0], 'stack' => TRUE])
+          @include('components.project.grid-item', ['gridItem' => $imageGrid->imageGridItems[1], 'stack' => TRUE])
+        </div>
+        @include('components.project.grid-item', ['gridItem' => $imageGrid->imageGridItems[2], 'stack' => FALSE])
+      @else
+        @foreach($imageGrid->imageGridItems as $gridItem)
+          @include('components.project.grid-item', ['gridItem' => $gridItem, 'stack' => FALSE])
+        @endforeach
+      @endif
     </div>
   @endforeach
 </section>

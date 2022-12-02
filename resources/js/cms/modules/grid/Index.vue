@@ -17,6 +17,7 @@
   </page-header>
 
   <grid-layout-selector 
+    :modelName="$props.modelName"
     @select="addRow($event)" 
     v-if="hasGridSelector">
   </grid-layout-selector>

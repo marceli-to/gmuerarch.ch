@@ -178,6 +178,27 @@
         }
       }
     }
+
+    .content-grid__item--stack {
+      @include bp-sm() {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        margin-bottom: 0;
+
+        > figure {
+          height: calc(#{$full-viewport-height-sm} / 2 - #{$space-2x});
+
+          &:first-of-type {
+            margin-bottom: $space-2x;
+          }
+          
+          &:last-of-type {
+            margin-top: $space-2x;
+          }
+        }
+      }
+    }
   }
 
   &.content-grid--1\:1,

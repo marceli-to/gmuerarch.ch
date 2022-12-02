@@ -6,10 +6,10 @@
     <a href="" @click.prevent="$emit('select', {layout: '1:1', items: '2'})">
       <grid-layout :layout="'1:1'" />
     </a>
-    <a href="" @click.prevent="$emit('select', {layout: '2:1', items: '3'})">
+    <a href="" @click.prevent="$emit('select', {layout: '2:1', items: '3'})" v-if="$props.modelName == 'Home'">
       <grid-layout :layout="'2:1'" />
     </a>
-    <a href="" @click.prevent="$emit('select', {layout: '1:2', items: '3'})">
+    <a href="" @click.prevent="$emit('select', {layout: '1:2', items: '3'})" v-if="$props.modelName == 'Home'">
       <grid-layout :layout="'1:2'" />
     </a>
   </div>
@@ -20,6 +20,17 @@ import GridLayout from "@/modules/grid/icons/GridLayout.vue";
 export default {
   components: {
     GridLayout
+  },
+
+  props: {
+    modelName: {
+      type: String,
+      default: '',
+    }
+  },
+
+  mounted() {
+    console.log(this.$props);
   }
 }
 </script>
