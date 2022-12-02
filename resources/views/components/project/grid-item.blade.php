@@ -1,4 +1,4 @@
-@if ($gridItem)
+@if ($gridItem->project)
   <figure class="{{ !$stack ? 'content-grid__item' : '' }}">
     <a href="{{ route('page.project.show', 
         [
