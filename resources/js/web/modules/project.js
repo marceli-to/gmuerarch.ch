@@ -41,8 +41,8 @@
             image.classList.add('is-hidden');
           });
   
-          const id = listItemFirst.dataset.project;
-          const targetImage = document.querySelector('picture[data-project="'+ id +'"]');
+          // const id = listItemFirst.dataset.project;
+          const targetImage = document.querySelector('picture[data-project="preview"]');
           targetImage.classList.remove('is-hidden');
         });
   

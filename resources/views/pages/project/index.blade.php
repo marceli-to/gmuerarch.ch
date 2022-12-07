@@ -3,7 +3,7 @@
 @section('seo_description', '')
 @section('content')
 <section class="content content-grid content-grid--1:1">
-  <div class="content-grid__item sm:pt-12x pb-3x project-list">
+  <div class="content-grid__item sm:pt-12x project-list">
     @if ($project_categories)
       <nav class="page">
         <ul>
@@ -12,7 +12,7 @@
               <a 
                 href="{{ route('page.project.index', ['category' => $category->slug]) }}" 
                 title="{{ $category->title }}"
-                class="{{ $category->id == $project_active_category->id ? 'is-active' : '' }}">
+                class="{{ $category->id == $projectActiveCategory->id ? 'is-active' : '' }}">
                 {!! str_replace(' ', '&nbsp;', $category->title) !!}
               </a>
             </li>
@@ -29,9 +29,9 @@
             @endphp
 
             <li data-categories="{{ $categories->join(',') }}" 
-                class="{{ !in_array($project_active_category->id, $categories->toArray()) ? 'is-hidden' : 'is-visible' }}">
+                class="{{ !in_array($projectActiveCategory->id, $categories->toArray()) ? 'is-hidden' : 'is-visible' }}">
 
-              <a href="{{ route('page.project.show', ['category' => $project_active_category->slug, 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
+              <a href="{{ route('page.project.show', ['category' => $projectActiveCategory->slug, 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
                 title="{{ $project->title }}" 
                 data-project="{{ $project->id }}">
                 {{ $project->title }}
@@ -45,7 +45,16 @@
 
   </div>
   <div class="content-grid__item is-fixed">
-    <x-project-preview-images :projects="$projects_by_category" />
+    <x-image 
+      :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
+      width="1600"
+      height="900"
+      :image="$projectImage->publishedImage"
+      :visible="true"
+      :overlay="true"
+      :project="'preview'"
+    />
+    <x-project-preview-images :projects="$projectsByCategory" :previewImage="$projectImage" />
   </div>
 </section>
 @endsection

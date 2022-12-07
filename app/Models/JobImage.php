@@ -5,7 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobImage extends Base
 {
-
   public function image()
   {
     return $this->morphOne(Image::class, 'imageable');

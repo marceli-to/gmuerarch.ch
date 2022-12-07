@@ -30,7 +30,7 @@ class DiscourseController extends BaseController
     $discourses = Discourse::query()->with('publishedImage', 'topics', 'publishedFile')
     ->whereHas('topics', function ($query) use ($topic) {
       $query->where('id', $topic->id);
-    })->flagged('isPublish')->get();
+    })->flagged('isPublish')->orderBy('order')->get();
 
     return view(
       $this->viewPath . 'index', 

@@ -20,10 +20,12 @@
               {{ $t->firstname }} {{ $t->name }}@if($t->description), {{ $t->description }}@endif
             </a>
             @if ($t->title)<br>{{ $t->title }}@endif
+            @if ($t->email)<br>{{ $t->email }}@endif
           @else
             <div>
               {{ $t->firstname }} {{ $t->name }}@if($t->description), {{ $t->description }}@endif
               @if ($t->title)<br>{{ $t->title }}@endif
+              @if ($t->email)<br><a href="mailto:{{$t->email}}" title="{{ $t->email }}">{{ $t->email }}</a>@endif
             </div>
           @endif
         </li>

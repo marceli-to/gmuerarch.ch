@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
 use App\Models\Project;
+use App\Models\ProjectImage;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -33,13 +34,17 @@ class ProjectController extends BaseController
       $query->where('id', $category->id);
     })->flagged('isPublish')->get();
 
+    // Get project image (overview)
+    $projectImage = ProjectImage::with('publishedImage')->find(1);
+
     return view(
       $this->viewPath . 'index', 
       [
         'projects' => $projects,
-        'projects_by_category' => $projectsByCategory,
-        'project_active' =>  $projectsByCategory, 
-        'project_active_category' => $category
+        'projectsByCategory' => $projectsByCategory,
+        'projectActive' =>  $projectsByCategory, 
+        'projectActiveCategory' => $category,
+        'projectImage' => $projectImage
       ]
     );
   }

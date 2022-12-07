@@ -14,4 +14,11 @@ main.site {
   &.site--auth {
     padding-top: 0 !important;
   }
+
+  &.site--grids {
+    padding-bottom: $space-3x;
+    @include bp-sm() {
+      padding-bottom: $space-4x;
+    }
+  }
 }

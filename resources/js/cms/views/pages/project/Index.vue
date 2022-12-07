@@ -11,6 +11,12 @@
         </router-link>
       </div>
       <div class="card">
+        <router-link :to="{name: 'project-images'}">
+          <h2>Projektbilder</h2>
+          <p>Verwaltung der Übersichts-Bilder</p>
+        </router-link>
+      </div>
+      <div class="card">
         <router-link :to="{name: 'categories'}">
           <h2>Kategorien</h2>
           <p>Verwaltung der Kategorien</p>

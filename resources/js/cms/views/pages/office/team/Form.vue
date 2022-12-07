@@ -20,6 +20,10 @@
           <label-required />
         </div>
         <div class="form-row">
+          <label>E-Mail</label>
+          <input type="text" v-model="data.email">
+        </div>
+        <div class="form-row">
           <label>Titel</label>
           <input type="text" v-model="data.title.de">
         </div>
@@ -141,6 +145,7 @@ export default {
         id: null,
         name: null,
         firstname: null,
+        email: null,
         title: {
           de: null,
           en: null,

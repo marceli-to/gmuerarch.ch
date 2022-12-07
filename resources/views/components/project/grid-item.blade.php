@@ -1,4 +1,4 @@
-@if ($gridItem->project)
+@if ($gridItem->project && $gridItem->image)
   <figure class="{{ !$stack ? 'content-grid__item' : '' }}">
     <a href="{{ route('page.project.show', 
         [
@@ -14,5 +14,9 @@
         :image="$gridItem->image" 
       />
     </a>
+  </figure>
+@else
+  <figure>
+    <img src="/assets/img/transparent.png" width="1600" height="900">
   </figure>
 @endif

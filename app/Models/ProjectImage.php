@@ -3,7 +3,7 @@ namespace App\Models;
 use App\Models\Base;
 use Illuminate\Database\Eloquent\Model;
 
-class TeamImage extends Base
+class ProjectImage extends Base
 {
   public function image()
   {

@@ -13,7 +13,7 @@ class BaseController extends Controller
   {
     $categories = Category::with('projects')->has('projects')->get();
     \View::share('project_categories', $categories);
-    \View::share('project_active_category', $categories[0]);
+    \View::share('projectActiveCategory', $categories[0]);
 
     $topics = Topic::with('discourses')->has('discourses')->get();
     \View::share('discourse_topics', $topics);

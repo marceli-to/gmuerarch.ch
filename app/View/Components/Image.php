@@ -47,9 +47,9 @@ class Image extends Component
   public $overlay; 
 
   /**
-   * Project
+   * Project id
    *
-   * @var Object
+   * @var Integer
    */
   public $project; 
 

@@ -8,7 +8,7 @@
   />
 @endif
 <article class="content content--team">
-  @if ($jobs)
+  @if ($jobs->count() > 0)
     @foreach($jobs as $job)
       @if ($job->file)
         <a href="/storage/uploads/{{ $job->file->name }}" title="{{ __('Download Jobinserat ' . $job->title) }}" target="_blank">
@@ -17,5 +17,7 @@
         {!! $job->text !!}  
       @endif
     @endforeach
+  @else
+    <p>{{ __('Zur Zeit keine.')}}
   @endif
 </article>

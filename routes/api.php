@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\TopicController;
 use App\Http\Controllers\Api\DiscourseController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\ProjectImageController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ImageGridController;
 use App\Http\Controllers\Api\ImageGridItemController;
@@ -104,6 +105,9 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('category', [CategoryController::class, 'store']);
   Route::put('category/{category}', [CategoryController::class, 'update']);
   Route::delete('category/{category}', [CategoryController::class, 'destroy']);
+
+  // Project images
+  Route::get('project-images', [ProjectImageController::class, 'get']);
 
   // Projects
   Route::get('projects', [ProjectController::class, 'get']);

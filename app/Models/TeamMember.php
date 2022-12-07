@@ -64,6 +64,7 @@ class TeamMember extends Base
     'firstname',
     'name',
     'title',
+    'email',
     'description',
     'cv',
     'order'
