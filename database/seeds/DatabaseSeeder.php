@@ -14,11 +14,15 @@ class DatabaseSeeder extends Seeder
       \Database\Seeders\UserSeeder::class,
       \Database\Seeders\TopicSeeder::class,
       \Database\Seeders\CategorySeeder::class,
-      \Database\Seeders\DiscourseSeeder::class,
       \Database\Seeders\HomeSeeder::class,
-      \Database\Seeders\ProjectSeeder::class,
-      \Database\Seeders\JobSeeder::class,
       \Database\Seeders\TeamMemberSeeder::class,
+      \Database\Seeders\JobImageSeeder::class,
+      \Database\Seeders\ProjectImageSeeder::class,
+      \Database\Seeders\TeamImageSeeder::class,
+
+      // \Database\Seeders\JobSeeder::class,
+      // \Database\Seeders\ProjectSeeder::class,
+      // \Database\Seeders\DiscourseSeeder::class,
       // \Database\Seeders\GridSeeder::class,
     ]);
   }

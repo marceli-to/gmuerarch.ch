@@ -119,13 +119,13 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::delete('project/{project}', [ProjectController::class, 'destroy']);
 
   // Image grid
-  Route::post('image-grid', [GridController::class, 'store']);
-  Route::delete('image-grid/{imageGrid}', [GridController::class, 'destroy']);
-  Route::post('image-grid/order', [GridController::class, 'order']);
+  Route::post('grid', [GridController::class, 'store']);
+  Route::delete('grid/{grid}', [GridController::class, 'destroy']);
+  Route::post('grid/order', [GridController::class, 'order']);
 
   // Image grid item
-  Route::post('image-grid-item', [GridItemController::class, 'store']);
-  Route::put('image-grid-item/{imageGridItem}', [GridItemController::class, 'reset']);
+  Route::post('grid-item', [GridItemController::class, 'store']);
+  Route::put('grid-item/{gridItem}', [GridItemController::class, 'reset']);
 
   // Home
   Route::get('home', [HomeController::class, 'find']);

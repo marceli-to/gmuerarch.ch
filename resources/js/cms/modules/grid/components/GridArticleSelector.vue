@@ -9,7 +9,7 @@
         <template v-if="articles.length">
           <h2>Diskurs-Artikel wählen</h2>
           <div class="select-wrapper mt-2x px-1x">
-            <select v-model="selectedArticleId" @change="$emit('select', { article: selectedArticleId })">
+            <select v-model="selectedArticleId" @change="$emit('select', { discourse: selectedArticleId })">
               <option :value="null">Bitte wählen...</option>
               <option v-for="a in articles" :key="a.id" :value="a.id">{{ a.title.de }}</option>
             </select>

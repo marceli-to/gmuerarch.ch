@@ -28,7 +28,7 @@ class GridController extends Controller
    */
   public function store(Request $request)
   {
-    $imageGrid = Grid::create([
+    $grid = Grid::create([
       'layout' => $request->input('layout'),
       'gridable_type' => "App\Models\\" . $request->input('model.name'),
       'gridable_id' => $request->input('model.id'),
@@ -38,11 +38,11 @@ class GridController extends Controller
     {
       GridItem::create([
         'position' => $i,
-        'grid_id' => $imageGrid->id
+        'grid_id' => $grid->id
       ]);
     }
 
-    return response()->json($imageGrid->with('items'));
+    return response()->json($grid->with('items'));
   }
 
   /**
@@ -67,17 +67,17 @@ class GridController extends Controller
   /**
    * Remove a grid row with all attached items
    *
-   * @param  Grid $imageGrid
+   * @param  Grid $grid
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Grid $imageGrid)
+  public function destroy(Grid $grid)
   {
-    $imageGrid = Grid::with('gridItems')->find($imageGrid->id);
-    foreach($imageGrid->gridItems as $item)
+    $grid = Grid::with('gridItems')->find($grid->id);
+    foreach($grid->gridItems as $item)
     {
       $item->delete();
     }
-    $imageGrid->delete();
+    $grid->delete();
     return response()->json('successfully deleted');
   }
 }

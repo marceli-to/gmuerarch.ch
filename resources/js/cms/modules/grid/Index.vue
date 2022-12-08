@@ -56,6 +56,7 @@
             v-for="item in grid.grid_items"
             :key="item.id"
             :item="item"
+            :hasArticles="hasArticles"
             @resetItem="resetItem($event)"
             @showImages="showImageSelector($event)"
             @showArticles="showArticleSelector($event)">
@@ -67,6 +68,7 @@
             v-for="item in grid.grid_items"
             :key="item.id"
             :item="item"
+            :hasArticles="hasArticles"
             @resetItem="resetItem($event)"
             @showImages="showImageSelector($event)"
             @showArticles="showArticleSelector($event)">
@@ -76,6 +78,7 @@
         <template v-if="grid.layout == '1:2'">
           <grid-row-item 
             :item="grid.grid_items[0] ? grid.grid_items[0] : null"
+            :hasArticles="hasArticles"
             @resetItem="resetItem($event)"
             @showImages="showImageSelector($event)"
             @showArticles="showArticleSelector($event)">
@@ -83,6 +86,7 @@
           <div class="grid-stack">
             <grid-row-item 
               :item="grid.grid_items[1] ? grid.grid_items[1] : null"
+              :hasArticles="hasArticles"
               @resetItem="resetItem($event)"
               @showImages="showImageSelector($event)"
               @showArticles="showArticleSelector($event)">
@@ -100,12 +104,14 @@
           <div class="grid-stack">
             <grid-row-item 
               :item="grid.grid_items[0] ? grid.grid_items[0] : null"
+              :hasArticles="hasArticles"
               @resetItem="resetItem($event)"
               @showImages="showImageSelector($event)"
               @showArticles="showArticleSelector($event)">
             </grid-row-item>
             <grid-row-item 
               :item="grid.grid_items[1] ? grid.grid_items[1] : null"
+              :hasArticles="hasArticles"
               @resetItem="resetItem($event)"
               @showImages="showImageSelector($event)"
               @showArticles="showArticleSelector($event)">
@@ -113,6 +119,7 @@
           </div>
           <grid-row-item
             :item="grid.grid_items[2] ? grid.grid_items[2] : null"
+            :hasArticles="hasArticles"
             @resetItem="resetItem($event)"
             @showImages="showImageSelector($event)"
             @showArticles="showArticleSelector($event)">
@@ -199,12 +206,11 @@ export default {
 
       // Routes
       routes: {
-        store: '/api/image-grid',
-        order: '/api/image-grid/order',
-        delete: '/api/image-grid',
-        storeImageItem: '/api/image-grid-item',
-        storeArticleItem: '/api/article-grid-item',
-        resetItem: '/api/image-grid-item',
+        store: '/api/grid',
+        order: '/api/grid/order',
+        delete: '/api/grid',
+        storeItem: '/api/grid-item',
+        resetItem: '/api/grid-item',
       },
 
       // States
@@ -214,6 +220,7 @@ export default {
       hasGridSelector: false,
       hasImageSelector: false,
       hasArticleSelector: false,
+      hasArticles: false,
 
       // Messages
       messages: {
@@ -228,6 +235,7 @@ export default {
 
   mounted() {
     this.gridItems = this.$props.grids;
+    this.hasArticles = this.$props.modelName == 'Home' ? true : false;
   },
 
   methods: {
@@ -297,7 +305,7 @@ export default {
         project_id: data.project
       }
       this.isLoading = true;
-      this.axios.post(this.routes.storeImageItem, item).then(response => {
+      this.axios.post(this.routes.storeItem, item).then(response => {
         this.$notify({ type: "success", text: this.messages.stored });
         this.isLoading = false;
         this.hideImageSelector();
@@ -310,13 +318,12 @@ export default {
         id: this.currentItemId,
         position: this.currentPos,
         discourse_id: data.discourse,
-        project_id: data.project
       }
       this.isLoading = true;
-      this.axios.post(this.routes.storeImageItem, item).then(response => {
+      this.axios.post(this.routes.storeItem, item).then(response => {
         this.$notify({ type: "success", text: this.messages.stored });
         this.isLoading = false;
-        this.hideImageSelector();
+        this.hideArticleSelector();
         this.$emit('addedRowItem');
       });
     },

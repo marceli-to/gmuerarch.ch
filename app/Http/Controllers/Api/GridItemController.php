@@ -17,24 +17,27 @@ class GridItemController extends Controller
 
   public function store(Request $request)
   {
-    $imageGridItem = GridItem::find($request->input('id'));
-    $imageGridItem->image_id = $request->input('image_id');
-    $imageGridItem->project_id = $request->input('project_id');
-    $imageGridItem->position = $request->input('position');
-    $imageGridItem->save();
-    return response()->json($imageGridItem);
+    $gridItem = GridItem::find($request->input('id'));
+    $gridItem->image_id = $request->input('image_id') ? $request->input('image_id') : NULL;
+    $gridItem->project_id = $request->input('project_id') ? $request->input('project_id') : NULL;
+    $gridItem->discourse_id = $request->input('discourse_id') ? $request->input('discourse_id') : NULL;
+    $gridItem->position = $request->input('position');
+    $gridItem->save();
+    return response()->json($gridItem);
   }
 
   /**
    * Reset a grid item
    *
-   * @param  GridItem $imageGridItem
+   * @param  GridItem $gridItem
    * @return \Illuminate\Http\Response
    */
-  public function reset(GridItem $imageGridItem)
+  public function reset(GridItem $gridItem)
   {
-    $imageGridItem->image_id = NULL;
-    $imageGridItem->save();
+    $gridItem->image_id = NULL;
+    $gridItem->project_id = NULL;
+    $gridItem->discourse_id = NULL;
+    $gridItem->save();
     return response()->json('successfully deleted');
   }
 

@@ -1,6 +1,17 @@
 <template>
   <div :class="[!$props.item.image ? 'flex flex-columns items-center justify-center' : '', 'grid-item']">
-    <template v-if="$props.item.image">
+
+    <template v-if="$props.item.discourse && $props.item.discourse.published_image">
+      <img :src="getSource($props.item.discourse.published_image, 'cache')" height="300" width="300">
+      <a 
+        href="" 
+        class="btn-delete has-icon"
+        @click.prevent="$emit('resetItem', $props.item.id)">
+        <trash-2-icon size="16"></trash-2-icon>
+        <span>Löschen</span>
+      </a>
+    </template>
+    <template v-else-if="$props.item.image">
       <img :src="getSource($props.item.image, 'cache')" height="300" width="300">
       <a 
         href="" 
@@ -20,7 +31,7 @@
           <span>Bild hinzufügen</span>
         </a>
       </div>
-      <div class="my-2x">
+      <div class="my-2x" v-if="$props.hasArticles">
         <a 
           href="" 
           class="btn-select has-icon" 
@@ -49,6 +60,11 @@ export default {
     item: {
       type: Object,
       default: null
+    },
+
+    hasArticles: {
+      type: Boolean,
+      default: false,
     }
   },
 
