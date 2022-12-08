@@ -32,7 +32,7 @@
   </div>
 
   <div class="content-grid__item is-fixed">
-    @if (isset($teamImage) && $teamImage)
+    @if (isset($teamImage) && $teamImage && $teamImage->image)
       <x-image 
         :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
         width="1600"

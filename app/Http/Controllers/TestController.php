@@ -85,6 +85,6 @@ class TestController extends BaseController
    */
   public function projectGrids(Project $project)
   {
-    dd($project->with('imageGrids')->find($project->id));
+    dd($project->with('grids')->find($project->id));
   }
 }

@@ -45,15 +45,17 @@
 
   </div>
   <div class="content-grid__item is-fixed">
-    <x-image 
-      :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
-      width="1600"
-      height="900"
-      :image="$projectImage->publishedImage"
-      :visible="true"
-      :overlay="true"
-      :project="'preview'"
-    />
+    @if (isset($projectImage) && $projectImage && $projectImage->publishedImage)
+      <x-image 
+        :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
+        width="1600"
+        height="900"
+        :image="$projectImage->publishedImage"
+        :visible="true"
+        :overlay="true"
+        :project="'preview'"
+      />
+    @endif
     <x-project-preview-images :projects="$projectsByCategory" :previewImage="$projectImage" />
   </div>
 </section>

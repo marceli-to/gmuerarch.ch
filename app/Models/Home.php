@@ -8,9 +8,9 @@ class Home extends Base
 
   protected $table = 'home';
 
-  public function imageGrids()
+  public function grids()
   {
-    return $this->morphMany(ImageGrid::class, 'gridable')->orderBy('order');
+    return $this->morphMany(Grid::class, 'gridable')->orderBy('order');
   }
 
 }

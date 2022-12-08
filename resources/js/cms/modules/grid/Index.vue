@@ -29,6 +29,13 @@
     v-if="hasImageSelector">
   </grid-image-selector>  
 
+  <grid-article-selector
+    :projectId="null"
+    @close="toggleArticleSelector()"
+    @select="addArticle($event)"
+    v-if="hasArticleSelector">
+  </grid-article-selector>  
+
   <template v-if="!isSortable">
     <grid-row 
       :key="grid.id" 
@@ -46,40 +53,45 @@
 
         <template v-if="grid.layout == '1'">
           <grid-row-item
-            v-for="item in grid.image_grid_items"
+            v-for="item in grid.grid_items"
             :key="item.id"
             :item="item"
             @resetItem="resetItem($event)"
-            @showImages="showImageSelector($event)">
+            @showImages="showImageSelector($event)"
+            @showArticles="showArticleSelector($event)">
           </grid-row-item>  
         </template>
 
         <template v-if="grid.layout == '1:1'">
           <grid-row-item
-            v-for="item in grid.image_grid_items"
+            v-for="item in grid.grid_items"
             :key="item.id"
             :item="item"
             @resetItem="resetItem($event)"
-            @showImages="showImageSelector($event)">
+            @showImages="showImageSelector($event)"
+            @showArticles="showArticleSelector($event)">
           </grid-row-item>  
         </template>
 
         <template v-if="grid.layout == '1:2'">
           <grid-row-item 
-            :item="grid.image_grid_items[0] ? grid.image_grid_items[0] : null"
+            :item="grid.grid_items[0] ? grid.grid_items[0] : null"
             @resetItem="resetItem($event)"
-            @showImages="showImageSelector($event)">
+            @showImages="showImageSelector($event)"
+            @showArticles="showArticleSelector($event)">
           </grid-row-item>
           <div class="grid-stack">
             <grid-row-item 
-              :item="grid.image_grid_items[1] ? grid.image_grid_items[1] : null"
+              :item="grid.grid_items[1] ? grid.grid_items[1] : null"
               @resetItem="resetItem($event)"
-              @showImages="showImageSelector($event)">
+              @showImages="showImageSelector($event)"
+              @showArticles="showArticleSelector($event)">
             </grid-row-item>
             <grid-row-item 
-              :item="grid.image_grid_items[2] ? grid.image_grid_items[2] : null"
+              :item="grid.grid_items[2] ? grid.grid_items[2] : null"
               @resetItem="resetItem($event)"
-              @showImages="showImageSelector($event)">
+              @showImages="showImageSelector($event)"
+              @showArticles="showArticleSelector($event)">
             </grid-row-item>
           </div>
         </template>
@@ -87,20 +99,23 @@
         <template v-if="grid.layout == '2:1'">
           <div class="grid-stack">
             <grid-row-item 
-              :item="grid.image_grid_items[0] ? grid.image_grid_items[0] : null"
+              :item="grid.grid_items[0] ? grid.grid_items[0] : null"
               @resetItem="resetItem($event)"
-              @showImages="showImageSelector($event)">
+              @showImages="showImageSelector($event)"
+              @showArticles="showArticleSelector($event)">
             </grid-row-item>
             <grid-row-item 
-              :item="grid.image_grid_items[1] ? grid.image_grid_items[1] : null"
+              :item="grid.grid_items[1] ? grid.grid_items[1] : null"
               @resetItem="resetItem($event)"
-              @showImages="showImageSelector($event)">
+              @showImages="showImageSelector($event)"
+              @showArticles="showArticleSelector($event)">
             </grid-row-item>
           </div>
           <grid-row-item
-            :item="grid.image_grid_items[2] ? grid.image_grid_items[2] : null"
+            :item="grid.grid_items[2] ? grid.grid_items[2] : null"
             @resetItem="resetItem($event)"
-            @showImages="showImageSelector($event)">
+            @showImages="showImageSelector($event)"
+            @showArticles="showArticleSelector($event)">
           </grid-row-item>
         </template>
 
@@ -130,6 +145,7 @@ import ErrorHandling from "@/mixins/ErrorHandling";
 import { PlusIcon, Trash2Icon, MoveIcon } from 'vue-feather-icons';
 import GridLayoutSelector from "@/modules/grid/components/GridLayoutSelector.vue";
 import GridImageSelector from "@/modules/grid/components/GridImageSelector.vue";
+import GridArticleSelector from "@/modules/grid/components/GridArticleSelector.vue";
 import GridRow from "@/modules/grid/components/GridRow.vue";
 import GridRowItem from "@/modules/grid/components/GridRowItem.vue";
 import draggable from 'vuedraggable';
@@ -141,6 +157,7 @@ export default {
   components: {
     GridLayoutSelector,
     GridImageSelector,
+    GridArticleSelector,
     GridRow,
     GridRowItem,
     draggable,
@@ -185,7 +202,8 @@ export default {
         store: '/api/image-grid',
         order: '/api/image-grid/order',
         delete: '/api/image-grid',
-        storeItem: '/api/image-grid-item',
+        storeImageItem: '/api/image-grid-item',
+        storeArticleItem: '/api/article-grid-item',
         resetItem: '/api/image-grid-item',
       },
 
@@ -195,6 +213,7 @@ export default {
       isSortable: false,
       hasGridSelector: false,
       hasImageSelector: false,
+      hasArticleSelector: false,
 
       // Messages
       messages: {
@@ -278,20 +297,40 @@ export default {
         project_id: data.project
       }
       this.isLoading = true;
-      this.axios.post(this.routes.storeItem, item).then(response => {
+      this.axios.post(this.routes.storeImageItem, item).then(response => {
         this.$notify({ type: "success", text: this.messages.stored });
         this.isLoading = false;
         this.hideImageSelector();
         this.$emit('addedRowItem');
       });
     },
-
+    
+    addArticle(data) {
+      const item = {
+        id: this.currentItemId,
+        position: this.currentPos,
+        discourse_id: data.discourse,
+        project_id: data.project
+      }
+      this.isLoading = true;
+      this.axios.post(this.routes.storeImageItem, item).then(response => {
+        this.$notify({ type: "success", text: this.messages.stored });
+        this.isLoading = false;
+        this.hideImageSelector();
+        this.$emit('addedRowItem');
+      });
+    },
+    
     toggleGridSelector() {
       this.hasGridSelector = this.hasGridSelector ? false : true;
     },
 
     toggleImageSelector() {
       this.hasImageSelector = this.hasImageSelector ? false : true;
+    },
+
+    toggleArticleSelector() {
+      this.hasArticleSelector = this.hasArticleSelector ? false : true;
     },
 
     toggleSortable() {
@@ -309,7 +348,19 @@ export default {
       this.currentItemId = null;
       this.currentPos = null;
       this.hasImageSelector = false;
-    }
+    },
+
+    showArticleSelector(data) {
+      this.currentItemId = data.id;
+      this.currentPos = data.position;
+      this.hasArticleSelector = true;
+    },
+
+    hideArticleSelector() {
+      this.currentItemId = null;
+      this.currentPos = null;
+      this.hasArticleSelector = false;
+    },
   },
 
   watch: {

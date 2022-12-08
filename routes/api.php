@@ -15,8 +15,8 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\ProjectImageController;
 use App\Http\Controllers\Api\HomeController;
-use App\Http\Controllers\Api\ImageGridController;
-use App\Http\Controllers\Api\ImageGridItemController;
+use App\Http\Controllers\Api\GridController;
+use App\Http\Controllers\Api\GridItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,13 +119,13 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::delete('project/{project}', [ProjectController::class, 'destroy']);
 
   // Image grid
-  Route::post('image-grid', [ImageGridController::class, 'store']);
-  Route::delete('image-grid/{imageGrid}', [ImageGridController::class, 'destroy']);
-  Route::post('image-grid/order', [ImageGridController::class, 'order']);
+  Route::post('image-grid', [GridController::class, 'store']);
+  Route::delete('image-grid/{imageGrid}', [GridController::class, 'destroy']);
+  Route::post('image-grid/order', [GridController::class, 'order']);
 
   // Image grid item
-  Route::post('image-grid-item', [ImageGridItemController::class, 'store']);
-  Route::put('image-grid-item/{imageGridItem}', [ImageGridItemController::class, 'reset']);
+  Route::post('image-grid-item', [GridItemController::class, 'store']);
+  Route::put('image-grid-item/{imageGridItem}', [GridItemController::class, 'reset']);
 
   // Home
   Route::get('home', [HomeController::class, 'find']);

@@ -3,7 +3,7 @@ namespace App\Models;
 use App\Models\Base;
 use Illuminate\Database\Eloquent\Model;
 
-class ImageGridItem extends Base
+class GridItem extends Base
 {
   /**
    * The attributes that are mass assignable.
@@ -15,8 +15,19 @@ class ImageGridItem extends Base
     'position',
     'project_id',
     'image_id',
-    'image_grid_id'
+    'discourse_id',
+    'grid_id'
   ];
+
+
+  /**
+   * The grid that belongs to this image grid item.
+   */
+  
+  public function grid()
+  {
+    return $this->belongsTo(Grid::class);
+  }
 
   /**
    * The image that belongs to this image grid item.
@@ -28,12 +39,12 @@ class ImageGridItem extends Base
   }
 
   /**
-   * The grid that belongs to this image grid item.
+   * The discourse article that belongs to this image grid item.
    */
   
-  public function imageGrid()
+  public function discourse()
   {
-    return $this->belongsTo(ImageGrid::class);
+    return $this->belongsTo(Discourse::class);
   }
 
   /**

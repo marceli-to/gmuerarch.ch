@@ -30,7 +30,7 @@ class ProjectController extends Controller
    */
   public function find(Project $project)
   {
-    $project = Project::with('images', 'categories', 'imageGrids.imageGridItems.image')->find($project->id);
+    $project = Project::with('images', 'categories', 'grids.gridItems.image')->find($project->id);
     $categories = Category::orderBy('title->de', 'ASC')->get();
     return response()->json(['project' => $project, 'categories' => $categories]);
   }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="[!$props.item.image ? 'flex items-center justify-center' : '', 'grid-item']">
+  <div :class="[!$props.item.image ? 'flex flex-columns items-center justify-center' : '', 'grid-item']">
     <template v-if="$props.item.image">
       <img :src="getSource($props.item.image, 'cache')" height="300" width="300">
       <a 
@@ -7,17 +7,28 @@
         class="btn-delete has-icon"
         @click.prevent="$emit('resetItem', $props.item.id)">
         <trash-2-icon size="16"></trash-2-icon>
-        <span>Bild löschen</span>
+        <span>Löschen</span>
       </a>
     </template>
     <template v-else>
-      <a 
-        href="" 
-        class="btn-select has-icon" 
-        @click.prevent="$emit('showImages', {id: $props.item.id, position: $props.item.position})">
-        <plus-icon size="16"></plus-icon>
-        <span>Bild hinzufügen</span>
-      </a>
+      <div class="my-2x">
+        <a 
+          href="" 
+          class="btn-select has-icon" 
+          @click.prevent="$emit('showImages', {id: $props.item.id, position: $props.item.position})">
+          <plus-icon size="16"></plus-icon>
+          <span>Bild hinzufügen</span>
+        </a>
+      </div>
+      <div class="my-2x">
+        <a 
+          href="" 
+          class="btn-select has-icon" 
+          @click.prevent="$emit('showArticles', {id: $props.item.id, position: $props.item.position})">
+          <plus-icon size="16"></plus-icon>
+          <span>Artikel hinzufügen</span>
+        </a>
+      </div>
     </template>
   </div>
 </template>

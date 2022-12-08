@@ -13,12 +13,13 @@ return new class extends Migration
  */
 public function up()
 {
-  Schema::create('image_grid_items', function (Blueprint $table) {
+  Schema::create('grid_items', function (Blueprint $table) {
     $table->id();
     $table->tinyInteger('position')->default(0);
     $table->foreignId('project_id')->nullable()->constrained();
     $table->foreignId('image_id')->nullable()->constrained();
-    $table->foreignId('image_grid_id')->constrained();
+    $table->foreignId('discourse_id')->nullable()->constrained();
+    $table->foreignId('grid_id')->constrained();
     $table->timestamps();
   });
 }
@@ -30,6 +31,6 @@ public function up()
  */
 public function down()
 {
-  Schema::dropIfExists('image_grid_items');
+  Schema::dropIfExists('grid_items');
 }
 };

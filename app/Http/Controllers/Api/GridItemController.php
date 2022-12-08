@@ -2,10 +2,10 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DataCollection;
-use App\Models\ImageGridItem;
+use App\Models\GridItem;
 use Illuminate\Http\Request;
 
-class ImageGridItemController extends Controller
+class GridItemController extends Controller
 {
 
   /**
@@ -17,7 +17,7 @@ class ImageGridItemController extends Controller
 
   public function store(Request $request)
   {
-    $imageGridItem = ImageGridItem::find($request->input('id'));
+    $imageGridItem = GridItem::find($request->input('id'));
     $imageGridItem->image_id = $request->input('image_id');
     $imageGridItem->project_id = $request->input('project_id');
     $imageGridItem->position = $request->input('position');
@@ -28,10 +28,10 @@ class ImageGridItemController extends Controller
   /**
    * Reset a grid item
    *
-   * @param  ImageGridItem $imageGridItem
+   * @param  GridItem $imageGridItem
    * @return \Illuminate\Http\Response
    */
-  public function reset(ImageGridItem $imageGridItem)
+  public function reset(GridItem $imageGridItem)
   {
     $imageGridItem->image_id = NULL;
     $imageGridItem->save();

@@ -13,7 +13,7 @@
    */
   public function up()
   {
-    Schema::create('image_grids', function (Blueprint $table) {
+    Schema::create('grids', function (Blueprint $table) {
       $table->id();
       $table->string('layout', 5);
       $table->tinyInteger('order')->default(-1);
@@ -29,6 +29,6 @@
    */
   public function down()
   {
-    Schema::dropIfExists('image_grids');
+    Schema::dropIfExists('grids');
   }
 };

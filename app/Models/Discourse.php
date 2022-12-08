@@ -100,6 +100,11 @@ class Discourse extends Base
     return $this->morphMany(Image::class, 'imageable');
   }
 
+  public function grids()
+  {
+    return $this->morphMany(Grid::class, 'gridable')->orderBy('order');
+  }
+
   /**
    * The files that belong to this discourse.
    */

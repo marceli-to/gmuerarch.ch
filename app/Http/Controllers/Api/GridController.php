@@ -2,11 +2,11 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DataCollection;
-use App\Models\ImageGrid;
-use App\Models\ImageGridItem;
+use App\Models\Grid;
+use App\Models\GridItem;
 use Illuminate\Http\Request;
 
-class ImageGridController extends Controller
+class GridController extends Controller
 {
 
   /**
@@ -16,7 +16,7 @@ class ImageGridController extends Controller
    */
   public function get()
   {
-    $items = ImageGrid::get();
+    $items = Grid::get();
     return response()->json($items);
   }
 
@@ -28,7 +28,7 @@ class ImageGridController extends Controller
    */
   public function store(Request $request)
   {
-    $imageGrid = ImageGrid::create([
+    $imageGrid = Grid::create([
       'layout' => $request->input('layout'),
       'gridable_type' => "App\Models\\" . $request->input('model.name'),
       'gridable_id' => $request->input('model.id'),
@@ -36,9 +36,9 @@ class ImageGridController extends Controller
 
     for($i = 0; $i < $request->input('items'); $i++)
     {
-      ImageGridItem::create([
+      GridItem::create([
         'position' => $i,
-        'image_grid_id' => $imageGrid->id
+        'grid_id' => $imageGrid->id
       ]);
     }
 
@@ -57,7 +57,7 @@ class ImageGridController extends Controller
     $items = $request->get('items');
     foreach($items as $item)
     {
-      $i = ImageGrid::find($item['id']);
+      $i = Grid::find($item['id']);
       $i->order = $item['order'];
       $i->save(); 
     }
@@ -67,13 +67,13 @@ class ImageGridController extends Controller
   /**
    * Remove a grid row with all attached items
    *
-   * @param  ImageGrid $imageGrid
+   * @param  Grid $imageGrid
    * @return \Illuminate\Http\Response
    */
-  public function destroy(ImageGrid $imageGrid)
+  public function destroy(Grid $imageGrid)
   {
-    $imageGrid = ImageGrid::with('imageGridItems')->find($imageGrid->id);
-    foreach($imageGrid->imageGridItems as $item)
+    $imageGrid = Grid::with('gridItems')->find($imageGrid->id);
+    foreach($imageGrid->gridItems as $item)
     {
       $item->delete();
     }

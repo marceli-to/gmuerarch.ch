@@ -1,10 +1,10 @@
 <?php
 namespace Database\Seeders;
-use App\Models\ImageGrid;
+use App\Models\Grid;
 use App\Models\Project;
 use Illuminate\Database\Seeder;
 
-class ImageGridSeeder extends Seeder
+class GridSeeder extends Seeder
 {
   /**
    * Run the database seeds.
@@ -25,7 +25,7 @@ class ImageGridSeeder extends Seeder
       $project = Project::inRandomOrder()->first();
       $rand    = mt_rand(0,3);
 
-      ImageGrid::create([
+      Grid::create([
         'layout' => $layouts[$rand],
         'gridable_type' => Project::class,
         'gridable_id' => $project->id,

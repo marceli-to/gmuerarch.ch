@@ -61,7 +61,7 @@ class ProjectController extends BaseController
   public function show($category = NULL, $slug = NULL, Project $project)
   {
     $category = Category::where('slug', 'like', '%"'.$category.'"%')->firstOrFail();
-    $project = Project::with('imageGrids')->findOrFail($project->id);
+    $project = Project::with('grids')->findOrFail($project->id);
     return view($this->viewPath . 'show', 
       [
         'category' => $category, 'project' => $project,

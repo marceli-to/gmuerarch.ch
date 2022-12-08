@@ -16,7 +16,7 @@
     </a>
   </figure>
 @else
-  <figure>
+  <figure class="xs:hide">
     <img src="/assets/img/transparent.png" width="1600" height="900">
   </figure>
 @endif

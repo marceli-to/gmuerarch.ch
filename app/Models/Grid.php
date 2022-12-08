@@ -3,7 +3,7 @@ namespace App\Models;
 use App\Models\Base;
 use Illuminate\Database\Eloquent\Model;
 
-class ImageGrid extends Base
+class Grid extends Base
 {
   /**
    * The attributes that are mass assignable.
@@ -27,9 +27,9 @@ class ImageGrid extends Base
   |
   */
 
-  public function imageGridItems()
+  public function gridItems()
   {
-    return $this->hasMany(ImageGridItem::class);
+    return $this->hasMany(GridItem::class);
   }
 
 }

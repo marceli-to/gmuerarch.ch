@@ -16,9 +16,9 @@
       </div>
     @endif
   </div>
-  @foreach($project->imageGrids as $imageGrid)
+  @foreach($project->grids as $imageGrid)
     <div class="content-grid content-grid--{{ $imageGrid->layout }}">
-      @foreach($imageGrid->imageGridItems as $gridItem)
+      @foreach($imageGrid->gridItems as $gridItem)
         <figure class="content-grid__item">
           <x-image 
             :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 

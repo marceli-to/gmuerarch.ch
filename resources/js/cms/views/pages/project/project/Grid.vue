@@ -2,7 +2,7 @@
   <div v-if="isFetched">
     <loading-indicator v-if="isLoading"></loading-indicator>
     <grid 
-      :grids="project.image_grids" 
+      :grids="project.grids" 
       :modelName="'Project'"
       :model="project"
       @sortedRows="fetch()"
