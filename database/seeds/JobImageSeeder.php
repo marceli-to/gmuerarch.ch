@@ -1,6 +1,6 @@
 <?php
 namespace Database\Seeders;
-use App\Models\Home;
+use App\Models\JobImage;
 use Illuminate\Database\Seeder;
 
 class JobImageSeeder extends Seeder

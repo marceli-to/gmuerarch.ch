@@ -1,6 +1,6 @@
 <?php
 namespace Database\Seeders;
-use App\Models\Home;
+use App\Models\TeamImage;
 use Illuminate\Database\Seeder;
 
 class TeamImageSeeder extends Seeder

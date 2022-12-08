@@ -27,10 +27,15 @@ class DiscourseController extends BaseController
     $topic = $topic ? Topic::where('slug', 'like', '%"'.$topic.'"%')->firstOrFail() : Topic::with('discourses')->has('discourses')->first();
     
     // Get discourses
-    $discourses = Discourse::query()->with('publishedImage', 'topics', 'publishedFile')
-    ->whereHas('topics', function ($query) use ($topic) {
-      $query->where('id', $topic->id);
-    })->flagged('isPublish')->orderBy('order')->get();
+    $discourses = NULL;
+    if ($topic)
+    {
+      $discourses = Discourse::query()->with('publishedImage', 'topics', 'publishedFile')
+      ->whereHas('topics', function ($query) use ($topic) {
+        $query->where('id', $topic->id);
+      })->flagged('isPublish')->orderBy('order')->get();
+    }
+
 
     return view(
       $this->viewPath . 'index', 

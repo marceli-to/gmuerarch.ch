@@ -29,10 +29,15 @@ class ProjectController extends BaseController
 
     // Get projects
     $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->orderBy('order')->get();
-    $projectsByCategory = Project::query()->with('images', 'previewImage', 'categories')
-    ->whereHas('categories', function ($query) use ($category) {
-      $query->where('id', $category->id);
-    })->flagged('isPublish')->get();
+
+    $projectsByCategory = null;
+    if ($category)
+    {
+      $projectsByCategory = Project::query()->with('images', 'previewImage', 'categories')
+      ->whereHas('categories', function ($query) use ($category) {
+        $query->where('id', $category->id);
+      })->flagged('isPublish')->get();
+    }
 
     // Get project image (overview)
     $projectImage = ProjectImage::with('publishedImage')->find(1);
