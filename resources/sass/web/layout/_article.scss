@@ -85,6 +85,10 @@ article.content {
         @include bp-sm() {
           margin-right: $space-4x;
         }
+
+        figcaption {
+          display: none !important;
+        }
       }
 
       > div {
