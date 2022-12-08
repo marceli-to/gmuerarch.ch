@@ -177,6 +177,28 @@
           top: $site-header-height-sm;
         }
       }
+
+      figcaption {
+        @extend %pl-3x;
+        @extend %sm\:pl-3x;
+        background-color: $color-grey;
+        bottom: 0;
+        color: $color-white;
+        min-width: 50%;
+        left: 0;
+        opacity: 0;
+        padding-bottom: 1px;
+        padding-top: 1px;
+        position: absolute;
+        transition: opacity .08s ease-in-out;
+      }
+
+      &.is-touched,
+      &:hover {
+        figcaption {
+          opacity: 1;
+        }
+      }
     }
 
     .content-grid__item--stack {

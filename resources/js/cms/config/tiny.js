@@ -3,10 +3,11 @@ export default {
   branding: false,
   menubar: false,
   statusbar: false,
+  browser_spellcheck: true,
   external_plugins: {
     link: '/assets/js/cms/tinymce/plugins/link/plugin.min.js',
   },
-  plugins: ['lists', 'code', 'link'],
+  plugins: ['lists', 'code', 'link', 'paste'],
   toolbar: 'undo redo | bold | bullist | link | superscript | removeformat | styleselect | code',
   paste_as_text: true,
   height: "320px",

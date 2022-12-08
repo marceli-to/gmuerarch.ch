@@ -15,6 +15,9 @@
           class="is-responsive lazy">
       @endif
     @endforeach
+    @if ($image->caption)
+      <figcaption>{{ $image->caption }}</figcaption>
+    @endif
   </picture>
 @endif
 

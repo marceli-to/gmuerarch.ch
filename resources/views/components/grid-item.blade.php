@@ -1,5 +1,5 @@
 @if ($gridItem->project && $gridItem->image)
-  <figure class="{{ !$stack ? 'content-grid__item' : '' }}">
+  <figure class="{{ !$stack ? 'content-grid__item' : '' }}" data-touch>
     <a href="{{ route('page.project.show', 
         [
           'category' => $gridItem->project->categories->first()->slug, 
