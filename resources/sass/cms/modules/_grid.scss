@@ -58,7 +58,8 @@
     }
   }
 
-  &.grid-layout--1 {
+  &.grid-layout--1,
+  &.grid-layout--1\:w {
     .grid-item {
       @extend %span-12;
     }

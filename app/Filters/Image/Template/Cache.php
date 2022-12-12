@@ -88,7 +88,6 @@ class Cache implements FilterInterface
         return $image->fit(floor($y), floor($x), function ($constraint) {
           $constraint->upsize();
         });
-
       }
 
       return $image->fit($this->maxSize, $this->maxSize, function ($constraint) {

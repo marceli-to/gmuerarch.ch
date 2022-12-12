@@ -139,16 +139,9 @@
     }
   }
 
-  img {
-    display: block;
-    height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-    width: 100%;
-  }
-
   &.content-grid,
   &.content-grid--1,
+  &.content-grid--1\:w,
   &.content-grid--1\:1,
   &.content-grid--2\:1,
   &.content-grid--1\:2 {
@@ -220,6 +213,29 @@
           }
         }
       }
+    }
+  }
+
+  &.content-grid--1,
+  &.content-grid--1\:1,
+  &.content-grid--2\:1,
+  &.content-grid--1\:2 {
+    img {
+      display: block;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+ 
+  }
+
+  &.content-grid--1\:w {
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
     }
   }
 

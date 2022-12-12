@@ -25,6 +25,7 @@
             width="1600"
             height="900"
             :image="$gridItem->image" 
+            :ratio="$grid->layout == '1:w' ? $gridItem->image->ratio : null"
           />
         </figure>
       @endforeach

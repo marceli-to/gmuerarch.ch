@@ -4,10 +4,10 @@
     data-project="{{ $project ? $project : '' }}">
     @foreach($maxSizes as $minWidth => $maxSize)
       @if ($minWidth > 0)
-        <source media="(min-width: {{ $minWidth }}px)" data-srcset="/img/cache/{{ $image->name }}/{{ $maxSize}}/{{ $image->coords }}">
+        <source media="(min-width: {{ $minWidth }}px)" data-srcset="/img/cache/{{ $image->name }}/{{ $maxSize}}/{{ $image->coords }}{{ $ratio ? '/' . $image->ratio : '' }}">
       @else
         <img 
-          data-src="/img/cache/{{ $image->name }}/{{ $maxSize }}/{{ $image->coords }}"
+          data-src="/img/cache/{{ $image->name }}/{{ $maxSize }}/{{ $image->coords }}{{ $ratio ? '/' . $image->ratio : '' }}"
           width="{{ $width }}" 
           height="{{ $height }}"
           title="{{ $image->caption }}"

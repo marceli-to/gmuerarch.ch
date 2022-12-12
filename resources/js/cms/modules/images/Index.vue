@@ -130,6 +130,7 @@ export default {
         size: media.size,
         extension: media.extension,
         orientation: media.orientation,
+        ratio: media.ratio,
         coords_w: 0,
         coords_h: 0,
         coords_x: 0,

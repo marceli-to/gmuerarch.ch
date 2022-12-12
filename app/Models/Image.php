@@ -22,6 +22,7 @@ class Image extends Base
     'caption',
     'description',
     'orientation',
+    'ratio',
 		'coords_w',
     'coords_h',
     'coords_x',
@@ -95,20 +96,5 @@ class Image extends Base
       $coords = floor($this->coords_w) . ',' .  floor($this->coords_h) . ',' .  floor($this->coords_x) . ',' .  floor($this->coords_y);
     }
     return $coords;
-  }
-
-	/**
-	 * Get the image ratio
-	 *
-	 * @return string
-	 */
-  
-	public function getRatioAttribute()
-	{
-    if (($this->coords_w && $this->coords_h) && ($this->coords_w > $this->coords_h))
-    {
-      return 'wide';
-    }
-    return '';
   }
 }

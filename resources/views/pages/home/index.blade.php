@@ -20,6 +20,12 @@
         </div>
         @include('components.grid-item', ['gridItem' => $grid->gridItems[2], 'stack' => FALSE])
       
+      @elseif ($grid->layout == '1:w')
+
+        @foreach($grid->gridItems as $gridItem)
+          @include('components.grid-item', ['gridItem' => $gridItem, 'stack' => FALSE, 'ratio' => TRUE])
+        @endforeach
+     
       @else
 
         @foreach($grid->gridItems as $gridItem)

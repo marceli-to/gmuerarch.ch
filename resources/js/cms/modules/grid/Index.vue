@@ -63,6 +63,19 @@
           </grid-row-item>  
         </template>
 
+
+        <template v-if="grid.layout == '1:w'">
+          <grid-row-item
+            v-for="item in grid.grid_items"
+            :key="item.id"
+            :item="item"
+            :hasArticles="hasArticles"
+            @resetItem="resetItem($event)"
+            @showImages="showImageSelector($event)"
+            @showArticles="showArticleSelector($event)">
+          </grid-row-item>  
+        </template>
+
         <template v-if="grid.layout == '1:1'">
           <grid-row-item
             v-for="item in grid.grid_items"

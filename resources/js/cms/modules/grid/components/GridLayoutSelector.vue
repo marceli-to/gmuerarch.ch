@@ -3,6 +3,9 @@
     <a href="" @click.prevent="$emit('select', {layout: '1', items: '1'})">
       <grid-layout :layout="'1'" />
     </a>
+    <a href="" @click.prevent="$emit('select', {layout: '1:w', items: '1'})">
+      <grid-layout :layout="'1:w'" />
+    </a>
     <a href="" @click.prevent="$emit('select', {layout: '1:1', items: '2'})">
       <grid-layout :layout="'1:1'" />
     </a>

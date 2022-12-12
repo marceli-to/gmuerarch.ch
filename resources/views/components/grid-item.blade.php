@@ -12,6 +12,7 @@
         width="1600"
         height="900"
         :image="$gridItem->image" 
+        :ratio="isset($ratio) && $ratio ? $gridItem->image->ratio : null"
       />
     </a>
   </figure>
