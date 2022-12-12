@@ -21,7 +21,7 @@
       @foreach($grid->gridItems as $gridItem)
         <figure class="content-grid__item">
           <x-image 
-            :maxSizes="[1200 => 1500, 900 => 1200, 0 => 900]" 
+            :maxSizes="[1600 => 2000, 1200 => 1500, 900 => 1200, 0 => 900]" 
             width="1600"
             height="900"
             :image="$gridItem->image" 
