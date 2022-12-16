@@ -154,7 +154,7 @@
       class="listing"
       v-if="gridItems.length">
       <div v-for="grid in gridItems" :key="grid.id" class="listing__item is-draggable">
-        <grid-layout :layout="grid.layout" />
+        <grid-layout :layout="grid.layout" :items="grid.grid_items" :isOrderView="true" />
       </div> 
     </draggable>
   </template>

@@ -23,7 +23,6 @@
         :key="d.id"
         >
         <div class="listing__item-body">
-          <chip :cls="`chip-dark mr-3x`">{{d.id}}</chip>
           {{d.title.de}} 
           <div class="flex ml-4x">
             <chip v-for="category in d.categories" :key="category.id">

@@ -11,15 +11,22 @@
       @addedRow="fetch()"
       @deletedRow="fetch()">
     </grid>
+    <page-footer>
+      <button-back :route="'projects'">Zurück</button-back>
+    </page-footer>
   </div>
 </template>
 <script>
 import Grid from "@/modules/grid/Index.vue";
+import PageFooter from "@/components/ui/PageFooter.vue";
+import ButtonBack from "@/components/ui/ButtonBack.vue";
 
 export default {
 
   components: {
-    Grid
+    Grid,
+    PageFooter,
+    ButtonBack
   },
 
   data() {
