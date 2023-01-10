@@ -8,7 +8,6 @@
     <nav class="content">
       <ul>
         @foreach($projects as $project)
-          {{ dd($project->categories->first()->slug) }}
           <li class="is-visible">
             <a href="{{ route('page.project.show', ['category' => $project->categories->first()->slug ? $project->categories->first()->slug : '', 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
               title="{{ $project->title }}" 
