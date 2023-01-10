@@ -15,7 +15,7 @@
           <label-required />
         </div>
         <div class="form-row">
-          <label>Subtitel *</label>
+          <label>Subtitel</label>
           <input type="text" v-model="project.subtitle.de">
         </div>
         <div class="form-row">
@@ -40,8 +40,8 @@
           <textarea v-model="project.text_worklist.de" />
         </div>
 
-        <div class="form-row">
-          <label>Kategorie</label>
+        <div :class="[this.errors.category_ids ? 'has-error' : '', 'form-row']">
+          <label>Kategorie *</label>
           <div v-for="(category, index) in categories" :key="index" class="flex mb-2x">
             <input type="checkbox" :id="`category-${category.id}`" :name="`category-${category.id}`" :value="category.id" v-model="project.category_ids">
             <label :for="`category-${category.id}`" class="ml-3x">
@@ -59,7 +59,7 @@
           <input type="text" v-model="project.title.en">
         </div>
         <div class="form-row">
-          <label>Subtitel *</label>
+          <label>Subtitel</label>
           <input type="text" v-model="project.subtitle.en">
         </div>
         <div class="form-row">
@@ -199,6 +199,7 @@ export default {
       // Validation
       errors: {
         title: false,
+        category_ids: false,
       },
 
       // Routes

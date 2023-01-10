@@ -7919,7 +7919,8 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       // Validation
       errors: {
-        title: false
+        title: false,
+        category_ids: false
       },
       // Routes
       routes: {
@@ -51141,7 +51142,7 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-row" }, [
-                      _c("label", [_vm._v("Subtitel *")]),
+                      _c("label", [_vm._v("Subtitel")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -51245,9 +51246,14 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "form-row" },
+                      {
+                        class: [
+                          this.errors.category_ids ? "has-error" : "",
+                          "form-row"
+                        ]
+                      },
                       [
-                        _c("label", [_vm._v("Kategorie")]),
+                        _c("label", [_vm._v("Kategorie *")]),
                         _vm._v(" "),
                         _vm._l(_vm.categories, function(category, index) {
                           return _c(
@@ -51379,7 +51385,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-row" }, [
-                      _c("label", [_vm._v("Subtitel *")]),
+                      _c("label", [_vm._v("Subtitel")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
