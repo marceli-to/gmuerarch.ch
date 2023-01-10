@@ -9,7 +9,7 @@
       <ul>
         @foreach($projects as $project)
           <li class="is-visible">
-            <a href="{{ route('page.project.show', ['category' => $project->categories->first() ? $project->categories->first()->slug : '', 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
+            <a href="{{ route('page.project.show', ['category' => $project->categories->first() ? $project->categories->first()->slug : 'slug', 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
               title="{{ $project->title }}" 
               data-project="{{ $project->id }}">
               {!! nl2br($project->text_worklist) !!}
