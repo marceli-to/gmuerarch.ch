@@ -43,7 +43,7 @@ class ProjectStoreRequest extends FormRequest
         'error' => 'Titel'
       ],
       'category_ids.required' => [
-        'field' => 'category',
+        'field' => 'category_ids',
         'error' => 'Kategorie'
       ],
     ];
