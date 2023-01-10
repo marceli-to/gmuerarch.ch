@@ -206,7 +206,6 @@ export default {
         get: '/api/project',
         store: '/api/project',
         update: '/api/project',
-
         getCategories: '/api/categories',
       },
 

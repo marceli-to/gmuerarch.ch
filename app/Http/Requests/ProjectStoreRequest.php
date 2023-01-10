@@ -25,6 +25,7 @@ class ProjectStoreRequest extends FormRequest
   {
     return [
       'title.de' => 'required',
+      'category_ids' => 'required|array|min:1',
     ];
   }
 
@@ -40,6 +41,10 @@ class ProjectStoreRequest extends FormRequest
       'title.de.required' => [
         'field' => 'title',
         'error' => 'Titel'
+      ],
+      'category_ids.required' => [
+        'field' => 'category',
+        'error' => 'Kategorie'
       ],
     ];
   }
