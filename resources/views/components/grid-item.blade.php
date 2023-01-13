@@ -4,7 +4,7 @@
         [
           'category' => $gridItem->project->categories->first()->slug, 
           'slug' => AppHelper::slug($gridItem->project->title), 
-          'project' => $gridItem->image->imageable_id
+          'project' => $gridItem->image->imageable_id ?? null
         ]
       )}}">
       <x-image 
