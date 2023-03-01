@@ -22,7 +22,7 @@ return [
   |
   */
 
-  'description' => 'Homepage von Silvia Gmür Reto Gmür Architekten ',   
+  'description' => 'Homepage von Silvia Gmür Reto Gmür Architekten',   
 
   /*
   |--------------------------------------------------------------------------
@@ -33,6 +33,6 @@ return [
   |
   */
 
-  'keywords' => ''
+  'keywords' => 'Architekten, Architekturbüro, Basel, Silvia Gmür, Reto Gmür, Architektur, Architekturplanung, Architekturprojekte, Architekturprojekt'
 
 ];
