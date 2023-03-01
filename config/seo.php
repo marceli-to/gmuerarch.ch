@@ -22,7 +22,7 @@ return [
   |
   */
 
-  'description' => 'Homepage des Silvia Gmür Reto Gmür Architekten ',   
+  'description' => 'Homepage von Silvia Gmür Reto Gmür Architekten ',   
 
   /*
   |--------------------------------------------------------------------------
