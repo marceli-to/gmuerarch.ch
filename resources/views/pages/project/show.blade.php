@@ -1,6 +1,6 @@
 @extends('layout.web')
 @section('seo_title', $project->title . ' • ' . __('Projekt'))
-@section('seo_description', substr(strip_tags($project->text),0,255))
+@section('seo_description', $project->subtitle . ' - ' . substr(strip_tags($project->text),0,255))
 @section('content')
 <section class="content">
   <div class="project-info pb-3x js-project-info">
