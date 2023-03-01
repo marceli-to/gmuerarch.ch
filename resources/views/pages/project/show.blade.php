@@ -1,7 +1,7 @@
 @extends('layout.web')
 @section('seo_title', $project->title . ' • ' . __('Projekt'))
 @if ($project->abstract)
-@section('seo_description', $project->subtitle . ' - ' . substr(strip_tags($project->abstract),0,255))
+@section('seo_description', $project->subtitle . ' - ' . substr(strip_tags(trim($project->abstract)),0,255))
 @else
 @section('seo_description', $project->subtitle . ' - ' . substr(strip_tags(str_replace('<br>', ' ', $project->text)),0,255))
 @endif
