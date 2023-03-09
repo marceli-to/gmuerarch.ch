@@ -15,6 +15,9 @@
           <h2 class="mb-0">{{ $job->title }}</h2>
         </a>
         {!! $job->text !!}  
+      @else
+        <h2 class="mb-0">{{ $job->title }}</h2>
+        {!! $job->text !!}
       @endif
     @endforeach
   @else
