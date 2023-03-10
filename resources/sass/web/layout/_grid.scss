@@ -141,8 +141,10 @@
 
   &.content-grid,
   &.content-grid--1,
+  &.content-grid--1\:f,
   &.content-grid--1\:w,
   &.content-grid--1\:1,
+  &.content-grid--1\:1\:f,
   &.content-grid--2\:1,
   &.content-grid--1\:2 {
 
@@ -227,8 +229,23 @@
       object-fit: cover;
       width: 100%;
     }
- 
   }
+
+  &.content-grid--1\:f,
+  &.content-grid--1\:1\:f {
+
+    .content-grid__item {
+      height: auto !important;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
 
   &.content-grid--1\:w {
 
@@ -240,6 +257,7 @@
   }
 
   &.content-grid--1\:1,
+  &.content-grid--1\:1\:f,
   &.content-grid--2\:1,
   &.content-grid--1\:2 {
     @include bp-sm() {

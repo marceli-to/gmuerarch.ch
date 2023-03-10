@@ -12,7 +12,7 @@
           height="{{ $height }}"
           title="{{ $image->caption }}"
           alt="{{ $image->caption }}"
-          class="is-responsive lazy">
+          class="lazy">
       @endif
     @endforeach
     @if ($image->caption)

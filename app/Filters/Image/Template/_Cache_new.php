@@ -39,7 +39,6 @@ class Cache implements FilterInterface
       $this->orientation = $this->cropHeight >= $this->cropWidth ? 'portrait' : 'landscape';
       $this->hasCrop = TRUE;
     }
-
     if ($this->hasCrop)
     {
       if ($this->orientation == 'landscape')
