@@ -108,6 +108,7 @@ article.content {
             display: inline-block;
             height: auto;
             position: relative;
+            margin-left: 10px;
             top: 1px;
             width: 14px;
           }
@@ -115,11 +116,18 @@ article.content {
 
         p {
           display: inline-block;
+          &:last-of-type {
+            display: inline;
+            margin-bottom: 0;
+          }
         }
       }
 
       img {
         border: 1px solid $color-grey-light;
+        display: block;
+        height: auto;
+        width: 100%;
       }
     }
   }
