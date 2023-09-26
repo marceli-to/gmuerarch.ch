@@ -7,7 +7,7 @@
     <nav class="page">
       <ul>
         <li>
-          <a href="{{ route('page.office.team') }}" class="{{ $section == 'team' ? 'is-active' : '' }}" title="{{ __('Team') }}">{{ __('Team') }}</a>
+          <a href="{{ route(locale() . '.page.office.team') }}" class="{{ $section == 'team' ? 'is-active' : '' }}" title="{{ __('Team') }}">{{ __('Team') }}</a>
         </li>
         @if ($section == 'cv')
           <li>
@@ -15,7 +15,7 @@
           </li>
         @endif
         <li>
-          <a href="{{ route('page.office.jobs') }}" class="{{ $section == 'jobs' ? 'is-active' : '' }}" title="{{ __('Offene Stellen') }}">{{ __('Offene Stellen') }}</a>
+          <a href="{{ route(locale() . '.page.office.jobs') }}" class="{{ $section == 'jobs' ? 'is-active' : '' }}" title="{{ __('Offene Stellen') }}">{{ __('Offene Stellen') }}</a>
         </li>
       </ul>
     </nav>

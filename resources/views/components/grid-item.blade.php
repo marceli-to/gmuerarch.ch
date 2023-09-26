@@ -1,6 +1,6 @@
 @if ($gridItem->project && $gridItem->image)
   <figure class="{{ !$stack ? 'content-grid__item' : '' }}" data-touch>
-    <a href="{{ route('page.project.show', 
+    <a href="{{ route(locale() . '.page.project.show', 
         [
           'category' => $gridItem->project->categories->first()->slug, 
           'slug' => AppHelper::slug($gridItem->project->title), 
@@ -18,7 +18,7 @@
   </figure>
 @elseif ($gridItem->discourse && $gridItem->discourse->publishedImage)
   <figure class="{{ !$stack ? 'content-grid__item' : '' }}">
-    <a href="{{ route('page.discourse.index', 
+    <a href="{{ route(locale() . '.page.discourse.index', 
         [
           'topic' => $gridItem->discourse->topics->first()->slug, 
         ]

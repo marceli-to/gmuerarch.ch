@@ -10,7 +10,7 @@
           @foreach($discourse_topics as $topic)
             <li>
               <a 
-                href="{{ route('page.discourse.index', ['topic' => $topic->slug]) }}" 
+                href="{{ route(locale() . '.page.discourse.index', ['topic' => $topic->slug]) }}" 
                 title="{{ $topic->title }}"
                 class="{{ $topic->id == $active_topic->id ? 'is-active' : '' }}">
                 {!! str_replace(' ', '&nbsp;', $topic->title) !!}

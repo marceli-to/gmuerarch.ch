@@ -31,6 +31,20 @@ nav.site {
 
     ul {
       padding-left: $space-3x;
+      &.is-language {
+        display: flex;
+
+        li {
+          margin-right: $space-2x;
+          &:last-of-type {
+            margin-right:  0;
+          }
+        }
+
+        a {
+          @include font-regular();
+        }
+      }
     }
   
     li {
@@ -47,8 +61,28 @@ nav.site {
   @include bp-sm() {
     order: 1;
 
+    > div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
     ul {
       display: flex;
+
+      &.is-language {
+
+        li {
+          margin-right: $space-2x;
+          &:last-of-type {
+            margin-right:  0;
+          }
+          a {
+            @include font-regular();
+          }
+        }
+
+      }
     }
 
     li {

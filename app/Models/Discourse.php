@@ -114,7 +114,6 @@ class Discourse extends Base
     return $this->morphOne(File::class, 'fileable');
   }
 
-
   public function publishedFile()
   {
     return $this->morphOne(File::class, 'fileable')->where('publish', 1);

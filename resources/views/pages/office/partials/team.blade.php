@@ -16,7 +16,7 @@
             <h2 class="mb-3x">{{ __('Postum') }}</h2>
           @endif
           @if ($t->cv)
-            <a href="{{ route('page.office.cv', ['slug' => AppHelper::slug($t->firstname .'-'. $t->name), 'teamMember' => $t->id]) }}" title="{{ __('CV') }} {{ $t->firstname }} {{ $t->name }}">
+            <a href="{{ route(locale() . '.page.office.cv', ['slug' => AppHelper::slug($t->firstname .'-'. $t->name), 'teamMember' => $t->id]) }}" title="{{ __('CV') }} {{ $t->firstname }} {{ $t->name }}">
               {{ $t->firstname }} {{ $t->name }}@if($t->description), {{ $t->description }}@endif
             </a>
             @if ($t->title)<br>{{ $t->title }}@endif

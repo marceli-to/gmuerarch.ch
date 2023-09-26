@@ -10,7 +10,7 @@
           @foreach($project_categories as $category)
             <li>
               <a 
-                href="{{ route('page.project.index', ['category' => $category->slug]) }}" 
+                href="{{ route(locale() . '.page.project.index', ['category' => $category->slug]) }}" 
                 title="{{ $category->title }}"
                 class="{{ $category->id == $projectActiveCategory->id ? 'is-active' : '' }}">
                 {!! str_replace(' ', '&nbsp;', $category->title) !!}
@@ -31,7 +31,7 @@
             <li data-categories="{{ $categories->join(',') }}" 
                 class="{{ !in_array($projectActiveCategory->id, $categories->toArray()) ? 'is-hidden' : 'is-visible' }}">
 
-              <a href="{{ route('page.project.show', ['category' => $projectActiveCategory->slug, 'slug' => AppHelper::slug($project->title), 'project' => $project]) }}" 
+              <a href="{{ route(locale() . '.page.project.show', ['category' => $projectActiveCategory->slug, 'slug' => $project->title ? AppHelper::slug($project->title) : 'title', 'project' => $project]) }}" 
                 title="{{ $project->title }}" 
                 data-project="{{ $project->id }}">
                 {{ $project->title }}
