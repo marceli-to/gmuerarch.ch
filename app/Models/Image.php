@@ -3,14 +3,16 @@ namespace App\Models;
 use App\Models\Base;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Base
 {
-  use HasFactory, SoftDeletes;
+  use HasFactory, SoftDeletes, HasTranslations;
 
   protected $casts = [
     'created_at' => "datetime:d.m.Y",
+    'caption' => 'array',
   ];
 
 	protected $fillable = [
@@ -20,6 +22,7 @@ class Image extends Base
     'extension',
     'size',
     'caption',
+    'caption_de',
     'description',
     'orientation',
     'ratio',
@@ -33,6 +36,29 @@ class Image extends Base
     'locked',
     'imageable_id',
     'imageable_type'
+  ];
+
+  /**
+   * The model's default values for attributes.
+   *
+   * @var array
+   */
+
+   protected $attributes = [
+    'caption' => '{
+      "de": "null",
+      "en": "null"
+    }',
+  ];
+
+  /**
+   * The attributes that are translatable.
+   *
+   * @var array
+   */
+
+   public $translatable = [
+    'caption',
   ];
 
   /**

@@ -128,14 +128,18 @@
       <div class="upload-overlay__grid">
         <figure v-if="hasOverlayEdit">
             <img :src="getSource(overlayItem, 'cache')" height="300" width="300">
-            <figcaption v-if="overlayItem.caption">
-              <span v-if="overlayItem.caption">{{overlayItem.caption}}</span>
+            <figcaption v-if="overlayItem.caption.de">
+              <span v-if="overlayItem.caption.de">{{overlayItem.caption.de}}</span>
             </figcaption>
           </figure>
         <div>
           <div class="form-row">
-            <label>Legende</label>
-            <input type="text" v-model="overlayItem.caption" />
+            <label>Legende (DE)</label>
+            <input type="text" v-model="overlayItem.caption.de" />
+          </div>
+          <div class="form-row">
+            <label>Legende (EN)</label>
+            <input type="text" v-model="overlayItem.caption.en" />
           </div>
           <div class="form-row">
             <label>Beschreibung</label>

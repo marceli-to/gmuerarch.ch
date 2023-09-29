@@ -6,13 +6,19 @@ export default {
 
       overlayItem: {
         name: '',
-        caption: null,
+        caption: {
+          de: null,
+          en: null
+        },
       },
 
       defaults: {
         item: {
           name: '',
-          caption: null,
+          caption: {
+            de: null,
+            en: null
+          },
         }
       }
     }
