@@ -142,8 +142,8 @@ class ProjectController extends Controller
     foreach($images as $image)
     {
       $i = Image::findOrFail($image['id']);
-      $i->setTranslation('caption', 'de', $image['caption']['de']);
-      $i->setTranslation('caption', 'en', $image['caption']['en']);
+      $i->setTranslation('caption', 'de', isset($image['caption']['de']) ? $image['caption']['de'] : null);
+      $i->setTranslation('caption', 'en', isset($image['caption']['en']) ? $image['caption']['en'] : null);
       $i->imageable_id = $project->id;
       $i->imageable_type = Project::class;
       $i->save();
