@@ -6,8 +6,8 @@
   };
 
   const selectors = {
-    listItem: 'li.is-visible a[data-project]',
-    listItemFirst: 'li.is-visible:first-child a[data-project]',
+    listItem: 'li.is-visible [data-project]',
+    listItemFirst: 'li.is-visible:first-child [data-project]',
     imageItem:  'picture[data-project]',
 
     btnInfo: '.js-btn-project-info',

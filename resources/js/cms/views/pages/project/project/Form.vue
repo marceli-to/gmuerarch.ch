@@ -109,9 +109,17 @@
         <div class="form-row">
           <radio-button 
             :label="'In Werkliste anzeigen?'"
-            v-bind:worklist.sync="project.worklist"
-            :model="project.worklist"
-            :name="'worklist'">
+            v-bind:is_worklist.sync="project.is_worklist"
+            :model="project.is_worklist"
+            :name="'is_worklist'">
+          </radio-button>
+        </div>
+        <div class="form-row">
+          <radio-button 
+            :label="'In Projekten anzeigen?'"
+            v-bind:is_project.sync="project.is_project"
+            :model="project.is_project"
+            :name="'is_project'">
           </radio-button>
         </div>
       </div>
@@ -189,7 +197,8 @@ export default {
         },
         category_ids: [],
         publish: 1,
-        worklist: 1,
+        is_worklist: 1,
+        is_project: 1,
         images: [],
         files: [],
       },

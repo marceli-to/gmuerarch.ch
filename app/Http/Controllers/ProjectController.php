@@ -28,7 +28,7 @@ class ProjectController extends BaseController
     $category = $category ? Category::where('slug', 'like', '%"'.$category.'"%')->firstOrFail() : Category::with('projects')->has('projects')->first();
 
     // Get projects
-    $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->orderBy('order')->get();
+    $projects = Project::with('images', 'previewImage', 'categories')->flagged('isPublish')->flagged('isProject')->orderBy('order')->get();
 
     $projectsByCategory = null;
     if ($category)
@@ -36,7 +36,7 @@ class ProjectController extends BaseController
       $projectsByCategory = Project::query()->with('images', 'previewImage', 'categories')
       ->whereHas('categories', function ($query) use ($category) {
         $query->where('id', $category->id);
-      })->flagged('isPublish')->get();
+      })->flagged('isPublish')->flagged('isProject')->get();
     }
 
     // Get project image (overview)
@@ -88,7 +88,7 @@ class ProjectController extends BaseController
     $projects = Project::query()->with('images', 'categories')
     ->whereHas('categories', function ($query) use ($categoryId) {
       $query->where('id', $categoryId);
-    })->orderBy('order')->get();
+    })->flagged('isPublish')->flagged('isProject')->orderBy('order')->get();
     
     $keys     = [];
     $items    = [];
@@ -123,7 +123,4 @@ class ProjectController extends BaseController
     ];
     return $items;
   }
-
-
-
 }

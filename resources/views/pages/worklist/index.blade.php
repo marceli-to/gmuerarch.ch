@@ -9,11 +9,19 @@
       <ul>
         @foreach($projects as $project)
           <li class="is-visible">
+            @if ($project->isProject)
             <a href="{{ route(locale() . '.page.project.show', ['category' => $project->categories->first() ? $project->categories->first()->slug : 'slug', 'slug' => $project->title ? AppHelper::slug($project->title) : 'title', 'project' => $project]) }}" 
               title="{{ $project->title }}" 
               data-project="{{ $project->id }}">
               {!! nl2br($project->text_worklist) !!}
             </a>
+            @else
+            <div 
+              title="{{ $project->title }}" 
+              data-project="{{ $project->id }}">
+              {!! nl2br($project->text_worklist) !!}
+            </div>
+            @endif
           </li>
         @endforeach
       </ul>

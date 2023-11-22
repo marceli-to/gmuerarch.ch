@@ -85,7 +85,8 @@ class Project extends Base
 
   protected $appends = [
     'publish',
-    'worklist',
+    'is_worklist',
+    'is_project',
     'category_ids'
   ];
 
@@ -145,16 +146,25 @@ class Project extends Base
     return $this->hasFlag('isPublish') ? 1 : 0;    
   }
 
-    /**
-   * Get the publish attribute
+  /**
+   * Get the is worklist attribute
    * 
    */
 
-  public function getWorklistAttribute()
+  public function getIsWorklistAttribute()
   {
     return $this->hasFlag('isWorklist') ? 1 : 0;    
   }
 
+  /**
+   * Get the is project attribute
+   * 
+   */
+
+  public function getIsProjectAttribute()
+  {
+    return $this->hasFlag('isProject') ? 1 : 0;    
+  }
 
   /**
    * Get array of ids from the m:n topic relationship
