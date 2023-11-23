@@ -16,7 +16,7 @@
               {!! nl2br($project->text_worklist) !!}
             </a>
             @else
-            <div 
+            <div class="mb-3x"
               title="{{ $project->title }}" 
               data-project="{{ $project->id }}">
               {!! nl2br($project->text_worklist) !!}

@@ -18,10 +18,6 @@ nav.content {
     &.is-hidden {
       display: none;
     }
-
-    > div {
-      padding-bottom: $space-3x;
-    }
   }
 
   a {
