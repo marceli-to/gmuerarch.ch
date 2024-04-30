@@ -8,6 +8,7 @@ use App\Http\Controllers\WorklistController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\DiscourseController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\TestController;
 
 
@@ -57,6 +58,10 @@ Route::get('/en/discourse/{topic?}', [DiscourseController::class, 'index'])->nam
 
 // Frontend - url based images
 Route::get('/img/{template}/{filename}/{maxSize?}/{coords?}/{ratio?}', [ImageController::class, 'getResponse']);
+
+// Frontend - Privacy
+Route::get('/datenschutz', [PrivacyController::class, 'index'])->name('de.page.privacy.index');
+Route::get('/en/privacy', [PrivacyController::class, 'index'])->name('en.page.privacy.index');
 
 // Output testing
 // Route::get('/test/team', [TestController::class, 'team']);

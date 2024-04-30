@@ -13,6 +13,12 @@
         <a href="mailto:mail@gmuerarch.ch" title="{{ __('E-Mail') }}">mail@gmuerarch.ch</a><br>
         <a href="https://www.gmuerarch.ch" title="{{ __('Webseite') }}">www.gmuerarch.ch</a>
       </p>
+      <p>&nbsp;</p>
+      <p>
+        <a href="{{ localized_route('page.privacy.index') }}">
+          {{ __('Datenschutz') }}
+        </a>
+      </p>
     </article>
   </div>
   <div class="content-grid__item map" id="map"></div>
