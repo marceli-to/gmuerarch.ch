@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 Vue.filter('truncate', function (text, length, suffix) {
   let t = text.replace(/(<([^>]+)>)/ig,"");
   if (t.length > length) {
