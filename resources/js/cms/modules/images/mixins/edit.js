@@ -6,19 +6,15 @@ export default {
 
       overlayItem: {
         name: '',
-        caption: {
-          de: null,
-          en: null
-        },
+        caption_de: null,
+        caption_en: null
       },
 
       defaults: {
         item: {
           name: '',
-          caption: {
-            de: null,
-            en: null
-          },
+          caption_de: null,
+          caption_en: null
         }
       }
     }
@@ -46,18 +42,18 @@ export default {
     },
 
     update(image, $event) {
-      this.$parent.updateImage(image, $event);
+      this.$parent.updateImage(this.overlayItem, $event);
       this.hideEdit();
     },
 
     showEdit(image, $event) {
       this.hasOverlayEdit = true;
-      this.overlayItem = image;
+      this.overlayItem = { ...image }; 
     },
 
     hideEdit() {
       this.hasOverlayEdit = false;
-      this.overlayItem = this.defaults.item;
+      this.overlayItem = { ...this.defaults.item }; 
     },
   }
 };

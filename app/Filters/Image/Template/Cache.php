@@ -1,99 +1,101 @@
 <?php
 namespace App\Filters\Image\Template;
-use Intervention\Image\Image;
-use Intervention\Image\Filters\FilterInterface;
+use Intervention\Image\Interfaces\ImageInterface;
+use Intervention\Image\Interfaces\ModifierInterface;
 
-class Cache implements FilterInterface
+class Cache implements ModifierInterface
 {
-  protected $maxSize;
-  protected $coords = FALSE;
-  protected $hasCrop = FALSE;
-  protected $cropWidth = NULL;
-  protected $cropHeight = NULL;
-  protected $cropX = NULL;
-  protected $cropY = NULL;
-  protected $ratio;
-  protected $orientation = 'landscape';
+    protected $maxSize;
+    protected $coords = FALSE;
+    protected $hasCrop = FALSE;
+    protected $cropWidth = NULL;
+    protected $cropHeight = NULL;
+    protected $cropX = NULL;
+    protected $cropY = NULL;
+    protected $ratio;
+    protected $orientation = 'landscape';
 
-  public function __construct($maxSize = NULL, $coords = FALSE, $ratio = NULL)
-  {
-    $this->maxSize   = $maxSize ? $maxSize : 1500;
-    $this->coords    = $coords;
-    $this->ratio     = $ratio;
-  }
-
-  public function applyFilter(Image $image)
-  {
-    // Get image orientation based on image width/height
-    $width  = $image->getWidth();
-    $height = $image->getHeight();
-    if ($height >= $width)
+    public function __construct($maxSize = NULL, $coords = FALSE, $ratio = NULL)
     {
-      $this->orientation = 'portrait';
+        $this->maxSize   = $maxSize ? $maxSize : 1500;
+        $this->coords    = $coords;
+        $this->ratio     = $ratio;
     }
 
-    // Set crop variables && overwrite image orientation if needed
-    if ($this->coords && $this->coords != '0,0,0,0')
+    public function apply(ImageInterface $image): ImageInterface
     {
-      list($this->cropWidth, $this->cropHeight, $this->cropX, $this->cropY) = explode(',', $this->coords);
-      $this->orientation = $this->cropHeight >= $this->cropWidth ? 'portrait' : 'landscape';
-      $this->hasCrop = TRUE;
-    }
-
-    if ($this->hasCrop)
-    {
-      if ($this->orientation == 'landscape')
-      {
-        return $image->crop(floor($this->cropWidth), floor($this->cropHeight), floor($this->cropX), floor($this->cropY))
-          ->resize($this->maxSize, null, function ($constraint) {
-          $constraint->aspectRatio();
-          $constraint->upsize();
-        });
-      }
-      else
-      {
-        return $image->crop(floor($this->cropWidth), floor($this->cropHeight), floor($this->cropX), floor($this->cropY))
-          ->resize(null, $this->maxSize, function ($constraint) {
-          $constraint->aspectRatio();
-          $constraint->upsize();
-        });
-      }
-    }
-    else
-    {
-      if ($this->ratio)
-      {
-        $ratio = explode('x', $this->ratio);
-
-        if ($ratio[0] > $ratio[1])
+        // Get image orientation based on image width/height
+        $width  = $image->width();
+        $height = $image->height();
+        if ($height >= $width)
         {
-          $x = $this->maxSize;
-          $y = $this->maxSize / $ratio[0] * $ratio[1];
+            $this->orientation = 'portrait';
+        }
+
+        // Set crop variables && overwrite image orientation if needed
+        if ($this->coords && $this->coords != '0,0,0,0')
+        {
+            list($this->cropWidth, $this->cropHeight, $this->cropX, $this->cropY) = explode(',', $this->coords);
+            $this->orientation = $this->cropHeight >= $this->cropWidth ? 'portrait' : 'landscape';
+            $this->hasCrop = TRUE;
+        }
+
+        if ($this->hasCrop)
+        {
+            // First crop the image
+            $image = $image->crop(
+                floor($this->cropWidth), 
+                floor($this->cropHeight), 
+                floor($this->cropX), 
+                floor($this->cropY)
+            );
+
+            // Then scale down based on orientation
+            if ($this->orientation == 'landscape')
+            {
+                return $image->scaleDown(width: $this->maxSize);
+            }
+            else
+            {
+                return $image->scaleDown(height: $this->maxSize);
+            }
         }
         else
         {
-          $y = $this->maxSize;
-          $x = $this->maxSize / $ratio[1] * $ratio[0];
+            if ($this->ratio)
+            {
+                $ratio = explode('x', $this->ratio);
+
+                if ($ratio[0] > $ratio[1])
+                {
+                    $x = $this->maxSize;
+                    $y = $this->maxSize / $ratio[0] * $ratio[1];
+                }
+                else
+                {
+                    $y = $this->maxSize;
+                    $x = $this->maxSize / $ratio[1] * $ratio[0];
+                }
+
+                // For landscape orientation
+                if ($this->orientation == 'landscape')
+                {
+                    return $image->coverDown(floor($x), floor($y));
+                }
+
+                // For portrait orientation (switch x and y)
+                return $image->coverDown(floor($y), floor($x));
+            }
+
+            // If no ratio specified, maintain aspect ratio while fitting within maxSize
+            if ($this->orientation == 'landscape')
+            {
+                return $image->scaleDown(width: $this->maxSize);
+            }
+            else
+            {
+                return $image->scaleDown(height: $this->maxSize);
+            }
         }
-
-        // Landscape
-        if ($this->orientation == 'landscape')
-        {
-          return $image->fit(floor($x), floor($y), function ($constraint) {
-            $constraint->upsize();
-          });
-        }
-
-        // Portrait (switch x and y)
-        return $image->fit(floor($y), floor($x), function ($constraint) {
-          $constraint->upsize();
-        });
-      }
-
-      return $image->resize($this->maxSize, $this->maxSize, function ($constraint) {
-        $constraint->aspectRatio();
-        $constraint->upsize();
-      });
     }
-  }
 }

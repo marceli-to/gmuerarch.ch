@@ -1,47 +1,40 @@
 <?php
 namespace App\Filters\Image\Template;
-use Intervention\Image\Image;
-use Intervention\Image\Filters\FilterInterface;
-use App\Models\TutorImage;
+use Intervention\Image\Interfaces\ImageInterface;
+use Intervention\Image\Interfaces\ModifierInterface;
 
-class Portrait implements FilterInterface
+class Portrait implements ModifierInterface
 {
-  protected $max_width  = 640;    
-  protected $max_height = 765;
+    protected $max_width  = 640;    
+    protected $max_height = 765;
+    protected $maxSize;
+    protected $coords;
 
-  public function applyFilter(Image $image)
-  {
-    $this->image = new \App\Models\TutorImage;
-    $img = $this->image->where('name', '=', $image->basename)->get()->first();
-    
-    // Crop the image if coords are set
-    if ($img && $img->coords_w && $img->coords_h)
+    public function __construct($maxSize = NULL, $coords = FALSE, $ratio = NULL)
     {
-      return 
-        $image->crop(floor($img->coords_w), floor($img->coords_h), floor($img->coords_x), floor($img->coords_y))
-              ->resize($this->max_width, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-        });
+        $this->maxSize = $maxSize ? $maxSize : 765;
+        $this->coords = $coords;
     }
 
-    // Otherwise just resize the image
-    $width  = $image->getWidth();
-    $height = $image->getHeight();
+    public function apply(ImageInterface $image): ImageInterface
+    {
+        // Handle cropping if coordinates are provided
+        if ($this->coords && $this->coords != '0,0,0,0')
+        {
+            list($cropWidth, $cropHeight, $cropX, $cropY) = explode(',', $this->coords);
+            $image = $image->crop(
+                floor($cropWidth), 
+                floor($cropHeight), 
+                floor($cropX), 
+                floor($cropY)
+            );
+        }
 
-    // Resize landscape image
-    if ($width > $height && $width >= $this->max_width)
-    {
-      $image->fit($this->max_width, $this->max_height, function ($constraint) {
-        return $constraint->aspectRatio();
-      });
+        // Get dimensions
+        $width  = $image->width();
+        $height = $image->height();
+
+        // For both landscape and portrait images, maintain aspect ratio while fitting within bounds
+        return $image->coverDown($this->max_width, $this->max_height);
     }
-    else if ($height >= $this->max_height)
-    {
-      $image->fit($this->max_width, $this->max_height, function ($constraint) {
-        return $constraint->aspectRatio();
-      });
-    }
-    return $image;
-  }
 }

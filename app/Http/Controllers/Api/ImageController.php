@@ -3,14 +3,23 @@ namespace App\Http\Controllers\Api;
 use App\Models\Image;
 use App\Models\HeroImage;
 use App\Services\Media;
+use App\Services\ImageCache;
 use App\Http\Resources\DataCollection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
+  protected $imageCache;
+
+  public function __construct(ImageCache $imageCache)
+  {
+    $this->imageCache = $imageCache;
+  }
+
   /**
    * Get a list of images
    * 
@@ -203,18 +212,28 @@ class ImageController extends Controller
    * Remove cached version of the image
    *
    * @param Image $image
-   * @param  \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
+   * @return void
    */
   private function removeCachedImage(Image $image)
   {
-    // Get an instance of the ImageCache class
-    $cache = new \Intervention\Image\ImageCache();
-
-    // Get a cached image from it and apply all of your templates / methods
-    $image = $cache->make(storage_path('app/public/uploads/') . $image->name)->filter(new \App\Filters\Image\Template\Cache);
-
-    // Remove the image from the cache by using its internal checksum
-    Cache::forget($image->checksum());
+    // Clear all cached versions of this image
+    $templates = ['cache', 'large', 'lightbox', 'small', 'tiny', 'portrait'];
+    foreach ($templates as $template) {
+      // Get the coords string in the same format as the template expects
+      $coords = implode(',', [
+        $image->coords_w ?? 0,
+        $image->coords_h ?? 0,
+        $image->coords_x ?? 0,
+        $image->coords_y ?? 0
+      ]);
+      
+      // Generate cache key using the same method as our ImageCache service
+      $cacheKey = md5($template . $image->name . $coords . $image->ratio);
+      $cachedPath = storage_path('app/public/cache/' . $cacheKey . '.' . pathinfo($image->name, PATHINFO_EXTENSION));
+      
+      if (File::exists($cachedPath)) {
+        File::delete($cachedPath);
+      }
+    }
   }
 }
